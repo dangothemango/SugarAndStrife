@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>My Phaser Game</title>
+    <title>VIDEO GAME</title>
     <script type="text/javascript" src=engine/phaser.min.js></script>
     <script type="text/javascript" src=js/MenuState.js></script>
     <script type="text/javascript" src=js/PlayState.js></script>
@@ -10,12 +10,36 @@
     <script type="text/javascript" src=js/main.js></script>
     
     <style type="text/css">
-        body { margin: 0; }
+        body {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
-Hello World
-<script type="text/javascript" src=js/main.js>
+<script type="text/javascript">
+    
+    var game = new Phaser.Game(1334, 750, Phaser.AUTO, 'TITLE', { preload: preload, create: create, update: update });
+
+    game.state.add('Menu', MenuState);
+    game.state.add('Play', PlayState);
+    game.state.add('Cut', Cutscene);
+    game.state.add('Win', WinState);
+
+
+    game.state.start('Menu');
+
+    function preload() {
+
+    }
+
+    function create() {
+
+    }
+
+    function update() {
+
+    }
 
 </script>
 </body>
