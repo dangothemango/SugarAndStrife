@@ -20,7 +20,7 @@ var PlayState = {
 		var startButton = game.add.button(100,game.world.height-300,'submitButton',submitCandy,this,'Static','Static','Down','Up');
 
 		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
-		game.add.sprite(0, 0, game.create.grid('grid', 100 * 15, 100 * 3, 100, 100, 'rgba(0, 250, 0, 1)'));
+		game.add.sprite(0, 0, game.create.grid('grid', 100 * 15, 100 * 3, 200, 100, 'rgba(0, 250, 0, 1)'));
 
 		cauldron = game.add.sprite(1050,475, 'cauldron');
 		cauldron.anchor.set(0.5);
@@ -32,13 +32,13 @@ var PlayState = {
 		group.inputEnableChildren = true;
 
 		//load from atlas file; sprite name|frameName
-		group.createMultiple(3, 'seacreatures', ['blueJellyfish0000', 'crab10000', 'flyingFish0000'], true);
+		group.createMultiple(1, 'seacreatures', ['blueJellyfish0000', 'crab10000', 'flyingFish0000'], true);
 
 		//if touched, allow drag
 		group.onChildInputDown.add(_drag,this); 
 
 		//align on shelves or something
-		group.align(15, 3, 100, 100, Phaser.CENTER);
+		group.align(15, 3, 200, 100, Phaser.CENTER);
 		totalIngred = group.total;
 
 	},
@@ -66,14 +66,12 @@ var PlayState = {
 			{
 				text.text = 'Dropped ' +  item.frameName + ' into the cauldron';
 			}
-			group.remove(item);
-			}
-	    else
-	    {
-		//if dropped else where, return to shelf/reset
-		group.align(15, 3, 100, 100, Phaser.CENTER);
 
-	    }
+			//TODO CHANGE ATTRIBUTES
+
+		}
+
+		item.destroy();
 
 	},
 
