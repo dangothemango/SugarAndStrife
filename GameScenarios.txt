@@ -6,9 +6,8 @@
    * “Congratulations. The kill was quiet and subtle. No one expected the candy to be the reason he died, so that’s good. Nothing can be traced back to me. Job well done.”
 * Objectives:
    * Brown
-   * 50% Salty
-   * 10% Bitter
-   * Cyanide
+   * Extremely Bitter
+   * Poison
 
 Scenario 2 (Professional Demise):
 
@@ -18,7 +17,7 @@ Scenario 2 (Professional Demise):
    * “Thank God he’s gone. I don’t know how you managed it, but he’s gone. Finally! He was an asshole and now he can’t bully me anymore. Doesn’t hurt I also got his job, not that that’s what I wanted. I swear. It just, happened. But thank you and, and to show my appreciation and that I didn’t do this for a promotion, you can have my pay bonus.”
 * Objectives:
    * Red
-   * 75% Spicy
+   * Unfathomably Spicy
    * Explosive
 
 Scenario 3 (Slippery Slope):
@@ -29,8 +28,7 @@ Scenario 3 (Slippery Slope):
    * “Apparently she sprouted tentacles before she died and no one knows why. Most people are whispering that the government had something to do with it. I didn’t want this to happen. I...I just need a moment. I need to rethink what I’m doing with my life. I didn’t want her to die…”
 * Objectives:
    * Blue
-   * 50% Bitter
-   * 50% Salty
+   * Irresponsibly Salty
    * Tentacles
 
 Scenario 4 (All Hail Slime):
@@ -41,7 +39,7 @@ Scenario 4 (All Hail Slime):
    * “My dreams of leading a slime monster cult has come true and I can’t be happier! Now we have to plan out how to overtake the outside world and the nonbelievers. But we’ll spare you since you’re the one who allowed us to rise to a new level of being.”
 * Objectives:
    * Green
-   * 15% Savory
+   * Mildly Savory
    * Slime
 
 Scenario 5 (In Pear We Trust):
@@ -52,8 +50,7 @@ Scenario 5 (In Pear We Trust):
    * “It didn’t take long for people to start lining up outside my stores. I swear I saw some drool falling out of their mouths. But I’m sure the world won’t mind a few hundred thousand mindless zombies. My innovative phones are a household name and I suppose paying you out properly would be only fair.”
 * Objectives:
    * Purple
-   * 30% Sweet
-   * 25% Savory
+   * Very Sweet
    * Mind Control
 
 Scenario 6 (United We Implode):
@@ -64,5 +61,5 @@ Scenario 6 (United We Implode):
    * “Well, you did it. You managed to make a candy that made the heads of every world leader implode. I can’t say I could have ever imagined something like it possible. And I’m sure you might not have expected that either. Regardless, you are a hero of our cause and you’ll be remembered, for as long as anyone remembers anything in a world run by anarchy.”
 * Objectives:
    * Yellow
-   * 100% Sour
+   * Immeasurably Sour
    * Implosion
