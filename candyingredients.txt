@@ -1,17 +1,7 @@
-Normal Ingredients:
-Cinnamon ------------------ Spicy
-Citric Acid --------------- Sour, acidic
-Cocoa --------------------- Bitter
-Food Coloring/Dye --------- Color
-Salt ---------------------- Salty
-Sugar --------------------- Sweet
-Water --------------------- Flavorless, Dilutes flavors
-Milk ---------------------- Sweet, Decreases spicy flavor
-
-Abnormal Ingredients:
+Chocolate ----------------- Sweet, Overwhelms consistency, Turns candy brown
 Sinner's Blood ------------ Salty, Turns candy red, Mind Control
 Bone Marrow --------------- Savory, Turns candy yellow,
-Bleach -------------------- Bitter, Doesn't change color, Poison
+Bleach -------------------- Extremely bitter, Gets rid of candy color, Poison
 Cursed Caviar ------------- Salty, Turns candy black,
 Cyanide ------------------- Sweet, Turns candy yellow, Poison
 Demon Flesh --------------- Savory, Turns candy red,
