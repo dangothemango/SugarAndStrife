@@ -1,41 +1,35 @@
 Normal Ingredients:
-Cinnamon ----------------- spicy
-Citric Acid -------------- sour, acidic
-Cocoa -------------------- bitter
-Food Coloring/Dye -------- color
-Gelatin ------------------ sticky/sweet
-High Fructose Corn Syrup - sweet
-Salt --------------------- salty
-Sugar -------------------- sweet
-Water -------------------- maybe dilutes flavors?
-Milk --------------------- makes things less spicy?
+Cinnamon ------------------ Spicy
+Citric Acid --------------- Sour, acidic
+Cocoa --------------------- Bitter
+Food Coloring/Dye --------- Color
+Salt ---------------------- Salty
+Sugar --------------------- Sweet
+Water --------------------- Flavorless, Dilutes flavors
+Milk ---------------------- Sweet, Decreases spicy flavor
 
 Abnormal Ingredients:
-Blood
-Sinner's Blood ----------- (probably does the same thing as blood, but with some other bizarre effect or reaction)
-                           (frankly I just love the idea of a player trying to figure out if the blood needs to be sinful or not)
-Bone Marrow
-Bleach
-Clam Heart
-Cream of Crop
-Cursed Caviar ------------- salty
-Cyanide ------------------ poison, bitter?
-Demon Flesh -------------- umami?
-Eye of Newt
-Fairy Wings
-Frog Legs
-Gold Flakes
-Hell Pepper --------------- spicy
-Horrible Dirt
-Insect Parts
-Leopard Spots
-Liquid Smoke
-Lizard Eggs
-Mandrake ------------------ mind control?
-Mercury ------------------- poison, bitter? i, uh, don't know what mercury tastes like
-Pufferfish ---------------- explosive?
-Slime
-Snake Venom --------------- poison
-Squid Ink ----------------- bitter, turns the candy black
-Freeze Dried Tentacles ---- tentacles
-Toadstool ----------------- umami, mind control?
+Sinner's Blood ------------ Salty, Turns candy red, Mind Control
+Bone Marrow --------------- Savory, Turns candy yellow,
+Bleach -------------------- Bitter, Doesn't change color, Poison
+Cursed Caviar ------------- Salty, Turns candy black,
+Cyanide ------------------- Sweet, Turns candy yellow, Poison
+Demon Flesh --------------- Savory, Turns candy red,
+Eye of Newt --------------- Bitter, Turns candy green,
+Fairy Wings --------------- Sweet, Turns candy sparkly, Implosion
+Frog Legs ----------------- Savory, Turns candy green,
+Actual Ghost Pepper ------- Spicy, Turns candy white, Explosive
+Horrible Dirt ------------- Bitter, Turns candy brown,
+Insect Parts -------------- Sour, Turns candy brown, Morphing ability
+Possessed Lemons ---------- Sour, Turns candy yellow, Implosion
+Leopard Spots ------------- Savory, Turns candy black, Morphing ability
+Liquid Smoke -------------- Flavorless, Turns candy blue, Explosion
+Lizard Eggs --------------- Flavorless, turns candy white, Morphing ability
+Mandrake ------------------ Bitter, Turns candy brown, Mind Control
+Mercury ------------------- Flavorless, Turns candy grey, Poison
+Pufferfish ---------------- Savory, Turns candy yellow, Poison
+Slime --------------------- Sweet, Turns candy green, Morphing ability
+Snake Venom --------------- Sweet, Turns candy green, Poison
+Squid Ink ----------------- Bitter, Turns candy black, Tentacle forming
+Freeze Dried Tentacles ---- Savory, Turns candy purple, Tentacle forming
+Toadstool ----------------- Savory, Turns candy red, Mind control
