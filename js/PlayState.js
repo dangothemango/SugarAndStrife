@@ -2,26 +2,22 @@
 var PlayState = {
 
 	preload: function(){
-		game.load.atlasJSONHash('tmpButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
 	    	//temp -- include ingredient json file when completed
 		game.load.atlas('seacreatures', 'assets/seacreatures_json.png', 'assets/seacreatures_json.json');
 		game.load.image('cauldron', 'assets/cauldron.png');
 	},
 
-	var group;
-	var cauldron;
-	var text;
-	var attributes; //keep track of levels of ingredients
-	var totalIngred;
-	var crabCount;
-
 	create: function() {
 
 		console.log("Play State");
-
-		var tmpButton = game.add.button(game.world.centerX-247,game.world.centerY-79,'tmpButton',playstateTest,this,'Static','Static','Down','Up');
-
 	
+		var group;
+		var cauldron;
+		var text;
+		var attributes; //keep track of levels of ingredients
+		var totalIngred;
+		var crabCount;
+
 		//debug text
 		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
 
