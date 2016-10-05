@@ -41,7 +41,7 @@ Scenario 4 (All Hail Slime):
    * “My dreams of leading a slime monster cult has come true and I can’t be happier! Now we have to plan out how to overtake the outside world and the nonbelievers. But we’ll spare you since you’re the one who allowed us to rise to a new level of being.”
 * Objectives:
    * Green
-   * 15% Umami
+   * 15% Savory
    * Slime
 
 Scenario 5 (In Pear We Trust):
@@ -53,7 +53,7 @@ Scenario 5 (In Pear We Trust):
 * Objectives:
    * Purple
    * 30% Sweet
-   * 25% Umami
+   * 25% Savory
    * Mind Control
 
 Scenario 6 (United We Implode):
