@@ -1,25 +1,26 @@
-Chocolate ----------------- Sweet, Overwhelms consistency, Turns candy brown
-Sinner's Blood ------------ Salty, Turns candy red, Mind Control
-Bone Marrow --------------- Savory, Turns candy yellow,
-Bleach -------------------- Extremely bitter, Gets rid of candy color, Poison
-Cursed Caviar ------------- Salty, Turns candy black,
-Cyanide ------------------- Sweet, Turns candy yellow, Poison
-Demon Flesh --------------- Savory, Turns candy red,
-Eye of Newt --------------- Bitter, Turns candy green,
-Fairy Wings --------------- Sweet, Turns candy sparkly, Implosion
-Frog Legs ----------------- Savory, Turns candy green,
-Actual Ghost Pepper ------- Spicy, Turns candy white, Explosive
-Horrible Dirt ------------- Bitter, Turns candy brown,
-Insect Parts -------------- Sour, Turns candy brown, Morphing ability
-Possessed Lemons ---------- Sour, Turns candy yellow, Implosion
-Leopard Spots ------------- Savory, Turns candy black, Morphing ability
-Liquid Smoke -------------- Flavorless, Turns candy blue, Explosion
-Lizard Eggs --------------- Flavorless, turns candy white, Morphing ability
-Mandrake ------------------ Bitter, Turns candy brown, Mind Control
-Mercury ------------------- Flavorless, Turns candy grey, Poison
-Pufferfish ---------------- Savory, Turns candy yellow, Poison
-Slime --------------------- Sweet, Turns candy green, Morphing ability
-Snake Venom --------------- Sweet, Turns candy green, Poison
-Squid Ink ----------------- Bitter, Turns candy black, Tentacle forming
-Freeze Dried Tentacles ---- Savory, Turns candy purple, Tentacle forming
-Toadstool ----------------- Savory, Turns candy red, Mind control
+Chocolate ----------------- Sweet, Overwhelms candy to high viscosity, Turns candy brown
+Sinner's Blood ------------ Salty, Turns candy red, Low viscosity, Mind Control
+Bone Marrow --------------- Savory, Turns candy yellow, Medium viscosity
+Bleach -------------------- Bitter, Gets rid of candy color, Low viscosity, Poison
+Cursed Caviar ------------- Salty, Turns candy black, High viscosity,
+Cyanide ------------------- Sweet, Turns candy yellow, Doesn’t affect viscosity, Poison
+Demon Flesh --------------- Savory, Turns candy red, High viscosity
+Eye of Newt --------------- Bitter, Turns candy green, High viscosity
+Powdered Fairy Wings ------ Sweet, Turns candy sparkly, Doesn’t affect viscosity, Implosion
+Frog Legs ----------------- Savory, Turns candy green, High viscosity
+Essence of Nightshade ----- Sweet, Turns candy purple, Low viscosity, Poison
+Actual Ghost Pepper ------- Spicy, Turns candy white, Doesn’t affect viscosity, Explosive
+Horrible Dirt ------------- Bitter, Turns candy brown, Doesn’t affect viscosity,
+Insect Parts -------------- Sour, Turns candy brown, Medium viscosity, Morphing ability
+Possessed Lemons ---------- Sour, Turns candy yellow, High viscosity, Implosion
+Leopard Spots ------------- Savory, Turns candy black, High viscosity, Morphing ability
+Liquid Smoke -------------- Flavorless, Turns candy blue, Low viscosity, Explosion
+Lizard Eggs --------------- Flavorless, turns candy white, High viscosity, Morphing ability
+Mandrake ------------------ Bitter, Turns candy brown, High viscosity, Mind Control
+Mercury ------------------- Flavorless, Turns candy grey, Low viscosity, Poison
+Pufferfish ---------------- Savory, Turns candy yellow, High viscosity, Poison
+Slime --------------------- Salty, Turns candy green, Medium viscosity, Morphing ability
+Snake Venom --------------- Sweet, Turns candy green, Low viscosity, Poison
+Squid Ink ----------------- Bitter, Turns candy black, Low viscosity, Tentacle forming
+Freeze Dried Tentacles ---- Savory, Turns candy purple, High viscosity, Tentacle forming
+Toadstool ----------------- Savory, Turns candy red, High viscosity, Mind control
