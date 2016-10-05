@@ -3,8 +3,8 @@ var PlayState = {
 
 	preload: function(){
 	    	//temp -- include ingredient json file when completed
-		game.load.atlas('seacreatures', 'assets/seacreatures_json.png', 'assets/seacreatures_json.json');
-		game.load.image('cauldron', 'assets/cauldron.png');
+		game.load.atlas('seacreatures', 'assets/images/seacreatures_json.png', 'assets/images/seacreatures_json.json');
+		game.load.image('cauldron', 'assets/images/cauldron.png');
 	},
 
 	create: function() {
