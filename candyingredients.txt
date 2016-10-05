@@ -1,6 +1,9 @@
 Normal Ingredients:
-Dye
-Gelatin
+Cinnamon ----------------- spicy
+Citric Acid -------------- sour, acidic
+Cocoa -------------------- bitter
+Food Coloring/Dye -------- color
+Gelatin ------------------ sticky/sweet
 High Fructose Corn Syrup - sweet
 Salt --------------------- salty
 Sugar -------------------- sweet
@@ -11,26 +14,28 @@ Abnormal Ingredients:
 Blood
 Sinner's Blood ----------- (probably does the same thing as blood, but with some other bizarre effect or reaction)
                            (frankly I just love the idea of a player trying to figure out if the blood needs to be sinful or not)
+Bone Marrow
+Bleach
+Clam Heart
+Cream of Crop
+Cursed Caviar ------------- salty
 Cyanide ------------------ poison, bitter?
 Demon Flesh -------------- umami?
 Eye of Newt
 Fairy Wings
 Frog Legs
+Gold Flakes
+Hell Pepper --------------- spicy
+Horrible Dirt
 Insect Parts
+Leopard Spots
+Liquid Smoke
 Lizard Eggs
 Mandrake ------------------ mind control?
+Mercury ------------------- poison, bitter? i, uh, don't know what mercury tastes like
 Pufferfish ---------------- explosive?
 Slime
+Snake Venom --------------- poison
+Squid Ink ----------------- bitter, turns the candy black
 Freeze Dried Tentacles ---- tentacles
 Toadstool ----------------- umami, mind control?
-Horrible Dirt
-Cream of Crop
-Gold Flakes
-Liquid Smoke
-Mercury ------------------- poison, bitter? i, uh, don't know what mercury tastes like
-Clam Heart
-Bone Marrow
-Hell Pepper --------------- spicy
-Cursed Caviar ------------- salty
-Leopard Spots
-Squid Ink ----------------- bitter, turns the candy black
