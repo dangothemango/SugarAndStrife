@@ -1,31 +1,28 @@
 ﻿Scenario 1 (Inheritance):
 
-
 * Opening:
-   * “I hear you’re the person to see if I want someone “taken care of”. Your methods are quiet and effective, that sounds pretty sweet to me because that’s what I need. You see, my grandfather has yet to...pass on and until then his assets are inaccessible. It’d be a real shame if he were to lose his head. He’s always had an...explosive temper.”
+   * “I hear you’re the person to see if I want someone “taken care of”. Your methods are quiet and effective, that sounds pretty sweet to me because that’s what I need. You see, my grandfather has yet to...pass on and until then his assets are inaccessible. It’d be a real shame if something were to...happen to him, if you catch my meaning.”
 * Closing:
-   * “Wow, didn’t expect his head to literally go POP. Made a huge mess of his office, scared the shit out of his secretary. But I guess it was a success. No one expected the candy to be the reason his head exploded, so that’s good. Nothing can be traced back to me. Job well done.”
-* Objectives:
-   * Red
-   * 75% Spicy
-   * Explosive
-
-
-Scenario 2 (Professional Demise):
-
-
-* Opening: 
-   * “Hi, um...so I don’t really. Um, let me start over. Okay. My friend said you could make people...go away? Well, not go away, I mean die. Yes, die. That’s...that’s what I want. I want my boss to die! I just...I can’t take it anymore! He’s making my life a living hell and he’s keeping me from getting a promotion! So can you just...Can you just, make him go away, for good?”
-* Closing:
-   * “Thank God he’s gone. I don’t know how you managed it, but he’s gone. Finally! He was an asshole and now he can’t bully me anymore. Doesn’t hurt I also got his job, not that that’s what I wanted. I swear. It just, happened. But thank you and, and to show my appreciation and that I didn’t do this for a promotion, you can have my pay bonus.”
+   * “Congratulations. The kill was quiet and subtle. No one expected the candy to be the reason he died, so that’s good. Nothing can be traced back to me. Job well done.”
 * Objectives:
    * Brown
    * 50% Salty
    * 10% Bitter
    * Cyanide
 
+Scenario 2 (Professional Demise):
+
+* Opening: 
+   * “Hi, um...so I don’t really. Um, let me start over. Okay. My friend said you could make people...go away? Well, not go away, I mean die. Yes, die. That’s...that’s what I want. I want my boss to die! He's got this explosive temper and I just...I can’t take it anymore! He’s making my life a living hell and he’s keeping me from getting a promotion! So can you just...Can you just, make him go away, for good?”
+* Closing:
+   * “Thank God he’s gone. I don’t know how you managed it, but he’s gone. Finally! He was an asshole and now he can’t bully me anymore. Doesn’t hurt I also got his job, not that that’s what I wanted. I swear. It just, happened. But thank you and, and to show my appreciation and that I didn’t do this for a promotion, you can have my pay bonus.”
+* Objectives:
+   * Red
+   * 75% Spicy
+   * Explosive
 
 Scenario 3 (Slippery Slope):
+
 * Opening:
    * “My girlfriend broke up with me and she took the dog. She called me “immature” and a “jerk”. Well I’ll show her! I want you to teach her a lesson for dumping me. She’ll see that I’m the best she’s going to get. She’s not even that pretty! Here’s the money upfront. I don’t care what you do, just hurt her somehow.”
 * Closing:
@@ -36,8 +33,8 @@ Scenario 3 (Slippery Slope):
    * 50% Salty
    * Tentacles
 
+Scenario 4 (All Hail Slime):
 
-Scenario 3 (All Hail Slime):
 * Opening:
    * “Rumor has it you’re the person to see to make weird things happen to people. Apparently you made some poor woman sprout tentacles and that’s along the lines of what I’m looking for. I want to convert my cult into slime monsters. I’m not sure just how to go about it, but that’s your job. They don’t know that this is going to happen, but I’m their God, so they won’t mind. It’s not like I’m asking them to wear spaghetti strainers on their heads.”
 * Closing:
@@ -47,9 +44,7 @@ Scenario 3 (All Hail Slime):
    * 15% Umami
    * Slime
 
-
 Scenario 5 (In Pear We Trust):
-
 
 * Opening:
    * “I may be the CEO of Pear Products, but I’m not here to sell you on anything. That’s just not what I’m about. But I do need your help. I’m here to hire you to become somewhat of a...business associate. You’ll do what you do best and cook up something that’ll...persuade the minds of consumers on buying the new and improved pear phone. Sales are down and we just won’t settle for failure. This shouldn't be too hard for someone who has managed to gain the attention of Pear Products.”
@@ -61,9 +56,7 @@ Scenario 5 (In Pear We Trust):
    * 25% Umami
    * Mind Control
 
-
 Scenario 6 (United We Implode):
-
 
 * Opening: 
    * “I represent a group that would prefer to go nameless and I don’t want to beat around the bush. What we need are some candies that’ll make someone implode, much like the world is imploding on itself. But that’s beside the fact. I imagine you can do the job, no questions asked. That’s why I’m here, otherwise I’d find someone else to do business with. So you’ve got my order, the sooner it’s finished the better. We’re on a strict timeframe.”
