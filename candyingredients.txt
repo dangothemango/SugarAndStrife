@@ -1,41 +1,40 @@
 Normal Ingredients:
-Cinnamon ----------------- spicy
-Citric Acid -------------- sour, acidic
-Cocoa -------------------- bitter
-Food Coloring/Dye -------- color
-Gelatin ------------------ sticky/sweet
-High Fructose Corn Syrup - sweet
-Salt --------------------- salty
-Sugar -------------------- sweet
-Water -------------------- maybe dilutes flavors?
-Milk --------------------- makes things less spicy?
+Cinnamon ------------------ Spicy
+Citric Acid --------------- Sour, acidic
+Cocoa --------------------- Bitter
+Food Coloring/Dye --------- Color
+Gelatin ------------------- Sweet
+High Fructose Corn Syrup -- Sweet
+Salt ---------------------- Salty
+Sugar --------------------- Sweet
+Water --------------------- Maybe dilutes flavors?
+Milk ---------------------- Makes things less spicy?
 
 Abnormal Ingredients:
-Blood
-Sinner's Blood ----------- (probably does the same thing as blood, but with some other bizarre effect or reaction)
-                           (frankly I just love the idea of a player trying to figure out if the blood needs to be sinful or not)
-Bone Marrow
-Bleach
-Clam Heart
-Cream of Crop
-Cursed Caviar ------------- salty
-Cyanide ------------------ poison, bitter?
-Demon Flesh -------------- umami?
-Eye of Newt
-Fairy Wings
-Frog Legs
-Gold Flakes
-Hell Pepper --------------- spicy
-Horrible Dirt
-Insect Parts
-Leopard Spots
-Liquid Smoke
-Lizard Eggs
-Mandrake ------------------ mind control?
-Mercury ------------------- poison, bitter? i, uh, don't know what mercury tastes like
-Pufferfish ---------------- explosive?
-Slime
-Snake Venom --------------- poison
-Squid Ink ----------------- bitter, turns the candy black
-Freeze Dried Tentacles ---- tentacles
-Toadstool ----------------- umami, mind control?
+Blood --------------------- Salty
+Sinner's Blood ------------ Salty, Mind Control
+Bone Marrow --------------- Savory
+Bleach -------------------- Bitter, Poison
+Clam Heart ---------------- Savory/Salty
+Cursed Caviar ------------- Salty
+Cyanide ------------------- Sweet, Poison
+Demon Flesh --------------- Savory
+Eye of Newt --------------- Bitter
+Fairy Wings --------------- Sweet, Implosion
+Frog Legs ----------------- Savory
+Gold Flakes --------------- Flavorless
+Actual Ghost Pepper ------- Spicy, Explosive
+Horrible Dirt ------------- Bitter
+Insect Parts -------------- Sour
+Possessed Lemons ---------- Sour, Implosion
+Leopard Spots ------------- Savory
+Liquid Smoke -------------- Flavorless
+Lizard Eggs --------------- Flavorless
+Mandrake ------------------ Bitter, Mind Control
+Mercury ------------------- Poison, Flavorless
+Pufferfish ---------------- Savory, Poison
+Slime --------------------- Salty, Morphing ability
+Snake Venom --------------- Sweet, Poison
+Squid Ink ----------------- Bitter, Turns the candy black
+Freeze Dried Tentacles ---- Savory, Tentacle forming
+Toadstool ----------------- Savory
