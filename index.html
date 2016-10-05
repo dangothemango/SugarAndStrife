@@ -75,8 +75,12 @@
 
 
     //PLAY STATE FUNCTIONS
-    function playstateTest() {
-        game.state.start('Menu');
+    function submitCandy() {
+        if (PlayState.checkWin()){
+            game.state.start('Menu');
+        } else {
+            game.state.start('Play');
+        }
     }
 
     //WIN STATE FUNCTIONS

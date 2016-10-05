@@ -2,6 +2,7 @@
 var PlayState = {
 
 	preload: function(){
+		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
 	    	//temp -- include ingredient json file when completed
 		game.load.atlas('seacreatures', 'assets/images/seacreatures_json.png', 'assets/images/seacreatures_json.json');
 		game.load.image('cauldron', 'assets/images/cauldron.png');
@@ -15,6 +16,8 @@ var PlayState = {
 		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
 
 		crabCount = 0;
+
+		var startButton = game.add.button(100,game.world.height-300,'submitButton',submitCandy,this,'Static','Static','Down','Up');
 
 		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
 		game.add.sprite(0, 0, game.create.grid('grid', 100 * 15, 100 * 3, 100, 100, 'rgba(0, 250, 0, 1)'));
@@ -41,7 +44,6 @@ var PlayState = {
 	},
 
 	update: function() {
-
 
 	},
 	
@@ -73,7 +75,11 @@ var PlayState = {
 
 	    }
 
-}
+	},
+
+	checkWin: function(){
+		return crabCount>=2;
+	}
 
 
 }
