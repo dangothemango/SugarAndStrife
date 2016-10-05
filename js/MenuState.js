@@ -12,7 +12,6 @@ var MenuState = {
 
 		var startButton = game.add.button(game.world.centerX-247,game.world.centerY-79,'startButton',startGame,this,'Static','Static','Down','Up');
 
-		console.log("MenuState");
 	},
 
 	update: function () {
