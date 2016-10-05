@@ -10,13 +10,6 @@ var PlayState = {
 	create: function() {
 
 		console.log("Play State");
-	
-		var group;
-		var cauldron;
-		var text;
-		var attributes; //keep track of levels of ingredients
-		var totalIngred;
-		var crabCount;
 
 		//debug text
 		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
@@ -58,17 +51,6 @@ var PlayState = {
     
 	},
 
-
-	_drag: function(item) {
-		//pos = item.position;
-		//enables drag on item held
-		item.input.enableDrag(true);
-
-		//if dropped check if dropped in cauldron
-		item.events.onDragStop.add(dropHandler, this);
-
-	},
-
 	dropHandler: function(item, pointer) {
 		//removes from group if lands in cauldron
 		if (checkOverlap(item, cauldron)) {
@@ -91,13 +73,6 @@ var PlayState = {
 
 	    }
 
-},
-
-	checkOverlap: function(spriteA, spriteB) {
-		var boundsA = spriteA.getBounds();
-		var boundsB = spriteB.getBounds();
-
-		return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
 
 

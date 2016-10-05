@@ -20,6 +20,14 @@
     
     var game = new Phaser.Game(1334, 750, Phaser.AUTO, '', { preload: preload, create: create, update: update});
 
+    //PLAY STATE VARIABLES
+    var group;
+    var cauldron;
+    var text;
+    var attributes; //keep track of levels of ingredients
+    var totalIngred;
+    var crabCount;
+
     game.state.add('Menu', MenuState);
     game.state.add('Play', PlayState);
     game.state.add('Cut', Cutscene);
@@ -38,6 +46,24 @@
 
     function update() {
 
+    }
+
+    //COMMON FUNCTIONS
+    function _drag(item) {
+        //pos = item.position;
+        //enables drag on item held
+        item.input.enableDrag(true);
+
+        //if dropped check if dropped in cauldron
+        item.events.onDragStop.add(PlayState.dropHandler, this);
+
+    }
+
+    function checkOverlap(spriteA, spriteB) {
+        var boundsA = spriteA.getBounds();
+        var boundsB = spriteB.getBounds();
+
+        return Phaser.Rectangle.intersects(boundsA, boundsB);
     }
     
     //MENU STATE FUNCTIONS
