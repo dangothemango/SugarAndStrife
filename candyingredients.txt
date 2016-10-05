@@ -3,26 +3,21 @@ Cinnamon ------------------ Spicy
 Citric Acid --------------- Sour, acidic
 Cocoa --------------------- Bitter
 Food Coloring/Dye --------- Color
-Gelatin ------------------- Sweet
-High Fructose Corn Syrup -- Sweet
 Salt ---------------------- Salty
 Sugar --------------------- Sweet
 Water --------------------- Flavorless, Dilutes flavors
 Milk ---------------------- Sweet, Decreases spicy flavor
 
 Abnormal Ingredients:
-Blood --------------------- Salty, Turns candy red,
 Sinner's Blood ------------ Salty, Turns candy red, Mind Control
 Bone Marrow --------------- Savory, Turns candy yellow,
 Bleach -------------------- Bitter, Doesn't change color, Poison
-Clam Heart ---------------- Savory/Salty, Turns candy red,
 Cursed Caviar ------------- Salty, Turns candy black,
 Cyanide ------------------- Sweet, Turns candy yellow, Poison
 Demon Flesh --------------- Savory, Turns candy red,
 Eye of Newt --------------- Bitter, Turns candy green,
 Fairy Wings --------------- Sweet, Turns candy sparkly, Implosion
 Frog Legs ----------------- Savory, Turns candy green,
-Gold Flakes --------------- Flavorless, Turns candy yellow,
 Actual Ghost Pepper ------- Spicy, Turns candy white, Explosive
 Horrible Dirt ------------- Bitter, Turns candy brown,
 Insect Parts -------------- Sour, Turns candy brown, Morphing ability
@@ -33,7 +28,7 @@ Lizard Eggs --------------- Flavorless, turns candy white, Morphing ability
 Mandrake ------------------ Bitter, Turns candy brown, Mind Control
 Mercury ------------------- Flavorless, Turns candy grey, Poison
 Pufferfish ---------------- Savory, Turns candy yellow, Poison
-Slime --------------------- Salty, Turns candy green, Morphing ability
+Slime --------------------- Sweet, Turns candy green, Morphing ability
 Snake Venom --------------- Sweet, Turns candy green, Poison
 Squid Ink ----------------- Bitter, Turns candy black, Tentacle forming
 Freeze Dried Tentacles ---- Savory, Turns candy purple, Tentacle forming
