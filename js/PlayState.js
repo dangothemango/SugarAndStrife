@@ -50,13 +50,13 @@ var PlayState = {
 	update: function() {
 
 
-	}
+	},
 	
 	render: function() {
 		game.debug.text('Available Ingredients: ' + group.total, 74, 600);
 		game.debug.text('Drop in cauldron to remove item from the Group', 10, 24);
     
-	}
+	},
 
 
 	_drag: function(item) {
@@ -67,7 +67,7 @@ var PlayState = {
 		//if dropped check if dropped in cauldron
 		item.events.onDragStop.add(dropHandler, this);
 
-	}
+	},
 
 	dropHandler: function(item, pointer) {
 		//removes from group if lands in cauldron
@@ -91,7 +91,7 @@ var PlayState = {
 
 	    }
 
-}
+},
 
 	checkOverlap: function(spriteA, spriteB) {
 		var boundsA = spriteA.getBounds();
