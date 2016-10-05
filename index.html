@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <title>VIDEO GAME</title>
-    <script type="text/javascript" src=engine/phaser.min.js></script>
+    <script type="text/javascript" src=engine/phaser.js></script>
     <script type="text/javascript" src=js/MenuState.js></script>
     <script type="text/javascript" src=js/PlayState.js></script>
     <script type="text/javascript" src=js/Cutscene.js></script>
     <script type="text/javascript" src=js/WinState.js></script>
-    <script type="text/javascript" src=js/main.js></script>
-    
+
     <style type="text/css">
         body {
             margin-top: 20px;
@@ -19,7 +18,7 @@
 <body>
 <script type="text/javascript">
     
-    var game = new Phaser.Game(1334, 750, Phaser.AUTO, 'TITLE', { preload: preload, create: create, update: update });
+    var game = new Phaser.Game(1334, 750, Phaser.AUTO, '', { preload: preload, create: create, update: update});
 
     game.state.add('Menu', MenuState);
     game.state.add('Play', PlayState);
@@ -40,6 +39,22 @@
     function update() {
 
     }
+    
+    //MENU STATE FUNCTIONS
+    function startGame() {
+        game.state.start('Play');
+    }
+
+    //CUTSCENE FUNCTIONS
+
+
+    //PLAY STATE FUNCTIONS
+    function playstateTest() {
+        console.log('bittpn');
+        game.state.start('Menu');
+    }
+
+    //WIN STATE FUNCTIONS
 
 </script>
 </body>
