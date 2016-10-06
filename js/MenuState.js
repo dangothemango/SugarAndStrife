@@ -5,7 +5,7 @@ var MenuState = {
 		game.load.atlasJSONHash('startButton', 'assets/images/buttons/play_buttons.png','assets/images/buttons/play_buttons.json');
 	},
 
-
+	
 	create: function() {
 
 		console.log("Menu State");
