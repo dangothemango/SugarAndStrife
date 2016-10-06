@@ -17,7 +17,7 @@ Scenario 2 (Professional Demise):
    * “Thank God he’s gone. I don’t know how you managed it, but he’s gone. Finally! He was an asshole and now he can’t bully me anymore. Doesn’t hurt I also got his job, not that that’s what I wanted. I swear. It just, happened. But thank you and, and to show my appreciation and that I didn’t do this for a promotion, you can have my pay bonus.”
 * Objectives:
    * Red
-   * Unfathomably Spicy
+   * Very Spicy
    * Explosive
 
 Scenario 3 (Slippery Slope):
@@ -31,18 +31,7 @@ Scenario 3 (Slippery Slope):
    * Irresponsibly Salty
    * Tentacles
 
-Scenario 4 (All Hail Slime):
-
-* Opening:
-   * “Rumor has it you’re the person to see to make weird things happen to people. Apparently you made some poor woman sprout tentacles and that’s along the lines of what I’m looking for. I want to convert my cult into slime monsters. I’m not sure just how to go about it, but that’s your job. They don’t know that this is going to happen, but I’m their God, so they won’t mind. It’s not like I’m asking them to wear spaghetti strainers on their heads.”
-* Closing:
-   * “My dreams of leading a slime monster cult has come true and I can’t be happier! Now we have to plan out how to overtake the outside world and the nonbelievers. But we’ll spare you since you’re the one who allowed us to rise to a new level of being.”
-* Objectives:
-   * Green
-   * Mildly Savory
-   * Slime
-
-Scenario 5 (In Pear We Trust):
+Scenario 4 (In Pear We Trust):
 
 * Opening:
    * “I may be the CEO of Pear Products, but I’m not here to sell you on anything. That’s just not what I’m about. But I do need your help. I’m here to hire you to become somewhat of a...business associate. You’ll do what you do best and cook up something that’ll...persuade the minds of consumers on buying the new and improved pear phone. Sales are down and we just won’t settle for failure. This shouldn't be too hard for someone who has managed to gain the attention of Pear Products.”
@@ -53,6 +42,18 @@ Scenario 5 (In Pear We Trust):
    * Very Sweet
    * Mind Control
 
+Scenario 5 (All Hail Slime):
+
+* Opening:
+   * “Rumor has it you’re the person to see to make weird things happen to people. Apparently you made some poor woman sprout tentacles and that’s along the lines of what I’m looking for. I want to convert my cult into slime monsters. I’m not sure just how to go about it, but that’s your job. They don’t know that this is going to happen, but I’m their God, so they won’t mind. It’s not like I’m asking them to wear spaghetti strainers on their heads.”
+* Closing:
+   * “My dreams of leading a slime monster cult has come true and I can’t be happier! Now we have to plan out how to overtake the outside world and the nonbelievers. But we’ll spare you since you’re the one who allowed us to rise to a new level of being.”
+* Objectives:
+   * Yellow
+   * Mildly Savory
+   * Not Salty
+   * Slime
+   
 Scenario 6 (United We Implode):
 
 * Opening: 
@@ -60,6 +61,7 @@ Scenario 6 (United We Implode):
 * Closing: 
    * “Well, you did it. You managed to make a candy that made the heads of every world leader implode. I can’t say I could have ever imagined something like it possible. And I’m sure you might not have expected that either. Regardless, you are a hero of our cause and you’ll be remembered, for as long as anyone remembers anything in a world run by anarchy.”
 * Objectives:
-   * Yellow
-   * Immeasurably Sour
+   * Blue
+   * Sour
+   * Spicy
    * Implosion
