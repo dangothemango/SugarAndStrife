@@ -31,6 +31,9 @@
     var totalIngred;
     var crabCount;
 
+    //CUTSCENE VARIABLE
+    var cutsceneText="";
+
     game.state.add('Menu', MenuState);
     game.state.add('Play', PlayState);
     game.state.add('Cut', Cutscene);
@@ -79,7 +82,8 @@
     
     //MENU STATE FUNCTIONS
     function startGame() {
-        game.state.start('Play');
+        cutsceneText="Horrible Dirt";
+        game.state.start('Cut');
     }
 
     //CUTSCENE FUNCTIONS
