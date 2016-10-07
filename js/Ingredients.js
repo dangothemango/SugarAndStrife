@@ -2,14 +2,14 @@
 var Ingredients = {
 	bleach: {
 		known: {
-			name: false,
+			name: true,
 			color: false,
-			flavor: false,
+			flavor: true,
 			effects: false
 		},
 		name: 'Bleach',
 		color: [-1,-1,-1],
 		flavor: 'bitter',
-		effects: { type:'poison', value=1 }
+		effects: { type:'poison', value: 1 }
 	}
 }
