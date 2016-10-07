@@ -7,6 +7,8 @@
     <script type="text/javascript" src=js/PlayState.js></script>
     <script type="text/javascript" src=js/Cutscene.js></script>
     <script type="text/javascript" src=js/WinState.js></script>
+    <script type="text/javascript" src=js/Ingredients.js></script>
+    <script type="text/javascript" src=js/Book.js></script>
 
     <style type="text/css">
         body {
@@ -22,6 +24,7 @@
 
     //MAIN VARIABLES
     var tmpItem;
+    var style = { font: "65px Arial", fill:"ffffff", align: "center"};
 
     //PLAY STATE VARIABLES
     var group;
@@ -94,7 +97,7 @@
         if (PlayState.checkWin()){
             game.state.start('Menu');
         } else {
-            game.state.start('Play');
+            Book.open();
         }
     }
 
