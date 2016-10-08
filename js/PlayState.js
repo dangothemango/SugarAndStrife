@@ -6,6 +6,7 @@ var PlayState = {
 	    	//temp -- include ingredient json file when completed
 		game.load.atlas('seacreatures', 'assets/images/seacreatures_json.png', 'assets/images/seacreatures_json.json');
 		game.load.image('cauldron', 'assets/images/cauldron.png');
+		//game.load.script('Ingredients', 'assets/ingredients.js');
 	},
 
 	create: function() {
@@ -16,6 +17,9 @@ var PlayState = {
 		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
 
 		crabCount = 0;
+		ing = ingredients;
+
+		/////////////////////
 
 		var startButton = game.add.button(100,game.world.height-300,'submitButton',submitCandy,this,'Static','Static','Down','Up');
 
@@ -44,7 +48,10 @@ var PlayState = {
 	},
 
 	update: function() {
-
+		/*if pressed submit button | one time thing 
+		currently pressing 1 checks win conditions */
+		var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
+		help.onDown.add(checkWin);
 	},
 	
 	render: function() {
@@ -56,28 +63,69 @@ var PlayState = {
 	dropHandler: function(item, pointer) {
 		//removes from group if lands in cauldron
 		if (checkOverlap(item, cauldron)) {
+		totalIngred += 1;
+
+
+		//keep track of attributes
+		// adjust main candy accordingly
+
+		//if BLEACH
+
+		//color
+		for (var i=0; i < wincandy.length; i++) {
+			//item.attributes
+			attri[i] += ing.bleach.color[i];
+		}
+
+		//take care of flavoring
+		attri[3] = ing.bleach.flavor;
+
+		//effects
+		attri[4] = ing.bleach.effects[0];
+		//first item
+		attri[5] = ing.bleach.effects[1];
+		//the rest
+		//attri[5] += ing.bleach.effects[1]; 
+
 		//  Remove the item from the Group.
 		// keep track of what was put in the cauldron
-			if (item.frameName == 'crab10000') {
-				crabCount += 1;
-				text.text = 'Dropped ' + item.frameName + ' into the cauldron' + '\n' +  ' ' + crabCount + ' ' + item.frameName;
-			}
-			else
-			{
-				text.text = 'Dropped ' +  item.frameName + ' into the cauldron';
-			}
+		if (item.frameName == 'crab10000') {
+			crabCount += 1;
 
-			//TODO CHANGE ATTRIBUTES
+			text.text = 'Dropped ' + item.frameName + ' into the cauldron' + '\n' +  ' ' + crabCount + ' ' + item.frameName 
+			+ '\n' + "is currently: " + attri
+			+  '\n' + "needs to be: " + wincandy;
+			}
+		else
+			{
+			text.text = 'Dropped ' +  item.frameName + ' into the cauldron';
+			}
 
 		}
 
 		item.destroy();
-
 	},
 
 	checkWin: function(){
-		return crabCount>=2;
+		for (var k=0; k < wincandy.length; k++) {
+			if (attri[k] == wincandy[k]){
+				winCondition += 1;
+			}
+		}
+
+		if (winCondition == 6) {
+			text.text = winCondition + ' YOU WINNN!!!!!!!!!!!'
+				+ '\n' + "is currently: " + attri
+			+  '\n' + "needs to be: " + wincandy;
+		}
+		else
+		{
+			//if submitting wrong candy
+
+			text.text = winCondition + ' NOT QUITE YET!'
+				+ '\n' + "is currently: " + attri
+			+  '\n' + "needs to be: " + wincandy;
+		    winCondition = 0;
+		}
 	}
-
-
 }
