@@ -4,12 +4,18 @@ var PlayState = {
 	preload: function(){
 		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
 		game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json');
-		game.load.image('cauldron', 'assets/images/cauldron.png');
-		game.load.image('bg', 'assets/images/background.png');
+		game.load.image('cauldron', 'assets/images/cauldron alt.png');
+		game.load.image('bg', 'assets/images/background vector.png');
 		//game.load.script('Ingredients', 'assets/ingredients.js');
 	},
 
-	create: function() {
+	create: function () {
+
+	    var itemheight = 100; // height of an item slot in pixels
+	    var itemwidth = 100; // width of an item slot in pixels
+	    var shelfwidth = 5; // number of items that fit on the shelf horizontally
+	    var shelfheight = 4; // number of items that fit on the shelf vertically
+
 
 		console.log("Play State");
 
@@ -25,9 +31,10 @@ var PlayState = {
 		
 		game.add.sprite(0,0, 'bg');
 		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
-		game.add.sprite(0, 0, game.create.grid('grid', 100 * 15, 100 * 3, 200, 100, 'rgba(0, 250, 0, 1)'));
+		game.add.sprite(0, 0, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
+        
 
-		cauldron = game.add.sprite(1175,610, 'cauldron');
+		cauldron = game.add.sprite(1165,560, 'cauldron');
 		cauldron.anchor.set(0.5);
 		cauldron.width = 325;
 		cauldron.height = 325;
@@ -44,7 +51,7 @@ var PlayState = {
 		group.onChildInputDown.add(_drag,this); 
 
 		//align on shelves or something
-		group.align(15, 3, 200, 100, Phaser.CENTER);
+		group.align(shelfwidth, shelfheight, itemwidth, itemheight, Phaser.CENTER);
 
 	},
 
@@ -53,7 +60,17 @@ var PlayState = {
 		currently pressing 1 checks win conditions */
 		var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
 		help.onDown.add(this.checkWin);
-		//if (Book.isOpen && game.inpu)
+	    //if (Book.isOpen && game.inpu)
+
+
+		if (dragged_item != null) {
+		    dragged_item.x = game.input.mousePointer.x - 70;
+		    dragged_item.y = game.input.mousePointer.y - 70;
+		}
+
+		if (game.input.activePointer.isUp && dragged_item != null) {
+		    PlayState.dropHandler(dragged_item);
+		}
 	},
 	
 	render: function() {
@@ -62,9 +79,21 @@ var PlayState = {
     
 	},
 
+    // let's be pretty generous with this hit detection
+	mouseOverCauldron: function () {
+	    var over = false;
+	    if (game.input.mousePointer.x > cauldron.x - (cauldron.width / 2)) {
+	        if (game.input.mousePointer.y > cauldron.y - (cauldron.height)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	},
+
 	dropHandler: function(item, pointer) {
-		//removes from group if lands in cauldron
-		if (checkOverlap(item, cauldron)) {
+		//removes from group if mouse is over cauldron
+	    if (PlayState.mouseOverCauldron()) {
+	        console.log("good");
 			totalIngred += 1;
 			//keep track of attributes
 			// adjust main candy accordingly
@@ -96,7 +125,8 @@ var PlayState = {
 			    }
 			}
 
-			item.destroy();
+		item.destroy();
+		dragged_item = null;
 	},
 
 	checkWin: function(){

@@ -19,7 +19,12 @@ var Book = {
 				if (Ingredients[ingItr].known[attrib]){
 					var bookText = new Phaser.Text(game, 0, 0, '\u2022 ' + Ingredients[ingItr][attrib], bookStyle);
 				} else {
-					var bookText = new Phaser.Text(game, 0, 0, '\u2022 ???????', bookStyle);
+				    var qmarks = "\u2022 ";
+				    for (i = 0; i < Ingredients[ingItr][attrib].length; i++) {
+				        qmarks += "?";
+				    }
+
+				    var bookText = new Phaser.Text(game, 0, 0, qmarks, bookStyle);
 				}
 				tmpIngGroup.add(bookText);
 			}
