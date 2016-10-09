@@ -12,14 +12,20 @@ var Cutscene = {
 		var cutsceneTextRender = game.add.text(game.world.centerX-300,game.world.height-200,
 												cutsceneText,style);
 
+		game.input.onDown.add(this.nextScreen);
+
 		
 
 	},
 
 	update: function() {
-		if (game.input.activePointer.isDown){
-			game.state.start('Play');
-		}
+
+	},
+
+	nextScreen: function(){
+		game.state.start("Play");
 	}
+
+
 
 }
