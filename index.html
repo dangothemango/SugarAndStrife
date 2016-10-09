@@ -42,6 +42,8 @@
     var ing;
     var bookPages;
 
+    var dragged_item = null;
+
     //CUTSCENE VARIABLE
     var cutsceneText="";
 
@@ -66,19 +68,41 @@
     }
 
     //COMMON FUNCTIONS
+    /*
     function _drag(item) {
         //pos = item.position;
         //enables drag on item held
-        tmpItem = game.add.sprite(item.x,item.y,item.key,item.frame);
+        tmpItem = game.add.sprite(item.x, item.y, item.key, item.frame);
+        tmpItem.events.onInputDown.add(_drag, Phaser.StateManager.current);
         tmpItem.scale.set(0.5,0.5);
         tmpItem.inputEnabled=true;
 
-        tmpItem.events.onInputDown.add(_drag,Phaser.StateManager.current);
-        item.input.enableDrag(true);
+        //fix_ordering(item, tmpItem);
+
+        item.x -= 30;
+        item.y -= 30;
+        item.input.enableDrag();
+
+        item.scale.set(0.7, 0.7); // make the dragged item a little bigger
 
         //if dropped check if dropped in cauldron
         item.events.onDragStop.add(PlayState.dropHandler, this);
+    }*/
+    
+    function _drag(item) {
+        //pos = item.position;
+        //enables drag on item held
+        tmpItem = game.add.sprite(item.x - 30, item.y - 30, item.key, item.frame);
+        tmpItem.scale.set(0.7, 0.7);
+        tmpItem.inputEnabled = true;
 
+        dragged_item = tmpItem;
+        console.log("???");
+        //tmpItem.input.enableDrag();
+    }
+
+    function fix_ordering(spriteA, spriteB) {
+        game.world.swap(spriteA, spriteB);
     }
 
     function checkOverlap(spriteA, spriteB) {
