@@ -1,6 +1,7 @@
 
 var Ingredients = {
 
+	/*
 	<name (all lower case no spaces)>: {
 		known: {
 			name: true,
@@ -15,6 +16,8 @@ var Ingredients = {
 		effects: { type:'<poison, explosive, tentacles, etc>', value: <1 if adds effect, -1 if negates it> },
 		prettyeffects: '<Effect (as you would read it)>'
 	},
+	*/
+
 
 	bleach: {
 		known: {
