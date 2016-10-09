@@ -66,13 +66,10 @@
         //pos = item.position;
         //enables drag on item held
         tmpItem = game.add.sprite(item.x,item.y,item.key,item.frame);
-
+        tmpItem.scale.set(0.5,0.5);
         tmpItem.inputEnabled=true;
 
         tmpItem.events.onInputDown.add(_drag,Phaser.StateManager.current);
-
-        
-
         item.input.enableDrag(true);
 
         //if dropped check if dropped in cauldron
