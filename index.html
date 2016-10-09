@@ -36,20 +36,7 @@
     var crabCount;
     var winCondition = 0;
     var ing;
-    var ingredients = {
-	bleach: {
-		known: {
-			name: false,
-			color: false,
-			flavor: false,
-			effects: false
-		},
-		name: 'Bleach',
-		color: [-1,-1,-1],
-		flavor: 'bitter',
-		effects: ['poison',1]
-	}
-
+    var bookPages;
 
     //CUTSCENE VARIABLE
     var cutsceneText="";
@@ -114,7 +101,7 @@
         if (PlayState.checkWin()){
             game.state.start('Menu');
         } else {
-            Book.open();
+            Book.open(0);
         }
     }
 

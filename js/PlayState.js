@@ -17,7 +17,7 @@ var PlayState = {
 		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
 
 		crabCount = 0;
-		ing = ingredients;
+		ing = Ingredients;
 
 		/////////////////////
 
@@ -51,7 +51,7 @@ var PlayState = {
 		/*if pressed submit button | one time thing 
 		currently pressing 1 checks win conditions */
 		var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
-		help.onDown.add(checkWin);
+		help.onDown.add(this.checkWin);
 	},
 	
 	render: function() {
