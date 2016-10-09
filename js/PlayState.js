@@ -3,9 +3,9 @@ var PlayState = {
 
 	preload: function(){
 		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
-		game.load.atlas('items', 'assets/items.png', 'assets/items.json');
-		game.load.image('cauldron', 'assets/cauldron.png');
-		game.load.image('bg', 'assets/background.png');
+		game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json');
+		game.load.image('cauldron', 'assets/images/cauldron.png');
+		game.load.image('bg', 'assets/images/background.png');
 		//game.load.script('Ingredients', 'assets/ingredients.js');
 	},
 
@@ -53,6 +53,7 @@ var PlayState = {
 		currently pressing 1 checks win conditions */
 		var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
 		help.onDown.add(this.checkWin);
+		//if (Book.isOpen && game.inpu)
 	},
 	
 	render: function() {

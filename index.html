@@ -12,8 +12,8 @@
 
     <style type="text/css">
         body {
-            margin-top: 20px;
-            margin-left: 20px;
+            margin-top: 0px;
+            margin-left: 0px;
         }
     </style>
 </head>
@@ -25,6 +25,10 @@
     //MAIN VARIABLES
     var tmpItem;
     var style = { font: "65px Arial", fill:"ffffff", align: "center"};
+    var bookStyle = style;
+    bookStyle.wordWrap=true;
+    bookStyle.wordWrapWidth=1334/8*3;
+    bookStyle.align='left';
 
     //PLAY STATE VARIABLES
     var group;
