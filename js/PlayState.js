@@ -11,11 +11,13 @@ var PlayState = {
 
 	create: function () {
 
-	    var itemheight = 100; // height of an item slot in pixels
-	    var itemwidth = 100; // width of an item slot in pixels
-	    var shelfwidth = 5; // number of items that fit on the shelf horizontally
+	    var itemheight = 120; // height of an item slot in pixels
+	    var itemwidth = 207; // width of an item slot in pixels
+	    var shelfwidth = 4; // number of items that fit on the shelf horizontally
 	    var shelfheight = 4; // number of items that fit on the shelf vertically
 
+	    var cornerX = 110;
+	    var cornerY = 46;
 
 		console.log("Play State");
 
@@ -31,7 +33,7 @@ var PlayState = {
 		
 		game.add.sprite(0,0, 'bg');
 		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
-		game.add.sprite(0, 0, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
+		game.add.sprite(cornerX, cornerY, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
         
 
 		cauldron = game.add.sprite(1165,560, 'cauldron');
@@ -41,10 +43,15 @@ var PlayState = {
 		
 		//group of sprites/items
 		group = game.add.group();
+		group.x = cornerX;
+		group.y = cornerY;
 		group.inputEnableChildren = true;
 
 		//load from atlas file; sprite name|frameName
-		group.createMultiple(3, 'items', ['bleach', 'chocolate', 'demon_flesh'], true);
+		group.createMultiple(1, 'items', ['chocolate', 'sinners_blood', 'bone_marrow', 'bleach',
+                                          'caviar', 'cyanide', 'demon_flesh', 'eye_of_newt',
+		                                  'fairy_wings', 'frog_legs', 'nightshade', 'ghost_pepper',
+		                                  'dirt', 'insect_parts', 'lemons', 'leopard_spots'], true);
 		//resize all sprites
 		group.forEach(function(sprite) {sprite.scale.set(0.5,0.5)});
 		//if touched, allow drag
@@ -93,14 +100,14 @@ var PlayState = {
 	dropHandler: function(item, pointer) {
 		//removes from group if mouse is over cauldron
 	    if (PlayState.mouseOverCauldron()) {
-	        console.log("good");
-			totalIngred += 1;
+	        totalIngred += 1;
+	        console.log(item.frameName);
 			//keep track of attributes
 			// adjust main candy accordingly
 
 			//  Remove the item from the Group.
 			    // keep track of what was put in the cauldron
-			    if (item.frameName == 'bleach') {
+			if (item.frameName == 'bleach') {
 				//color
 				for (var i=0; i < wincandy.length; i++) {
 					//item.attributes
