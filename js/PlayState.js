@@ -48,7 +48,7 @@ var PlayState = {
 		group.inputEnableChildren = true;
 
 		//load from atlas file; sprite name|frameName
-		group.createMultiple(1, 'items', ['chocolate', 'sinners_blood', 'bone_marrow', 'bleach',
+		group.createMultiple(1, 'items', ['chocolate', 'blood', 'bone_marrow', 'bleach',
                                           'caviar', 'cyanide', 'demon_flesh', 'eye_of_newt',
 		                                  'fairy_wings', 'frog_legs', 'nightshade', 'ghost_pepper',
 		                                  'dirt', 'insect_parts', 'lemons', 'leopard_spots'], true);
