@@ -46,8 +46,10 @@ var Book = {
 	loadPage: function(){
 		var bookGridOffset=1334/8
 		for (var pageItr = 0; pageItr<2; pageItr++){
-			console.log('hollow world');
 			console.log(this.curPage*2+pageItr);
+			if (this.curPage*2+pageItr > bookPages.length){
+				return;
+			}
 			var pageContent=bookPages.getAt(this.curPage*2+pageItr);
 			pageContent.x=bookGridOffset*4*pageItr+bookGridOffset;
 			pageContent.align(1,4,-1,750/4,Phaser.LEFT_CENTER);

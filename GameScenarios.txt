@@ -1,13 +1,13 @@
-﻿Scenario 1 (Inheritance):
+Scenario 1 (Inheritance):
 
 * Opening:
-   * “I hear you’re the person to see if I want someone “taken care of”. Your methods are quiet and effective, that sounds pretty sweet to me because that’s what I need. You see, my grandfather has yet to...pass on and until then his assets are inaccessible. It’d be a real shame if something were to...happen to him, if you catch my meaning.”
+   * “I hear you’re the person to see if I want someone “taken care of”./ Your methods are quiet and effective, that sounds pretty sweet to me because that’s what I need./ You see, my grandfather has yet to...pass on and until then his assets are inaccessible./ It’d be a real shame if something were to...happen to him, if you catch my meaning./”
    
 *Cutscene Draft: ( / indicates a tap)
   * Sigh.../Business is slow./A customer! (door jingle) /I hear you’re the person to see.../...if I want someone "taken care of?"/ ...go on.../Well, that's absolutely what I need./ You see, my grandfather has yet to...pass on /and until then his assets are inaccessible./It’d be a real shame if something were to.../...happen to him./ If you know what mean./Gotcha.
    
 * Closing:
-   * “Congratulations. The kill was quiet and subtle. No one expected the candy to be the reason he died, so that’s good. Nothing can be traced back to me. Job well done.”
+   * “Congratulations. The kill was quiet and subtle./ No one expected the candy to be the reason he died, so that’s good./ Nothing can be traced back to me. Job well done./”
 * Objectives:
    * Brown
    * Extremely Bitter
