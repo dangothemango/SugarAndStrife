@@ -118,8 +118,8 @@ var PlayState = {
 				attri[3] = ing.bleach.flavor;
 
 				//effects
-				attri[4] = ing.bleach.effects[0];
-					attri[5] = ing.bleach.effects[1];
+				attri[4] = ing.bleach.effects.type;
+				attri[5] = ing.bleach.effects.value;
 				crabCount += 1;
 
 				text.text = 'Dropped ' + item.frameName + ' into the cauldron' + '\n' +  ' ' + crabCount + ' ' + item.frameName 
