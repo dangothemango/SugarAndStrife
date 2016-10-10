@@ -109,6 +109,7 @@ var PlayState = {
 	reset_all: function () {
 	    ingredientsInCauldron = [];
 	    flavorList = [];
+	    effects = [];
 	    currentColor = [255, 255, 255];
 	    numCol = 0;
 	    totalIngred = 0;
@@ -233,7 +234,8 @@ var PlayState = {
 			// adjust main candy accordingly
 
 	        var currentIngredient = PlayState.getIngredientFromName(item.frameName);
-	        console.log(currentIngredient.name);
+	        console.log('');
+	        console.log("added "+currentIngredient.name);
 
 	        // add the current ingredient to the list
 	        ingredientsInCauldron.push(item.frameName);
@@ -252,13 +254,6 @@ var PlayState = {
 	                flavorList.splice(0, 1);
 	            }
 	        }
-
-
-	        console.log('-----');
-	        for (var i = 0; i < flavorList.length; i++) {
-	            console.log(flavorList[i]);
-	        }
-	        console.log('-----');
 
 
 	        ///////// COLOR
@@ -288,16 +283,10 @@ var PlayState = {
 	                    effects.splice(effect_index, 1);
 	                }
 	            }
-
-	            console.log('-----');
-	            for (var i = 0; i < effects.length; i++) {
-	                console.log(effects[i]);
-	            }
-	            console.log('-----');
 	        }
 
+	        ////////// SPECIAL ITEMS
 
-            // special items
 	        if (item.frameName == 'bleach') {
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
@@ -307,16 +296,26 @@ var PlayState = {
 	        if (item.frameName == 'dark_matter') {
 	            ingredientsInCauldron = [];
 	            flavorList = [];
+	            effects = [];
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
 	            totalIngred = 0;
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
-	        console.log(PlayState.colorStringFromArray(currentColor));
-
-	        totalIngred = 0;
-
+	        console.log('-------------');
+	        console.log("mixture is now "+PlayState.colorStringFromArray(currentColor));
+	        console.log('-----');
+	        console.log('FLAVORS:');
+	        for (var i = 0; i < flavorList.length; i++) {
+	            console.log(' - ' + flavorList[i]);
+	        }
+	        console.log('-----');
+	        console.log('EFFECTS:');
+	        for (var i = 0; i < effects.length; i++) {
+	            console.log(' - '+effects[i]);
+	        }
+	        console.log('-----');
 
 			
 			//deal with mixing effects
@@ -379,8 +378,8 @@ var PlayState = {
 	unlock_items: function (level) {
 	    if (level == 1){
 	        add_item('dark_matter');
-	        add_item('chocolate');
 	        add_item('bleach');
+	        add_item('chocolate');
 	        add_item('cyanide');
 	        add_item('eye_of_newt');
 	        add_item('dirt');
