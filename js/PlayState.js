@@ -11,7 +11,7 @@ var PlayState = {
 		game.load.image('bookScreen','assets/images/book_open_resized.png');
 		
 		//sound
-		game.load.audio('bgm', 'assets/audio/backgroundMusicSkewedPaths.wav')
+		game.load.audio('bgm', 'assets/audio/backgroundMusicSkewedPaths.ogg')
 	},
 
 	create: function () {
