@@ -46,6 +46,13 @@ var PlayState = {
 		bgm = game.add.audio('bgm');
 		bgm.play();
 		
+		//soundfx
+		dm_soundeffect = game.add.audio('dm_soundeffect');
+		liquid_soundeffect = game.add.audio('liquid_soundeffect');
+		powder_soundeffect = game.add.audio('powder_soundeffect');
+		solid_soundeffect = game.add.audio('solid_soundeffect');
+		
+		
 		square = game.add.sprite(1165, 498, 'square');
 		square.anchor.set(0.5);
 		square.width = 220;
@@ -297,13 +304,16 @@ var PlayState = {
 	        ////////// SPECIAL ITEMS
 
 	        if (item.frameName == 'bleach') {
+		    
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
 	        if (item.frameName == 'dark_matter') {
-	            ingredientsInCauldron = [];
+		    dm_soundeffect.play();
+	            
+		    ingredientsInCauldron = [];
 	            flavorList = [];
 	            effects = [];
 	            currentColor = [255, 255, 255];
@@ -312,6 +322,27 @@ var PlayState = {
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
+		//sound effects for specific items
+
+		if (item.frameName == 'bone_marrow' || item.frameName == 'caviar' || item.frameName == 'chocolate' || 
+		    item.frameName == 'demon_flesh' ||  item.frameName == 'eye_of_newt' || item.frameName == 'frog_legs' 
+		    || item.frameName == 'ghost_pepper' || item.frameName == 'insect_parts' || item.frameName == 'lemons' 
+		    || item.frameName == 'leopard_spots' || item.frameName == 'lizard_eggs' || item.frameName == 'mandrake' 
+		    || item.frameName == 'pufferfish' || item.frameName == 'tentacles' || item.frameName == 'toadstool') {
+
+			solid_soundeffect.play();
+		}
+
+		if (item.frameName == 'bleach' || item.frameName == 'blood' || item.frameName == 'cyanide' || 
+		    item.frameName == 'liquid_smoke' || item.frameName == 'slime' || item.frameName == 'snake_venom' 
+		    || item.frameName == 'squid_ink') {
+			liquid_soundeffect.play();
+		}
+
+		if (item.frameName == 'fairy_wings' || item.frameName == 'nightshade' || item.frameName == 'dirt') {
+			powder_soundeffect.play();
+		}
+		    
 	        console.log('-------------');
 	        console.log("mixture is now "+PlayState.colorStringFromArray(currentColor));
 	        console.log('-----');
