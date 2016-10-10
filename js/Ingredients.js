@@ -366,7 +366,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Tentacles',
-		color: [271,83,89],
+		color: [178,33,207],
 		prettycolor: 'Purple',
 		flavor: 'savory',
 		effects: { type:'tentacles', value: 1 },

@@ -6,6 +6,8 @@ var PlayState = {
 		game.load.image('cauldron', 'assets/images/cauldron alt.png');
 		game.load.image('bg', 'assets/images/background vector.png');
 		game.load.image('square', 'assets/images/square.png');
+		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
+		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
 		//game.load.script('Ingredients', 'assets/ingredients.js');
 	},
 
@@ -13,13 +15,12 @@ var PlayState = {
 
 	    PlayState.reset_all();
 
-	    var itemheight = 119.5; // height of an item slot in pixels
-	    var itemwidth = 207; // width of an item slot in pixels
-	    var shelfwidth = 4; // number of items that fit on the shelf horizontally
-	    var shelfheight = 4; // number of items that fit on the shelf vertically
-
-	    var cornerX = 112;
-	    var cornerY = 46;
+	    PlayState.unlock_items(1);
+	    PlayState.unlock_items(2);
+	    PlayState.unlock_items(3);
+	    PlayState.unlock_items(4);
+	    PlayState.unlock_items(5);
+	    PlayState.unlock_items(6);
 
 	    console.log("Play State");
 
@@ -31,14 +32,12 @@ var PlayState = {
 
 		/////////////////////
 
-		var startButton = game.add.button(100,game.world.height-300,'submitButton',submitCandy,this,'Static','Static','Down','Up');
-		
 		game.add.sprite(0,0, 'bg');
 		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
-		game.add.sprite(cornerX, cornerY, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
+		//game.add.sprite(cornerX, cornerY, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
         
 
-		square = game.add.sprite(1165, 500, 'square');
+		square = game.add.sprite(1165, 498, 'square');
 		square.anchor.set(0.5);
 		square.width = 220;
 		square.height = 50;
@@ -55,36 +54,50 @@ var PlayState = {
 		group.inputEnableChildren = true;
 
 		//load from atlas file; sprite name|frameName
-		group.createMultiple(1, 'items', ['chocolate', 'blood', 'bone_marrow', 'bleach',
-                                          'caviar', 'cyanide', 'demon_flesh', 'eye_of_newt',
-		                                  'fairy_wings', 'frog_legs', 'nightshade', 'ghost_pepper',
-		                                  'dirt', 'insect_parts', 'lemons', 'leopard_spots'], true);
+		group.createMultiple(1, 'items', items_left, true);
 		//resize all sprites
 		group.forEach(function(sprite) {sprite.scale.set(0.5,0.5)});
 		//if touched, allow drag
 		group.onChildInputDown.add(_drag,this); 
-
 		//align on shelves or something
 		group.align(shelfwidth, shelfheight, itemwidth, itemheight, Phaser.CENTER);
 
+		right_button = game.add.button(990, 200, 'right_arrow', PlayState.rightpage, this, 'Down', 'Static', 'Down', 'Down');
+		left_button = game.add.button(25, 200, 'left_arrow', PlayState.leftpage, this, 'Down', 'Static', 'Down', 'Down');
+		left_button.visible = false;
+		if (items_right.length == 0) {
+		    right_button.visible = false;
+		}
+
+
+		var startButton = game.add.button(100, game.world.height - 100, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Up');
+		startButton.width = 100;
+		startButton.height = 50;
 	},
 
 	update: function() {
-		/*if pressed submit button | one time thing 
+	    /*if pressed submit button | one time thing 
 		currently pressing 1 checks win conditions */
-		var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
-		help.onDown.add(this.checkWin);
+	    var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
+	    help.onDown.add(this.checkWin);
 	    //if (Book.isOpen && game.inpu)
 
 
-		if (dragged_item != null) {
-		    dragged_item.x = game.input.mousePointer.x - 70;
-		    dragged_item.y = game.input.mousePointer.y - 70;
-		}
+	    if (dragged_item != null) {
+	        dragged_item.x = game.input.mousePointer.x - 70;
+	        dragged_item.y = game.input.mousePointer.y - 70;
+	    }
 
-		if (game.input.activePointer.isUp && dragged_item != null) {
-		    PlayState.dropHandler(dragged_item);
-		}
+	    if (game.input.activePointer.isUp && dragged_item != null) {
+	        PlayState.dropHandler(dragged_item);
+	    }
+
+	    if (ingredientsInCauldron.length == 0) {
+	        square.tint = PlayState.hexFromArray([85, 76, 91]);
+	    }
+	    else {
+	        square.tint = PlayState.hexFromArray(currentColor);
+	    }
 	},
 	
 	render: function() {
@@ -96,10 +109,11 @@ var PlayState = {
 	reset_all: function () {
 	    ingredientsInCauldron = [];
 	    flavorList = [];
-	    currentColor = [0, 0, 0];
+	    currentColor = [255, 255, 255];
 	    numCol = 0;
 	    totalIngred = 0;
 	    winCondition = 0;
+	    shelf_index = 0;
 	},
 
     // let's be pretty generous with this hit detection
@@ -258,54 +272,126 @@ var PlayState = {
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
+
+            // special items
 	        if (item.frameName == 'bleach') {
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
-
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
+
+	        if (item.frameName == 'dark_matter') {
+	            ingredientsInCauldron = [];
+	            flavorList = [];
+	            currentColor = [255, 255, 255];
+	            numCol = 0;
+	            totalIngred = 0;
+	            square.tint = PlayState.hexFromArray(currentColor);
+	        }
+
 	        console.log(PlayState.colorStringFromArray(currentColor));
 
-            /*
+	        totalIngred = 0;
 
-			if (item.frameName == 'bleach') {
-				//color
-				for (var i=0; i < wincandy.length; i++) {
-				    //item.attributes
-					attri[i] += ing.bleach.color[i];
-				}
 
-				//take care of flavoring
-				attri[3] = ing.bleach.flavor;
-
-				//effects
-				attri[4] = ing.bleach.effects.type;
-				attri[5] = ing.bleach.effects.value;
-				crabCount += 1;
-
-				text.text = 'Dropped ' + item.frameName + ' into the cauldron' + '\n' +  ' ' + crabCount + ' ' + item.frameName 
-				+ '\n' + "is currently: " + attri
-				+  '\n' + "needs to be: " + wincandy;
-				}
-			else
-			{
-				text.text = 'Dropped ' +  item.frameName + ' into the cauldron';
-			}*/
-
-		    
-			if (attri[4] == ing.bleach.effects.type) {
-				console.log("added something else");
-				ing.bleach.effects.value += 1;
-			}
 			
 			//deal with mixing effects
-		   	else {
-				
-			}
+
 	    }
 
 		item.destroy();
 		dragged_item = null;
+	},
+
+	rightpage: function () {
+	    if (shelf_index == 0) {
+
+	        group.destroy();
+
+	        group = game.add.group();
+	        group.x = cornerX;
+	        group.y = cornerY;
+	        group.inputEnableChildren = true;
+            
+	        //load from atlas file; sprite name|frameName
+	        group.createMultiple(1, 'items', items_right, true);
+	        //resize all sprites
+	        group.forEach(function (sprite) { sprite.scale.set(0.5, 0.5) });
+	        //if touched, allow drag
+	        group.onChildInputDown.add(_drag, this);
+	        //align on shelves or something
+	        group.align(shelfwidth, shelfheight, itemwidth, itemheight, Phaser.CENTER);
+
+	        right_button.visible = false;
+	        left_button.visible = true;
+	        shelf_index = 1;
+	    }
+	},
+
+	leftpage: function () {
+	    if (shelf_index == 1) {
+	        group.destroy();
+
+	        group = game.add.group();
+	        group.x = cornerX;
+	        group.y = cornerY;
+	        group.inputEnableChildren = true;
+
+	        //load from atlas file; sprite name|frameName
+	        group.createMultiple(1, 'items', items_left, true);
+	        //resize all sprites
+	        group.forEach(function (sprite) { sprite.scale.set(0.5, 0.5) });
+	        //if touched, allow drag
+	        group.onChildInputDown.add(_drag, this);
+	        //align on shelves or something
+	        group.align(shelfwidth, shelfheight, itemwidth, itemheight, Phaser.CENTER);
+
+	        right_button.visible = true;
+	        left_button.visible = false;
+	        shelf_index = 0;
+	    }
+	},
+
+	unlock_items: function (level) {
+	    if (level == 1){
+	        add_item('dark_matter');
+	        add_item('chocolate');
+	        add_item('bleach');
+	        add_item('cyanide');
+	        add_item('eye_of_newt');
+	        add_item('dirt');
+	    }
+	    if (level == 2) {
+	        add_item('blood');
+	        add_item('caviar');
+	        add_item('demon_flesh');
+	        add_item('frog_legs');
+	        add_item('liquid_smoke');
+	        add_item('mandrake');
+	        add_item('quicksilver');
+	    }
+	    if (level == 3) {
+	        add_item('ghost_pepper');
+	        add_item('insect_parts');
+	        add_item('lizard_eggs');
+	        add_item('squid_ink');
+	        add_item('tentacles');
+	    }
+	    if (level == 4) {
+	        add_item('fairy_wings');
+	        add_item('nightshade');
+	        add_item('snake_venom');
+	    }
+	    if (level == 5) {
+	        add_item('pufferfish');
+	        add_item('slime');
+	        add_item('toadstool');
+	    }
+	    if (level == 6) {
+	        add_item('bone_marrow');
+	        add_item('lemons');
+	        add_item('leopard_spots');
+	    }
 	},
 
 	getIngredientFromName: function(name){

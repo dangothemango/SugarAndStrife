@@ -45,6 +45,35 @@
     var winCondition = 0;
     var ing;
     var bookPages;
+    var shelf_index = 0;
+
+
+    var itemheight = 119.5; // height of an item slot in pixels
+    var itemwidth = 207; // width of an item slot in pixels
+    var shelfwidth = 4; // number of items that fit on the shelf horizontally
+    var shelfheight = 4; // number of items that fit on the shelf vertically
+
+    var cornerX = 112;
+    var cornerY = 46;
+
+    var right_button;
+    var left_button;
+
+    /*
+    var items_left = ['chocolate', 'blood', 'bone_marrow', 'bleach',
+                      'caviar', 'cyanide', 'demon_flesh', 'eye_of_newt',
+		              'fairy_wings', 'frog_legs', 'nightshade', 'ghost_pepper',
+		              'dirt', 'insect_parts', 'lemons', 'leopard_spots'];
+
+    var items_right = ['liquid_smoke', 'lizard_eggs', 'mandrake', 'quicksilver',
+                       'pufferfish', 'slime', 'snake_venom', 'squid_ink',
+                       'tentacles', 'toadstool', 'dark_matter'];*/
+
+    // items on the left page
+    var items_left = [];
+    // items on the right page
+    var items_right = [];
+
 
     var dragged_item = null;
 
@@ -60,7 +89,6 @@
     game.state.start('Menu');
 
     function preload() {
-
     }
 
     function create() {
@@ -101,6 +129,16 @@
 
         dragged_item = tmpItem;
         //tmpItem.input.enableDrag();
+    }
+
+    function add_item(item) {
+        //max 16 ingredients on each shelf
+        if (items_left.length < 16) {
+            items_left.push(item);
+        }
+        else {
+            items_right.push(item);
+        }
     }
 
     function fix_ordering(spriteA, spriteB) {
