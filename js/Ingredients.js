@@ -3,7 +3,7 @@ var Ingredients = {
 	chocolate: {
 		known: {
 			name: true,
-			color: false,
+			color: true,
 			flavor: true,
 			effects: false
 		},
@@ -352,7 +352,7 @@ var Ingredients = {
 		},
 		name: 'Squid Ink',
 		color: [0,0,0],
-		prettycolor: 'Black>',
+		prettycolor: 'Black',
 		flavor: 'flavorless',
 		effects: { type:'tentacles', value: 1 },
 		prettyeffects: 'Tentacle Forming'

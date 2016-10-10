@@ -4,8 +4,19 @@ var Book = {
 	
 	curPage: 0,
 
+	background: null,
+
 	open: function(pageNum){
-		game.input.onDown.add(Book.handleInput,game);
+		//game.input.onDown.add(Book.handleInput,game);
+		if (Book.background == null){
+			Book.background = game.add.sprite(0,0, 'bookScreen');
+			Book.background.width=game.world.width;
+			Book.background.height=game.world.height;
+			Book.background.inputEnabled=true;
+			Book.background.events.onInputDown.add(Book.handleInput,game);
+		} else {
+			Book.background.revive();
+		}
 		if (bookPages != null){
 			bookPages.destroy(true,false);
 		}
@@ -17,14 +28,14 @@ var Book = {
 				if (!Ingredients[ingItr].known.hasOwnProperty(attrib))
 					{continue;}
 				if (Ingredients[ingItr].known[attrib]){
-					var bookText = new Phaser.Text(game, 0, 0, '\u2022 ' + Ingredients[ingItr][attrib], bookStyle);
+					var ingBookKey = attrib;
+					if (typeof Ingredients[ingItr][attrib] !== typeof 'string'){
+						console.log(typeof Ingredients[ingItr][attrib]);
+						ingBookKey = 'pretty'+ingBookKey;
+					}
+					var bookText = new Phaser.Text(game, 0, 0, '\u2022 ' + Ingredients[ingItr][ingBookKey], bookStyle);
 				} else {
-				    var qmarks = "\u2022 ";
-				    for (i = 0; i < Ingredients[ingItr][attrib].length; i++) {
-				        qmarks += "?";
-				    }
-
-				    var bookText = new Phaser.Text(game, 0, 0, qmarks, bookStyle);
+				    var bookText = new Phaser.Text(game, 0, 0, '\u2022 ???????', bookStyle);
 				}
 				tmpIngGroup.add(bookText);
 			}
@@ -84,12 +95,12 @@ var Book = {
 		t.revive();
 	},
 
-	handleInput: function(pointer){
+	handleInput: function(sprite, pointer){
 		console.log('Click');
-		if (pointer.x<game.world.width/3){
+		if (pointer.x<game.world.width/12*5){
 			console.log('left');
 			Book.prevPage();
-		} else if (pointer.x<game.world.width/3*2){
+		} else if (pointer.x<game.world.width/12*7){
 			console.log('mid');
 			Book.close();
 		} else {
@@ -103,7 +114,8 @@ var Book = {
 	},
 
 	close: function(){
-
+		Book.background.kill();
+		bookPages.forEach(Book.killAllText,this,false);
 	}
 
 }
