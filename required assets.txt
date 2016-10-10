@@ -1,3 +1,20 @@
 • Open book-fills screen
 • Text Box
 • Menu Art
+
+As of 10/10 
+Code
+  Finish book logic
+  UI
+  Reactions & UI - show the 2 items reacting
+  Start Screen
+  Win Conditions
+
+Art
+  Smoke plume
+  New Book
+  Buttons(?)
+  Juice
+  Cutscene
+  Menu Art
+  Letter - piece of paper
