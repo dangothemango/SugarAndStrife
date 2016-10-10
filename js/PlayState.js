@@ -542,7 +542,8 @@ var PlayState = {
 	//     if (level == 6) {
 	//        wincandy = blue, sour, spicy, implosion
 	//     }
-	}
+	},
+
 	checkWin: function(){
 		for (var k=0; k < wincandy.length; k++) {
 			if (attri[k] == wincandy[k]){
