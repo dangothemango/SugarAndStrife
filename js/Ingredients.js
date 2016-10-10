@@ -170,7 +170,7 @@ var Ingredients = {
 			flavor: true,
 			effects: false
 		},
-		name: '<name, (as you would read it)>',
+		name: 'Ghost Pepper',
 		color: [348,91,86],
 		prettycolor: 'Red',
 		flavor: 'spicy',

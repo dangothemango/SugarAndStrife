@@ -11,13 +11,15 @@ var PlayState = {
 
 	create: function () {
 
-	    var itemheight = 120; // height of an item slot in pixels
+	    var itemheight = 119.5; // height of an item slot in pixels
 	    var itemwidth = 207; // width of an item slot in pixels
 	    var shelfwidth = 4; // number of items that fit on the shelf horizontally
 	    var shelfheight = 4; // number of items that fit on the shelf vertically
 
 	    var cornerX = 110;
 	    var cornerY = 46;
+
+	    ingredientsInCauldron = [];
 
 		console.log("Play State");
 
@@ -101,16 +103,38 @@ var PlayState = {
 		//removes from group if mouse is over cauldron
 	    if (PlayState.mouseOverCauldron()) {
 	        totalIngred += 1;
-	        console.log(item.frameName);
 			//keep track of attributes
 			// adjust main candy accordingly
 
-			//  Remove the item from the Group.
-			    // keep track of what was put in the cauldron
+	        var currentIngredient = PlayState.getIngredientFromName(item.frameName);
+	        console.log(currentIngredient.name);
+
+	        // add the current ingredient to the list
+	        ingredientsInCauldron.push(item.frameName);
+
+            // if the item has a flavor
+	        if (currentIngredient.flavor != 'flavorless') {
+                // put it in the list
+	            flavorList.push(currentIngredient.flavor);
+
+                // if we have more than 5 flavors
+	            if (flavorList.length > 5) {
+                    // remove the first one
+	                flavorList.splice(0, 1);
+	            }
+	        }
+
+	        console.log('-----');
+	        for (var i = 0; i < flavorList.length; i++) {
+	            console.log(flavorList[i]);
+	        }
+	        console.log('-----');
+
+
 			if (item.frameName == 'bleach') {
 				//color
 				for (var i=0; i < wincandy.length; i++) {
-					//item.attributes
+				    //item.attributes
 					attri[i] += ing.bleach.color[i];
 				}
 				    
@@ -132,8 +156,71 @@ var PlayState = {
 			    }
 			}
 
+	    //  Remove the item from the Group.
 		item.destroy();
 		dragged_item = null;
+	},
+
+	getIngredientFromName: function(name){
+
+	    switch (name) {
+            case 'chocolate':
+                return ing.chocolate;
+	        case 'blood':
+	            return ing.blood;
+	        case 'bone_marrow':
+	            return ing.bone_marrow;
+	        case 'bleach':
+	            return ing.bleach;
+	        case 'caviar':
+	            return ing.caviar;
+	        case 'cyanide':
+	            return ing.cyanide;
+	        case 'demon_flesh':
+	            return ing.demon_flesh;
+	        case 'eye_of_newt':
+	            return ing.eye_of_newt;
+	        case 'fairy_wings':
+	            return ing.fairy_wings;
+	        case 'frog_legs':
+	            return ing.frog_legs;
+	        case 'nightshade':
+	            return ing.nightshade;
+	        case 'ghost_pepper':
+	            return ing.ghost_pepper;
+	        case 'dirt':
+	            return ing.dirt;
+	        case 'insect_parts':
+	            return ing.insect_parts;
+	        case 'lemons':
+	            return ing.lemons;
+	        case 'leopard_spots':
+	            return ing.leopard_spots;
+	        case 'liquid_smoke':
+	            return ing.liquid_smoke;
+	        case 'lizard_eggs':
+	            return ing.lizard_eggs;
+	        case 'mandrake':
+	            return ing.mandrake;
+	        case 'quicksilver':
+	            return ing.quicksilver;
+	        case 'pufferfish':
+	            return ing.pufferfish;
+	        case 'slime':
+	            return ing.slime;
+	        case 'snake_venom':
+	            return ing.snake_venom;
+	        case 'squid_ink':
+	            return ing.squid_ink;
+	        case 'tentacles':
+	            return ing.tentacles;
+	        case 'toadstool':
+	            return ing.toadstool;
+	        case 'dark_matter':
+	            return ing.dark_matter;
+	        default:
+	            return null;
+	    }
 	},
 
 	checkWin: function(){
