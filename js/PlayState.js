@@ -272,6 +272,30 @@ var PlayState = {
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
+	        ///////// EFFECTS
+
+	        if (currentIngredient.effects.type != 'none') {
+
+	            var effect_index = effects.indexOf(currentIngredient.effects.type);
+
+	            if (effect_index == -1) {
+	                if (currentIngredient.effects.value == 1) {
+	                    effects.push(currentIngredient.effects.type);
+	                }
+	            }
+	            else {
+	                if (currentIngredient.effects.value == -1) {
+	                    effects.splice(effect_index, 1);
+	                }
+	            }
+
+	            console.log('-----');
+	            for (var i = 0; i < effects.length; i++) {
+	                console.log(effects[i]);
+	            }
+	            console.log('-----');
+	        }
+
 
             // special items
 	        if (item.frameName == 'bleach') {
