@@ -1,13 +1,9 @@
 Scenario 1 (Inheritance):
 
 * Opening:
-   * “I hear you’re the person to see if I want someone “taken care of”./ Your methods are quiet and effective, that sounds pretty sweet to me because that’s what I need./ You see, my grandfather has yet to...pass on and until then his assets are inaccessible./ It’d be a real shame if something were to...happen to him, if you catch my meaning./”
-   
-*Cutscene Draft: ( / indicates a tap)
-  * Sigh.../Business is slow./A customer! (door jingle) /I hear you’re the person to see.../...if I want someone "taken care of?"/ ...go on.../Well, that's absolutely what I need./ You see, my grandfather has yet to...pass on /and until then his assets are inaccessible./It’d be a real shame if something were to.../...happen to him./ If you know what mean./Gotcha.
-   
+   * “I hear you’re the person to see if I want someone 'taken care of'. Your methods are quiet and effective, that sounds pretty sweet to me because that’s what I need. You see, my grandfather has yet to...pass on and until then his assets are inaccessible. It’d be a real shame if something were to...happen to him, if you catch my meaning.”   
 * Closing:
-   * “Congratulations. The kill was quiet and subtle./ No one expected the candy to be the reason he died, so that’s good./ Nothing can be traced back to me. Job well done./”
+   * “Congratulations. The kill was quiet and subtle. No one expected the candy to be the reason he died, so that’s good. Nothing can be traced back to me. Job well done.”
 * Objectives:
    * Brown
    * Extremely Bitter
@@ -27,7 +23,7 @@ Scenario 2 (Professional Demise):
 Scenario 3 (Slippery Slope):
 
 * Opening:
-   * “My girlfriend broke up with me and she took the dog. She called me “immature” and a “jerk”. Well I’ll show her! I want you to teach her a lesson for dumping me. She’ll see that I’m the best she’s going to get. She’s not even that pretty! Here’s the money upfront. I don’t care what you do, just hurt her somehow.”
+   * “My girlfriend broke up with me and she took the dog. She called me 'immature' and a 'jerk'. Well I’ll show her! I want you to teach her a lesson for dumping me. She’ll see that I’m the best she’s going to get. She’s not even that pretty! Here’s the money upfront. I don’t care what you do, just hurt her somehow.”
 * Closing:
    * “Apparently she sprouted tentacles before she died and no one knows why. Most people are whispering that the government had something to do with it. I didn’t want this to happen. I...I just need a moment. I need to rethink what I’m doing with my life. I didn’t want her to die…”
 * Objectives:
