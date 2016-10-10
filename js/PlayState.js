@@ -22,9 +22,6 @@ var PlayState = {
 	    var cornerY = 46;
 
 	    console.log("Play State");
-	    PlayState.hexFromArray([0, 0, 0]);
-	    PlayState.hexFromArray([255, 0, 0]);
-	    PlayState.hexFromArray([255, 0, 128]);
 
 		//debug text
 		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
@@ -41,7 +38,10 @@ var PlayState = {
 		game.add.sprite(cornerX, cornerY, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
         
 
-		square = game.add.sprite(1165, 200, 'square');
+		square = game.add.sprite(1165, 500, 'square');
+		square.anchor.set(0.5);
+		square.width = 220;
+		square.height = 50;
 
 		cauldron = game.add.sprite(1165,560, 'cauldron');
 		cauldron.anchor.set(0.5);
@@ -172,8 +172,14 @@ var PlayState = {
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
+	        if (item.frameName == 'bleach') {
+	            currentColor = [255, 255, 255];
+	            numCol = 0;
 
+	            square.tint = PlayState.hexFromArray(currentColor);
+	        }
 
+            /*
 
 			if (item.frameName == 'bleach') {
 				//color
@@ -197,7 +203,7 @@ var PlayState = {
 			else
 			{
 				text.text = 'Dropped ' +  item.frameName + ' into the cauldron';
-			}
+			}*/
 
 		    
 			if (attri[4] == ing.bleach.effects.type) {
