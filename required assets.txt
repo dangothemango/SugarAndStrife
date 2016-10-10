@@ -9,12 +9,13 @@ Code
   Reactions & UI - show the 2 items reacting
   Start Screen
   Win Conditions
+  Implement Sound Effects
 
 Art
   Smoke plume
   New Book
   Buttons(?)
-  Juice
+  Juice - effects and fancy stuff
   Cutscene
   Menu Art
   Letter - piece of paper
