@@ -85,7 +85,7 @@ var PlayState = {
 
 	    if (dragged_item != null) {
 	        dragged_item.x = game.input.mousePointer.x - 70;
-	        dragged_item.y = game.input.mousePointer.y - 70;
+	        dragged_item.y = game.input.mousePointer.y - 110;
 	    }
 
 	    if (game.input.activePointer.isUp && dragged_item != null) {
