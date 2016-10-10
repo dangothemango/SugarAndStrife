@@ -120,8 +120,94 @@ var PlayState = {
 
 	hexFromArray: function (arr) {
 	    var hex = "0x" + PlayState.componentToHex(arr[0]) + PlayState.componentToHex(arr[1]) + PlayState.componentToHex(arr[2]);
-	    console.log(hex);
 	    return parseInt(hex);
+	},
+
+	hsvFromArray: function (arr) {
+	    var r = arr[0]/256.0;
+	    var g = arr[1]/256.0;
+	    var b = arr[2]/256.0;
+
+	    var h = 0;
+	    var s = 0;
+	    var v = 0;
+
+	    var min;
+	    var max;
+	    var delta;
+
+	    min = Math.min(r, g, b);
+	    max = Math.max(r, g, b);
+	    v = max;
+	    delta = max - min;
+
+	    if( max != 0 )
+	        s = delta / max;
+	    else {
+	        h = 0;
+	        s = 0;
+	        v = 0;
+	    }
+	    if( r == max )
+	        h = ( g - b ) / delta;
+	    else if( g == max )
+	        h = 2 + ( b - r ) / delta;
+	    else
+	        h = 4 + ( r - g ) / delta;
+	    h *= 60;
+	    if( h < 0 )
+	        h += 360;
+
+	    s *= 100;
+	    v *= 100;
+
+	    return [h,s,v];
+	},
+
+	colorStringFromArray: function (arr) {
+	    var hsv = PlayState.hsvFromArray(arr);
+	    var hue = hsv[0];
+	    var sat = hsv[1];
+        var val = hsv[2]
+
+	    var col;
+
+	    if (hue < 13){
+	        col = 'red';
+	    }
+	    else if (hue < 52) {
+	        col = 'orange';
+	    }
+	    else if (hue < 66) {
+	        col = 'yellow';
+	    }
+	    else if (hue < 159) {
+	        col = 'green';
+	    }
+	    else if (hue < 255) {
+	        col = 'blue';
+	    }
+	    else if (hue < 307) {
+	        col = 'purple';
+	    }
+	    else {
+	        col = 'red';
+	    }
+
+	    if (val < 60){
+	        if (col == 'orange' || col == 'yellow'){
+	            col = 'brown';
+	        }
+	    }
+
+	    if (val < 10){
+	        col = 'black';
+	    }
+	    if (val > 95 && sat < 5) {
+	        col = 'white';
+	    }
+
+	    return col;
 	},
 
     // TODO: unhide properties for the book?
@@ -178,6 +264,7 @@ var PlayState = {
 
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
+	        console.log(PlayState.colorStringFromArray(currentColor));
 
             /*
 

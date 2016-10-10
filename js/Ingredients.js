@@ -8,7 +8,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Chocolate',
-		color: [145, 82, 51],
+		color: [115, 55, 25],
 		prettycolor: 'Brown',
 		flavor: 'sweet',
 		effects: { type:'none' },
@@ -23,7 +23,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Sinner\'s Blood',
-		color: [348,91,86],
+		color: [217,4,26],
 		prettycolor: 'Red',
 		flavor: 'salty',
 		effects: { type:'none' },
@@ -38,7 +38,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Bone Marrow',
-		color: [64,62,94],
+		color: [245,221,39],
 		prettycolor: 'Yellow',
 		flavor: 'flavorless',
 		effects: { type:'tentacles', value: -1 },
@@ -52,7 +52,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Bleach',
-		color: [-1,-1,-1],
+		color: [0,0,0],
 		prettycolor: 'Removes all Color',
 		flavor: 'bitter',
 		effects: { type:'poison', value: 1 },
@@ -127,7 +127,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Powdered Fairy Wings',
-		color: [-1,-1,-1],
+		color: [0,0,0],
 		prettycolor: 'Sparkly',
 		flavor: 'sweet',
 		effects: { type:'implosion', value: -1 },
@@ -142,7 +142,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Frog Legs',
-		color: [116,81,65],
+		color: [97,245,39],
 		prettycolor: 'Green',
 		flavor: 'savory',
 		effects: { type:'none' },
@@ -157,7 +157,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Essence of Nightshade',
-		color: [284,81,65],
+		color: [132, 39, 245],
 		prettycolor: 'Purple',
 		flavor: 'flavorless',
 		effects: { type:'poison', value: 1 },
@@ -171,7 +171,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Ghost Pepper',
-		color: [348,91,86],
+		color: [237,17,17],
 		prettycolor: 'Red',
 		flavor: 'spicy',
 		effects: { type:'explosive', value: 1 },
@@ -186,7 +186,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Horrible Dirt',
-		color: [24,82,47],
+		color: [99,74,47],
 		prettycolor: 'Brown',
 		flavor: 'flavorless',
 		effects: { type:'dirt', value: 1 },
@@ -216,7 +216,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Pozest Lemons',
-		color: [64,62,94],
+		color: [237,237,47],
 		prettycolor: 'Yellow',
 		flavor: 'sour',
 		effects: { type:'implosion', value: 1 },
@@ -231,7 +231,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Leopard Spots',
-		color: [60,0,0],
+		color: [0,0,0],
 		prettycolor: 'Black',
 		flavor: 'spicy',
 		effects: { type:'none' },
@@ -246,7 +246,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Liquid Smoke',
-		color: [234,90,91],
+		color: [19,188,240],
 		prettycolor: 'Blue',
 		flavor: 'flavorless',
 		effects: { type:'explosive', value: 1 },
@@ -261,7 +261,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Lizard Eggs',
-		color: [231,0,100],
+		color: [233,242,245],
 		prettycolor: 'White',
 		flavor: 'flavorless',
 		effects: { type:'slimification', value: -1 },
@@ -276,7 +276,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Mandrake',
-		color: [234,90,91],
+		color: [28,108,237],
 		prettycolor: 'Blue',
 		flavor: 'bitter',
 		effects: { type:'mind_control', value: 1 },
@@ -306,7 +306,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Pufferfish',
-		color: [64,62,94],
+		color: [237,234,28],
 		prettycolor: 'Yellow',
 		flavor: 'flavorless',
 		effects: { type:'poison', value: 1 },
@@ -321,7 +321,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Slime',
-		color: [116,81,65],
+		color: [15,242,34],
 		prettycolor: 'Green',
 		flavor: 'salty',
 		effects: { type:'slimification', value: 1 },
@@ -351,7 +351,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Squid Ink',
-		color: [60,0,0],
+		color: [0,0,0],
 		prettycolor: 'Black>',
 		flavor: 'flavorless',
 		effects: { type:'tentacles', value: 1 },
@@ -366,7 +366,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Tentacles',
-		color: [284,81,65],
+		color: [271,83,89],
 		prettycolor: 'Purple',
 		flavor: 'savory',
 		effects: { type:'tentacles', value: 1 },
@@ -396,7 +396,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Dark Matter',
-		color: [0,0,-1],
+		color: [0,0,0],
 		prettycolor: 'Black',
 		flavor: 'I can\'t feel my tongue',
 		effects: { type:'clear' },
