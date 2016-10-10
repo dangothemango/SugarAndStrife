@@ -137,26 +137,36 @@ var PlayState = {
 				    //item.attributes
 					attri[i] += ing.bleach.color[i];
 				}
-				    
+
 				//take care of flavoring
 				attri[3] = ing.bleach.flavor;
 
 				//effects
-				attri[4] = ing.bleach.effects[0];
-					attri[5] = ing.bleach.effects[1];
+				attri[4] = ing.bleach.effects.type;
+				attri[5] = ing.bleach.effects.value;
 				crabCount += 1;
 
 				text.text = 'Dropped ' + item.frameName + ' into the cauldron' + '\n' +  ' ' + crabCount + ' ' + item.frameName 
 				+ '\n' + "is currently: " + attri
 				+  '\n' + "needs to be: " + wincandy;
-			    }
-			    else
-			    {
+				}
+			else
+			{
 				text.text = 'Dropped ' +  item.frameName + ' into the cauldron';
-			    }
 			}
 
-	    //  Remove the item from the Group.
+		    
+			if (attri[4] == ing.bleach.effects.type) {
+				console.log("added something else");
+				ing.bleach.effects.value += 1;
+			}
+			
+			//deal with mixing effects
+		   	else {
+				
+			}
+	    }
+
 		item.destroy();
 		dragged_item = null;
 	},
