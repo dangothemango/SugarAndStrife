@@ -9,12 +9,21 @@ var PlayState = {
 		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
 		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
 		game.load.image('bookScreen','assets/images/book_open_resized.png');
-		//game.load.script('Ingredients', 'assets/ingredients.js');
+		
+		//sound
+		game.load.audio('bgm', 'assets/audio/backgroundMusicSkewedPaths.wav')
 	},
 
 	create: function () {
 
 	    PlayState.reset_all();
+
+	    PlayState.winState(1);
+	    PlayState.winState(2);
+	    PlayState.winState(3);
+	    PlayState.winState(4);
+	    PlayState.winState(5);
+ 	    PlayState.winState(6);
 
 	    PlayState.unlock_items(1);
 	    PlayState.unlock_items(2);
@@ -34,10 +43,9 @@ var PlayState = {
 		/////////////////////
 
 		game.add.sprite(0,0, 'bg');
-		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
-		//game.add.sprite(cornerX, cornerY, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
-        
-
+		bgm = game.add.audio('bgm');
+		bgm.play();
+		
 		square = game.add.sprite(1165, 498, 'square');
 		square.anchor.set(0.5);
 		square.width = 220;
@@ -480,6 +488,26 @@ var PlayState = {
 	    }
 	},
 
+	winState: function(level) {
+	// 	if (level == 1){
+	//         wincandy = brown, extremely bitter, poison
+	//     }
+	//     if (level == 2) {
+	//         wincandy = red, very spicy, explosive
+	//     }
+	//     if (level == 3) {
+	//         wincandy = blue, irresponsibly salty, tentacles
+	//     }
+	//     if (level == 4) {
+	//         wincandy = purple, very sweet, mind control
+	//     }
+	//     if (level == 5) {
+	//         wincandy = yellow, mildly savory, slime, not salty
+	//     }
+	//     if (level == 6) {
+	//        wincandy = blue, sour, spicy, implosion
+	//     }
+	}
 	checkWin: function(){
 		for (var k=0; k < wincandy.length; k++) {
 			if (attri[k] == wincandy[k]){
