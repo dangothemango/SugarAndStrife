@@ -11,7 +11,11 @@ var PlayState = {
 		game.load.image('bookScreen','assets/images/book_open_resized.png');
 		
 		//sound
-		game.load.audio('bgm', 'assets/audio/backgroundMusicSkewedPaths.ogg')
+		game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
+		game.load.audio('dm_soundeffect', 'assets/sounds/addDarkmatter.wav');
+		game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
+		game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
+		game.load.audio('solid_soundeffect', 'assets/sounds/addSolid.wav');
 	},
 
 	create: function () {
