@@ -115,7 +115,7 @@
     function _drag(item) {
         //pos = item.position;
         //enables drag on item held
-        tmpItem = game.add.sprite(item.x - 30, item.y - 30, item.key, item.frame);
+        tmpItem = game.add.sprite(item.x, item.y, item.key, item.frame);
         tmpItem.scale.set(0.7, 0.7);
         tmpItem.inputEnabled = true;
 
