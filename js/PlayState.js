@@ -1,4 +1,3 @@
-
 var PlayState = {
 
 	preload: function(){
@@ -6,22 +5,26 @@ var PlayState = {
 		game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json');
 		game.load.image('cauldron', 'assets/images/cauldron alt.png');
 		game.load.image('bg', 'assets/images/background vector.png');
+		game.load.image('square', 'assets/images/square.png');
 		//game.load.script('Ingredients', 'assets/ingredients.js');
 	},
 
 	create: function () {
+
+	    PlayState.reset_all();
 
 	    var itemheight = 119.5; // height of an item slot in pixels
 	    var itemwidth = 207; // width of an item slot in pixels
 	    var shelfwidth = 4; // number of items that fit on the shelf horizontally
 	    var shelfheight = 4; // number of items that fit on the shelf vertically
 
-	    var cornerX = 110;
+	    var cornerX = 112;
 	    var cornerY = 46;
 
-	    ingredientsInCauldron = [];
-
-		console.log("Play State");
+	    console.log("Play State");
+	    PlayState.hexFromArray([0, 0, 0]);
+	    PlayState.hexFromArray([255, 0, 0]);
+	    PlayState.hexFromArray([255, 0, 128]);
 
 		//debug text
 		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
@@ -37,6 +40,8 @@ var PlayState = {
 		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
 		game.add.sprite(cornerX, cornerY, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
         
+
+		square = game.add.sprite(1165, 200, 'square');
 
 		cauldron = game.add.sprite(1165,560, 'cauldron');
 		cauldron.anchor.set(0.5);
@@ -88,6 +93,15 @@ var PlayState = {
     
 	},
 
+	reset_all: function () {
+	    ingredientsInCauldron = [];
+	    flavorList = [];
+	    currentColor = [0, 0, 0];
+	    numCol = 0;
+	    totalIngred = 0;
+	    winCondition = 0;
+	},
+
     // let's be pretty generous with this hit detection
 	mouseOverCauldron: function () {
 	    var over = false;
@@ -99,6 +113,18 @@ var PlayState = {
 	    return false;
 	},
 
+	componentToHex: function(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    },
+
+	hexFromArray: function (arr) {
+	    var hex = "0x" + PlayState.componentToHex(arr[0]) + PlayState.componentToHex(arr[1]) + PlayState.componentToHex(arr[2]);
+	    console.log(hex);
+	    return parseInt(hex);
+	},
+
+    // TODO: unhide properties for the book?
 	dropHandler: function(item, pointer) {
 		//removes from group if mouse is over cauldron
 	    if (PlayState.mouseOverCauldron()) {
@@ -112,6 +138,9 @@ var PlayState = {
 	        // add the current ingredient to the list
 	        ingredientsInCauldron.push(item.frameName);
 
+
+            ///////// FLAVOR
+
             // if the item has a flavor
 	        if (currentIngredient.flavor != 'flavorless') {
                 // put it in the list
@@ -124,11 +153,26 @@ var PlayState = {
 	            }
 	        }
 
+
 	        console.log('-----');
 	        for (var i = 0; i < flavorList.length; i++) {
 	            console.log(flavorList[i]);
 	        }
 	        console.log('-----');
+
+
+	        ///////// COLOR
+
+	        if (!(currentIngredient.prettycolor == 'Colorless' || currentIngredient.prettycolor == 'Sparkly')) {
+	            currentColor[0] = Math.round((currentIngredient.color[0] + currentColor[0] * numCol) / (numCol + 1));
+	            currentColor[1] = Math.round((currentIngredient.color[1] + currentColor[1] * numCol) / (numCol + 1));
+	            currentColor[2] = Math.round((currentIngredient.color[2] + currentColor[2] * numCol) / (numCol + 1));
+	            numCol++;
+
+	            square.tint = PlayState.hexFromArray(currentColor);
+	        }
+
+
 
 
 			if (item.frameName == 'bleach') {

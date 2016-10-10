@@ -8,7 +8,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Chocolate',
-		color: [30,100,40],
+		color: [145, 82, 51],
 		prettycolor: 'Brown',
 		flavor: 'sweet',
 		effects: { type:'none' },
@@ -97,7 +97,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Demon Flesh',
-		color: [116,81,65],
+		color: [40,209,40],
 		prettycolor: 'Green',
 		flavor: 'savory',
 		effects: { type:'explosive', value: 1 },
