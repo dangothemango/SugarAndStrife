@@ -135,6 +135,7 @@ var PlayState = {
 	    totalIngred = 0;
 	    winCondition = 0;
 	    shelf_index = 0;
+	    dirty = false;
 	},
 
     // let's be pretty generous with this hit detection
@@ -263,8 +264,8 @@ var PlayState = {
 
             ///////// FLAVOR
 
-            // if the item has a flavor
-	        if (currentIngredient.flavor != 'flavorless') {
+            // if the item has a flavor and there's no dirt in the cauldron
+	        if (currentIngredient.flavor != 'flavorless' && !dirty) {
                 // put it in the list
 	            flavorList.push(currentIngredient.flavor);
 
@@ -278,7 +279,7 @@ var PlayState = {
 
 	        ///////// COLOR
 
-	        if (!(currentIngredient.prettycolor == 'Colorless' || currentIngredient.prettycolor == 'Sparkly')) {
+	        if (!(currentIngredient.prettycolor == 'Colorless' || currentIngredient.prettycolor == 'Sparkly') && !dirty) {
 	            currentColor[0] = Math.round((currentIngredient.color[0] + currentColor[0] * numCol) / (numCol + 1));
 	            currentColor[1] = Math.round((currentIngredient.color[1] + currentColor[1] * numCol) / (numCol + 1));
 	            currentColor[2] = Math.round((currentIngredient.color[2] + currentColor[2] * numCol) / (numCol + 1));
@@ -315,38 +316,59 @@ var PlayState = {
 	        }
 
 	        if (item.frameName == 'dark_matter') {
-		    dm_soundeffect.play();
-	            
-		    ingredientsInCauldron = [];
+
+		        dm_soundeffect.play();
+		        ingredientsInCauldron = [];
 	            flavorList = [];
 	            effects = [];
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
 	            totalIngred = 0;
+	            dirty = false;
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
-		//sound effects for specific items
+	        if (item.frameName == 'dirt') {
 
-		if (item.frameName == 'bone_marrow' || item.frameName == 'caviar' || item.frameName == 'chocolate' || 
-		    item.frameName == 'demon_flesh' ||  item.frameName == 'eye_of_newt' || item.frameName == 'frog_legs' 
-		    || item.frameName == 'ghost_pepper' || item.frameName == 'insect_parts' || item.frameName == 'lemons' 
-		    || item.frameName == 'leopard_spots' || item.frameName == 'lizard_eggs' || item.frameName == 'mandrake' 
-		    || item.frameName == 'pufferfish' || item.frameName == 'tentacles' || item.frameName == 'toadstool') {
+	            dirty = true;
+	            flavorList = ['dirt', 'dirt', 'dirt', 'dirt', 'dirt'];
+	            currentColor = currentIngredient.color;
+	            square.tint = PlayState.hexFromArray(currentColor);
+	        }
 
-			solid_soundeffect.play();
-		}
+		    //sound effects for specific items
 
-		if (item.frameName == 'bleach' || item.frameName == 'blood' || item.frameName == 'cyanide' || 
-		    item.frameName == 'liquid_smoke' || item.frameName == 'slime' || item.frameName == 'snake_venom' 
-		    || item.frameName == 'squid_ink') {
-			liquid_soundeffect.play();
-		}
+		    if (item.frameName == 'bone_marrow' || item.frameName == 'caviar' || item.frameName == 'chocolate' || 
+		        item.frameName == 'demon_flesh' ||  item.frameName == 'eye_of_newt' || item.frameName == 'frog_legs' 
+		        || item.frameName == 'ghost_pepper' || item.frameName == 'insect_parts' || item.frameName == 'lemons' 
+		        || item.frameName == 'leopard_spots' || item.frameName == 'lizard_eggs' || item.frameName == 'mandrake' 
+		        || item.frameName == 'pufferfish' || item.frameName == 'tentacles' || item.frameName == 'toadstool') {
 
-		if (item.frameName == 'fairy_wings' || item.frameName == 'nightshade' || item.frameName == 'dirt') {
-			powder_soundeffect.play();
-		}
+			    solid_soundeffect.play();
+		    }
+
+		    if (item.frameName == 'bleach' || item.frameName == 'blood' || item.frameName == 'cyanide' || 
+		        item.frameName == 'liquid_smoke' || item.frameName == 'slime' || item.frameName == 'snake_venom' 
+		        || item.frameName == 'squid_ink' || item.frameName == 'mercury') {
+			    liquid_soundeffect.play();
+		    }
+
+		    if (item.frameName == 'fairy_wings' || item.frameName == 'nightshade' || item.frameName == 'dirt') {
+			    powder_soundeffect.play();
+		    }
 		    
+	        ////////// REACTIONS
+
+		    var reactant; // the other ingredient in the reaction
+		    var has_reaction = false;
+
+		    if (item.frameName == 'bone_marrow') {
+
+		    }
+
+
+	        ////////// DEBUG PRINT
+
 	        console.log('-------------');
 	        console.log("mixture is now "+PlayState.colorStringFromArray(currentColor));
 	        console.log('-----');
@@ -360,10 +382,6 @@ var PlayState = {
 	            console.log(' - '+effects[i]);
 	        }
 	        console.log('-----');
-
-			
-			//deal with mixing effects
-
 	    }
 
 		item.destroy();
