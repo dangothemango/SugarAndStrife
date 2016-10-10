@@ -8,7 +8,7 @@ var PlayState = {
 		game.load.image('square', 'assets/images/square.png');
 		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
 		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
-		game.load.image('bookScreen','assets/images/book_open_NEW.png');
+		game.load.image('bookScreen','assets/images/book_open_resized.png');
 		//game.load.script('Ingredients', 'assets/ingredients.js');
 	},
 
