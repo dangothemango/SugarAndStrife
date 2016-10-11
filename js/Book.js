@@ -8,7 +8,7 @@ var Book = {
 
 	spriteGroup: null,
 
-	open: function(pageNum){
+	open: function(){
 		//game.input.onDown.add(Book.handleInput,game);
 		if (Book.background == null){
 			Book.background = game.add.sprite(0,0, 'bookScreen');
@@ -57,11 +57,6 @@ var Book = {
 			}
 			bookPages.add(tmpIngGroup);
 		}
-		Book.goToPage(pageNum);
-	},
-
-	goToPage: function(pageNum){
-		Book.curPage=pageNum;
 		Book.loadPage();
 	},
 
@@ -104,6 +99,27 @@ var Book = {
 		}
 	},
 
+	findIngredient: function(searchee){
+		var foundIng=false;
+		Book.curPage=0;
+
+		while (Book.curPage*2<bookPages.length){
+			console.log(bookPages.getAt(Book.curPage*2).getAt(0).text);
+			if (bookPages.getAt(Book.curPage*2).getAt(0).text===searchee){
+				foundIng=true;
+				break;
+			} else if (Book.curPage*2+1 < bookPages.length && bookPages.getAt(Book.curPage*2+1).getAt(0).text==='\u2022 '+searchee){
+				foundIng=true;
+				break;
+			}
+			Book.curPage+=1;
+		}
+		if (!foundIng){
+			Book.curPage=0;
+		}
+		Book.loadPage();
+	},
+
 	killAllText: function(page){
 		page.forEach(Book.textKill,this,true);
 	},
@@ -128,10 +144,6 @@ var Book = {
 			console.log('right');
 			Book.nextPage();
 		}
-	},
-
-	getPageNum: function(){
-
 	},
 
 	close: function(){
