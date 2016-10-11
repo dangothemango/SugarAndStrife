@@ -101,14 +101,10 @@ var PlayState = {
 	},
 
 	openBook: function(sprite, pointer){
-		Book.open(0);
+		Book.open();
 	},
 
 	update: function() {
-	    /*if pressed submit button | one time thing 
-		currently pressing 1 checks win conditions */
-	    var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
-	    help.onDown.add(this.checkWin);
 	    //if (Book.isOpen && game.inpu)
 
 	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
@@ -158,6 +154,16 @@ var PlayState = {
 	    var over = false;
 	    if (game.input.mousePointer.x > cauldron.x - (cauldron.width / 2)) {
 	        if (game.input.mousePointer.y > cauldron.y - (cauldron.height)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	},
+
+	mouseOverBook: function () {
+	    var over = false;
+	    if (game.input.mousePointer.x > closedBook.x - (closedBook.width / 2)) {
+	        if (game.input.mousePointer.y > closedBook.y - (closedBook.height)) {
 	            return true;
 	        }
 	    }
@@ -263,6 +269,12 @@ var PlayState = {
 
     // TODO: unhide properties for the book?
 	dropHandler: function(item, pointer) {
+
+		if (PlayState.mouseOverBook()){
+			Book.open();
+			Book.findIngredient(PlayState.getIngredientFromName(item.frameName).name);
+		}
+
 		//removes from group if mouse is over cauldron
 	    if (PlayState.mouseOverCauldron()) {
 	        totalIngred += 1;
