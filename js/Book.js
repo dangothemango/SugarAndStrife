@@ -6,6 +6,8 @@ var Book = {
 
 	background: null,
 
+	spriteGroup: null,
+
 	open: function(pageNum){
 		//game.input.onDown.add(Book.handleInput,game);
 		if (Book.background == null){
@@ -19,11 +21,23 @@ var Book = {
 		}
 		if (bookPages != null){
 			bookPages.destroy(true,false);
+		} if (Book.spriteGroup != null) {
+			Book.spriteGroup.destroy(true, false);
 		}
+		Book.spriteGroup = game.add.group();
 		bookPages = game.add.group();
 		for (var ingItr in Ingredients){
 			if (!Ingredients.hasOwnProperty(ingItr)){ continue; }
 			var tmpIngGroup=game.add.group();
+			var spriteQ;
+			if (Ingredients[ingItr].known.name){
+				//Add sprite to book
+				console.log( Ingredients[ingItr].name);
+				spriteQ = game.add.sprite(0,0,'items',ingItr);
+			} else {
+				//Add '?' to book
+				spriteQ = new Phaser.Text(game,0,0, '?', bookStyle);
+			}
 			for (var attrib in Ingredients[ingItr].known){
 				if (!Ingredients[ingItr].known.hasOwnProperty(attrib))
 					{continue;}
