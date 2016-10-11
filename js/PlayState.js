@@ -1,41 +1,20 @@
 var PlayState = {
 
 	preload: function(){
-		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
-		game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
-		game.load.image('cauldron', 'assets/images/cauldron alt.png');
-		game.load.image('bg', 'assets/images/background vector.png');
-		game.load.image('square', 'assets/images/square.png');
-		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
-		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
-		game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
-		game.load.image('notFound','assets/images/notfoundicon.png');
 		
-		//sound
-		game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
-		game.load.audio('dm_soundeffect', 'assets/sounds/addDarkmatter.wav');
-		game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
-		game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
-		game.load.audio('solid_soundeffect', 'assets/sounds/addSolid.wav');
 	},
+
+	winState: null,
+
+	levelNum: 0,
 
 	create: function () {
 
 	    PlayState.reset_all();
 
-	    PlayState.winState(1);
-	    PlayState.winState(2);
-	    PlayState.winState(3);
-	    PlayState.winState(4);
-	    PlayState.winState(5);
- 	    PlayState.winState(6);
+	    winState=WinConditions[levelNum];
 
-	    PlayState.unlock_items(1);
-	    PlayState.unlock_items(2);
-	    PlayState.unlock_items(3);
-	    PlayState.unlock_items(4);
-	    PlayState.unlock_items(5);
-	    //PlayState.unlock_items(6);
+	    PlayState.unlock_items(levelNum);
 
 	    console.log("Play State");
 
@@ -86,7 +65,7 @@ var PlayState = {
 		right_button = game.add.button(990, 200, 'right_arrow', PlayState.rightpage, this, 'Down', 'Static', 'Down', 'Down');
 		left_button = game.add.button(25, 200, 'left_arrow', PlayState.leftpage, this, 'Down', 'Static', 'Down', 'Down');
 		left_button.visible = false;
-		if (items_right.length == 0) {
+		if (items_right.length === 0) {
 		    right_button.visible = false;
 		}
 
@@ -114,7 +93,7 @@ var PlayState = {
 	        PlayState.dropHandler(dragged_item);
 	    }
 
-	    if (totalIngred == 0) {
+	    if (totalIngred === 0) {
 	        square.tint = PlayState.hexFromArray([85, 76, 91]);
 	    }
 	    else {
@@ -153,7 +132,7 @@ var PlayState = {
 
 	componentToHex: function(c) {
         var hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
+        return hex.length === 1 ? "0" + hex : hex;
     },
 
 	hexFromArray: function (arr) {
@@ -186,9 +165,9 @@ var PlayState = {
 	        s = 0;
 	        v = 0;
 	    }
-	    if( r == max )
+	    if( r === max )
 	        h = ( g - b ) / delta;
-	    else if( g == max )
+	    else if( g === max )
 	        h = 2 + ( b - r ) / delta;
 	    else
 	        h = 4 + ( r - g ) / delta;
@@ -233,7 +212,7 @@ var PlayState = {
 	    }
 
 	    if (val < 60){
-	        if (col == 'orange' || col == 'yellow'){
+	        if (col === 'orange' || col === 'yellow'){
 	            col = 'brown';
 	        }
 	    }
@@ -282,7 +261,7 @@ var PlayState = {
 
 	        ///////// COLOR
 			Ingredients[item.frameName].known.color=true;
-	        if (!(currentIngredient.prettycolor == 'Colorless' || currentIngredient.prettycolor == 'Sparkly') && !dirty) {
+	        if (!(currentIngredient.prettycolor === 'Colorless' || currentIngredient.prettycolor === 'Sparkly') && !dirty) {
 	            currentColor[0] = Math.round((currentIngredient.color[0] + currentColor[0] * numCol) / (numCol + 1));
 	            currentColor[1] = Math.round((currentIngredient.color[1] + currentColor[1] * numCol) / (numCol + 1));
 	            currentColor[2] = Math.round((currentIngredient.color[2] + currentColor[2] * numCol) / (numCol + 1));
@@ -297,14 +276,14 @@ var PlayState = {
 
 	            var effect_index = effects.indexOf(currentIngredient.effects.type);
 
-	            if (effect_index == -1) {
-	                if (currentIngredient.effects.value == 1) {
+	            if (effect_index === -1) {
+	                if (currentIngredient.effects.value === 1) {
 	                    effects.push(currentIngredient.effects.type);
 	                    Ingredients[item.frameName].known.effects=true;
 	                }
 	            }
 	            else {
-	                if (currentIngredient.effects.value == -1) {
+	                if (currentIngredient.effects.value === -1) {
 	                    if (effects.splice(effect_index, 1) != null){
 	                    	Ingredients[item.frameName].known.effects=true;
 	                    }
@@ -314,7 +293,7 @@ var PlayState = {
 
 	        ////////// SPECIAL ITEMS
 
-	        if (item.frameName == 'bleach') {
+	        if (item.frameName === 'bleach') {
 		    
 		    	Ingredients[item.frameName].known.effects=true;
 	            currentColor = [255, 255, 255];
@@ -322,13 +301,13 @@ var PlayState = {
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
-	        if (item.frameName == 'dark_matter') {
+	        if (item.frameName === 'dark_matter') {
 	        	Ingredients[item.frameName].known.effects=true;
 		        dm_soundeffect.play();
 		        PlayState.erase_all();
 	        }
 
-	        if (item.frameName == 'dirt') {
+	        if (item.frameName === 'dirt') {
 	        	Ingredients[item.frameName].known.effects=true;
 	        	Ingredients[item.frameName].known.flavor=true;
 	            dirty = true;
@@ -339,22 +318,22 @@ var PlayState = {
 
 		    //sound effects for specific items
 
-		    if (item.frameName == 'bone_marrow' || item.frameName == 'caviar' || item.frameName == 'chocolate' || 
-		        item.frameName == 'demon_flesh' ||  item.frameName == 'eye_of_newt' || item.frameName == 'frog_legs' 
-		        || item.frameName == 'ghost_pepper' || item.frameName == 'insect_parts' || item.frameName == 'lemons' 
-		        || item.frameName == 'leopard_spots' || item.frameName == 'lizard_eggs' || item.frameName == 'mandrake' 
-		        || item.frameName == 'pufferfish' || item.frameName == 'tentacles' || item.frameName == 'toadstool') {
+		    if (item.frameName === 'bone_marrow' || item.frameName === 'caviar' || item.frameName === 'chocolate' || 
+		        item.frameName === 'demon_flesh' ||  item.frameName === 'eye_of_newt' || item.frameName === 'frog_legs' 
+		        || item.frameName === 'ghost_pepper' || item.frameName === 'insect_parts' || item.frameName === 'lemons' 
+		        || item.frameName === 'leopard_spots' || item.frameName === 'lizard_eggs' || item.frameName === 'mandrake' 
+		        || item.frameName === 'pufferfish' || item.frameName === 'tentacles' || item.frameName === 'toadstool') {
 
 			    solid_soundeffect.play();
 		    }
 
-		    if (item.frameName == 'bleach' || item.frameName == 'blood' || item.frameName == 'cyanide' || 
-		        item.frameName == 'liquid_smoke' || item.frameName == 'slime' || item.frameName == 'snake_venom' 
-		        || item.frameName == 'squid_ink' || item.frameName == 'mercury') {
+		    if (item.frameName === 'bleach' || item.frameName === 'blood' || item.frameName === 'cyanide' || 
+		        item.frameName === 'liquid_smoke' || item.frameName === 'slime' || item.frameName === 'snake_venom' 
+		        || item.frameName === 'squid_ink' || item.frameName === 'mercury') {
 			    liquid_soundeffect.play();
 		    }
 
-		    if (item.frameName == 'fairy_wings' || item.frameName == 'nightshade' || item.frameName == 'dirt') {
+		    if (item.frameName === 'fairy_wings' || item.frameName === 'nightshade' || item.frameName === 'dirt') {
 			    powder_soundeffect.play();
 		    }
 		    
@@ -365,7 +344,7 @@ var PlayState = {
 		    var ingredient_index;
 
 
-		    if (item.frameName == 'cyanide') {
+		    if (item.frameName === 'cyanide') {
 
 		        if (ingredientsInCauldron.indexOf('nightshade') != -1) {
 		            reactant = 'nightshade';
@@ -376,7 +355,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'demon_flesh') {
+		    else if (item.frameName === 'demon_flesh') {
 
 		        if (ingredientsInCauldron.indexOf('fairy_wings') != -1) {
 		            reactant = 'fairy_wings';
@@ -394,7 +373,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'fairy_wings') {
+		    else if (item.frameName === 'fairy_wings') {
 
 		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
 		            reactant = 'demon_flesh';
@@ -405,7 +384,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'nightshade') {
+		    else if (item.frameName === 'nightshade') {
 
 		        if (ingredientsInCauldron.indexOf('cyanide') != -1) {
 		            reactant = 'cyanide';
@@ -416,7 +395,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'ghost_pepper') {
+		    else if (item.frameName === 'ghost_pepper') {
 
 		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
 		            reactant = 'lemons';
@@ -427,7 +406,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'lemons') {
+		    else if (item.frameName === 'lemons') {
 
 		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
 		            reactant = 'demon_flesh';
@@ -451,7 +430,7 @@ var PlayState = {
 		            PlayState.remove_imp_exp();
 		        }
 		    }
-		    else if (item.frameName == 'liquid_smoke') {
+		    else if (item.frameName === 'liquid_smoke') {
 
 		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
 		            reactant = 'lemons';
@@ -462,7 +441,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'snake_venom') {
+		    else if (item.frameName === 'snake_venom') {
 
 		        if (ingredientsInCauldron.indexOf('squid_ink') != -1) {
 		            reactant = 'squid_ink';
@@ -480,7 +459,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'squid_ink') {
+		    else if (item.frameName === 'squid_ink') {
 
 		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
 		            reactant = 'snake_venom';
@@ -491,7 +470,7 @@ var PlayState = {
 		        }
 
 		    }
-		    else if (item.frameName == 'tentacles') {
+		    else if (item.frameName === 'tentacles') {
 
 		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
 		            reactant = 'snake_venom';
@@ -561,7 +540,7 @@ var PlayState = {
 	add_mind_control: function () {
 	    var mind_index = effects.indexOf('mind_control');
 
-	    if (mind_index == -1) {
+	    if (mind_index === -1) {
 	        effects.push('mind_control');
 	    }
 	},
@@ -585,7 +564,7 @@ var PlayState = {
 	},
 
 	rightpage: function () {
-	    if (shelf_index == 0) {
+	    if (shelf_index === 0) {
 
 	        group.destroy();
 
@@ -610,7 +589,7 @@ var PlayState = {
 	},
 
 	leftpage: function () {
-	    if (shelf_index == 1) {
+	    if (shelf_index === 1) {
 	        group.destroy();
 
 	        group = game.add.group();
@@ -634,7 +613,7 @@ var PlayState = {
 	},
 
 	unlock_items: function (level) {
-	    if (level == 1){
+	    if (level === 1){
 	        add_item('dark_matter');
 	        add_item('bleach');
 	        add_item('chocolate');
@@ -642,7 +621,7 @@ var PlayState = {
 	        add_item('eye_of_newt');
 	        add_item('dirt');
 	    }
-	    if (level == 2) {
+	    if (level === 2) {
 	        add_item('blood');
 	        add_item('caviar');
 	        add_item('demon_flesh');
@@ -651,24 +630,24 @@ var PlayState = {
 	        add_item('mandrake');
 	        add_item('quicksilver');
 	    }
-	    if (level == 3) {
+	    if (level === 3) {
 	        add_item('ghost_pepper');
 	        add_item('insect_parts');
 	        add_item('lizard_eggs');
 	        add_item('squid_ink');
 	        add_item('tentacles');
 	    }
-	    if (level == 4) {
+	    if (level === 4) {
 	        add_item('fairy_wings');
 	        add_item('nightshade');
 	        add_item('snake_venom');
 	    }
-	    if (level == 5) {
+	    if (level === 5) {
 	        add_item('pufferfish');
 	        add_item('slime');
 	        add_item('toadstool');
 	    }
-	    if (level == 6) {
+	    if (level === 6) {
 	        add_item('bone_marrow');
 	        add_item('lemons');
 	        add_item('leopard_spots');
@@ -679,35 +658,14 @@ var PlayState = {
 	    return ing[name];
 	},
 
-	winState: function(level) {
-	// 	if (level == 1){
-	//         wincandy = brown, extremely bitter, poison
-	//     }
-	//     if (level == 2) {
-	//         wincandy = red, very spicy, explosive
-	//     }
-	//     if (level == 3) {
-	//         wincandy = blue, irresponsibly salty, tentacles
-	//     }
-	//     if (level == 4) {
-	//         wincandy = purple, very sweet, mind control
-	//     }
-	//     if (level == 5) {
-	//         wincandy = yellow, mildly savory, slime, not salty
-	//     }
-	//     if (level == 6) {
-	//        wincandy = blue, sour, spicy, implosion
-	//     }
-	},
-
 	checkWin: function(){
 		/*for (var k=0; k < wincandy.length; k++) {
-			if (attri[k] == wincandy[k]){
+			if (attri[k] === wincandy[k]){
 				winCondition += 1;
 			}
 		}
 
-		if (winCondition == 6) {
+		if (winCondition === 6) {
 			text.text = winCondition + ' YOU WINNN!!!!!!!!!!!'
 				+ '\n' + "is currently: " + attri
 			+  '\n' + "needs to be: " + wincandy;
