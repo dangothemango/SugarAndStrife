@@ -25,7 +25,7 @@
     var game = new Phaser.Game(1334, 750, Phaser.AUTO, '', { preload: preload, create: create, update: update});
 
     var debug=true;
-    var debugLevel=3;
+    var debugLevel=5;
 
     //MAIN VARIABLES
     var rand=new Phaser.RandomDataGenerator();
@@ -183,6 +183,7 @@
 
     //PLAY STATE FUNCTIONS
     function submitCandy() {
+        if (totalIngred===0) return;
         if (debug){
             console.log(PlayState.checkWin());
             PlayState.generateCandy();
