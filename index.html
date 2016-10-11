@@ -10,6 +10,7 @@
     <script type="text/javascript" src=js/Ingredients.js></script>
     <script type="text/javascript" src=js/Book.js></script>
     <script type="text/javascript" src=js/WinConditions.js></script>
+    <script type="text/javascript" src=js/FinalCandy.js></script>
 
     <style type="text/css">
         body {
@@ -22,6 +23,9 @@
 <script type="text/javascript">
     
     var game = new Phaser.Game(1334, 750, Phaser.AUTO, '', { preload: preload, create: create, update: update});
+
+    var debug=true;
+    var debugLevel=3;
 
     //MAIN VARIABLES
     var rand=new Phaser.RandomDataGenerator();
@@ -178,6 +182,10 @@
 
     //PLAY STATE FUNCTIONS
     function submitCandy() {
+        if (debug){
+            console.log(PlayState.checkWin);
+            PlayState.generateCandy();
+        }
         if (PlayState.checkWin()){
             PlayState.levelNum+=1;
             if (PlayState.levelNum<WinConditions.length){
