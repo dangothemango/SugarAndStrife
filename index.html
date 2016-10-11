@@ -176,11 +176,8 @@
 
     //PLAY STATE FUNCTIONS
     function submitCandy() {
-        if (PlayState.checkWin()){
-            game.state.start('Menu');
-        } else {
-            Book.open(0);
-        }
+        console.log(PlayState.checkWin());
+        //Book.open(0);
     }
 
     //WIN STATE FUNCTIONS

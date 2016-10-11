@@ -22,7 +22,7 @@ var PlayState = {
 
 	winState: null,
 
-	levelNum: 0,
+	levelNum: 0 ,
 
 	create: function () {
 
@@ -300,9 +300,8 @@ var PlayState = {
 	            }
 	            else {
 	                if (currentIngredient.effects.value === -1) {
-	                    if (effects.splice(effect_index, 1) != null){
-	                    	Ingredients[item.frameName].known.effects=true;
-	                    }
+	                    effects.splice(effect_index, 1);
+	                    Ingredients[item.frameName].known.effects=true;
 	                }
 	            }
 	        }
@@ -631,7 +630,7 @@ var PlayState = {
 	},
 
 	unlock_items: function (level) {
-	    if (level === 1){
+	    if (level === 0){
 	        add_item('dark_matter');
 	        add_item('bleach');
 	        add_item('chocolate');
@@ -639,7 +638,7 @@ var PlayState = {
 	        add_item('eye_of_newt');
 	        add_item('dirt');
 	    }
-	    if (level === 2) {
+	    if (level === 1) {
 	        add_item('blood');
 	        add_item('caviar');
 	        add_item('demon_flesh');
@@ -648,24 +647,24 @@ var PlayState = {
 	        add_item('mandrake');
 	        add_item('quicksilver');
 	    }
-	    if (level === 3) {
+	    if (level === 2) {
 	        add_item('ghost_pepper');
 	        add_item('insect_parts');
 	        add_item('lizard_eggs');
 	        add_item('squid_ink');
 	        add_item('tentacles');
 	    }
-	    if (level === 4) {
+	    if (level === 3) {
 	        add_item('fairy_wings');
 	        add_item('nightshade');
 	        add_item('snake_venom');
 	    }
-	    if (level === 5) {
+	    if (level === 4) {
 	        add_item('pufferfish');
 	        add_item('slime');
 	        add_item('toadstool');
 	    }
-	    if (level === 6) {
+	    if (level === 5) {
 	        add_item('bone_marrow');
 	        add_item('lemons');
 	        add_item('leopard_spots');
@@ -687,23 +686,30 @@ var PlayState = {
 	    dirty = false;
 	    square.tint = PlayState.hexFromArray(currentColor);*/
 	    var winChecker
+	    console.log(winState);
 	    for (winChecker in winState.flavors){
 	    	if (!winState.flavors.hasOwnProperty(winChecker)) {continue;}
-	    	if (countItems(flavorList,winChecker) !==winState.flavors[winChecker]){
+	    	if (PlayState.countItems(flavorList,winChecker) !==winState.flavors[winChecker]){
+	    		console.log(winChecker);
 	    		return false;
 	    	}
 	    }
 	    winChecker=effects.slice();
 	    for (var iC =0; iC<winState.effects.length; iC++){
-	        if (winChecker.splice(winState.effects[iC], 1) == null){
+	    	var winEffectIndex=winChecker.indexOf(winState.effects[iC]);
+	        if (winEffectIndex !== -1){
+	        	winChecker.splice(winEffectIndex, 1);
+            } else {
             	return false;
             }
 	    }
 	    if (winChecker.length!==0){
+	    	console.log(winChecker);
 	    	return false;
 	    }
-	    winChecker=colorStringFromArray(currentColor);
+	    winChecker=PlayState.colorStringFromArray(currentColor);
 	    if (winChecker!==winState.color){
+	    	console.log(winChecker);
 	    	return false;
 	    }
 	    return true;
@@ -711,7 +717,7 @@ var PlayState = {
 
 	countItems: function(array,item){
 		iCount=0;
-		for (var iC =0; iC<array.length; i++){
+		for (var iC =0; iC<array.length; iC++){
 			if (array[iC] === item){
 				iCount++;
 			}
