@@ -152,6 +152,7 @@ var PlayState = {
 	    currentColor = [255, 255, 255];
 	    numCol = 0;
 	    totalIngred = 0;
+	    sparkles=false;
 	    winCondition = 0;
 	    shelf_index = 0;
 	    dirty = false;
@@ -317,6 +318,7 @@ var PlayState = {
 	        }
 
 
+
 	        ///////// COLOR
 			Ingredients[item.frameName].known.color=true;
 	        if (!(currentIngredient.prettycolor === 'Colorless' || currentIngredient.prettycolor === 'Sparkly') && !dirty) {
@@ -326,7 +328,10 @@ var PlayState = {
 	            numCol++;
 
 	            square.tint = PlayState.hexFromArray(currentColor);
-	        }
+	        } else if (currentIngredient.prettycolor === 'Sparkly'){
+            	console.log('SPARJL');
+            	sparkles=true;
+            }
 
 	        ///////// EFFECTS
 
@@ -589,6 +594,7 @@ var PlayState = {
 	    ingredientsInCauldron = [];
 	    flavorList = [];
 	    effects = [];
+	    sparkles=false;
 	    currentColor = [255, 255, 255];
 	    numCol = 0;
 	    totalIngred = 0;
@@ -727,7 +733,7 @@ var PlayState = {
 	    totalIngred = 0;
 	    dirty = false;
 	    square.tint = PlayState.hexFromArray(currentColor);*/
-	    FinalCandy.createSprite(effects,currentColor);
+	    FinalCandy.createSprite(effects,currentColor,sparkles);
 	},
 
 	checkWin: function(){
