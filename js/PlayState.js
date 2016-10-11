@@ -112,7 +112,7 @@ var PlayState = {
 	        PlayState.dropHandler(dragged_item);
 	    }
 
-	    if (ingredientsInCauldron.length == 0) {
+	    if (totalIngred == 0) {
 	        square.tint = PlayState.hexFromArray([85, 76, 91]);
 	    }
 	    else {
@@ -361,11 +361,144 @@ var PlayState = {
 
 		    var reactant; // the other ingredient in the reaction
 		    var has_reaction = false;
+		    var ingredient_index;
 
-		    if (item.frameName == 'bone_marrow') {
+
+		    if (item.frameName == 'cyanide') {
+
+		        if (ingredientsInCauldron.indexOf('nightshade') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('nightshade')]);
+		            has_reaction = true;
+
+                    // add mind control
+		        }
+
+		    }
+		    else if (item.frameName == 'demon_flesh') {
+
+		        if (ingredientsInCauldron.indexOf('fairy_wings') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('fairy_wings')]);
+		            has_reaction = true;
+
+                    // erase contents of cauldron
+		        }
+		        else if (ingredientsInCauldron.indexOf('lemons') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            has_reaction = true;
+
+                    // remove implosion and explosion effects
+		        }
+
+		    }
+		    else if (item.frameName == 'fairy_wings') {
+
+		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('demon_flesh')]);
+		            has_reaction = true;
+
+		            // erase contents of cauldron
+		        }
+
+		    }
+		    else if (item.frameName == 'nightshade') {
+
+		        if (ingredientsInCauldron.indexOf('cyanide') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('cyanide')]);
+		            has_reaction = true;
+
+		            // add mind control
+		        }
+
+		    }
+		    else if (item.frameName == 'ghost_pepper') {
+
+		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		        }
+
+		    }
+		    else if (item.frameName == 'lemons') {
+
+		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('demon_flesh')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		        }
+		        else if (ingredientsInCauldron.indexOf('ghost_pepper') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('ghost_pepper')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		        }
+		        else if (ingredientsInCauldron.indexOf('liquid_smoke') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('liquid_smoke')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		        }
+		    }
+		    else if (item.frameName == 'liquid_smoke') {
+
+		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		        }
+
+		    }
+		    else if (item.frameName == 'snake_venom') {
+
+		        if (ingredientsInCauldron.indexOf('squid_ink') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('squid_ink')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		        }
+		        else if (ingredientsInCauldron.indexOf('tentacles') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('tentacles')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		        }
+
+		    }
+		    else if (item.frameName == 'squid_ink') {
+
+		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('snake_venom')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		        }
+
+		    }
+		    else if (item.frameName == 'tentacles') {
+
+		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('snake_venom')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		        }
 
 		    }
 
+
+		    if (has_reaction) {
+		        // stop tracking both of the ingredients so we don't get the same effect again
+		        // note that the reaction might have erased everything already
+		        if (ingredientsInCauldron.length > 0) {
+                    ingredientsInCauldron.splice(ingredient_index, 1);
+                    ingredientsInCauldron.splice(ingredientsInCauldron.length - 1, 1);
+		        }
+
+		        console.log("REACTION BETWEEN " + currentIngredient.name + " AND " + reactant.name);
+		    }
 
 	        ////////// DEBUG PRINT
 
