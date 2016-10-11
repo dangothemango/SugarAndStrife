@@ -9,6 +9,7 @@ var PlayState = {
 		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
 		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
 		game.load.image('bookScreen','assets/images/flat_book.png');
+		game.load.image('notFound','assets/images/notfoundicon.png');
 		
 		//sound
 		game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
@@ -104,7 +105,7 @@ var PlayState = {
 
 
 	    if (dragged_item != null) {
-	        dragged_ihatem.x = game.input.mousePointer.x - 70;
+	        dragged_item.x = game.input.mousePointer.x - 70;
 	        dragged_item.y = game.input.mousePointer.y - 110;
 	    }
 
