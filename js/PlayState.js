@@ -8,7 +8,7 @@ var PlayState = {
 		game.load.image('square', 'assets/images/square.png');
 		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
 		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
-		game.load.image('bookScreen','assets/images/flat_book.png');
+		game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
 		game.load.image('notFound','assets/images/notfoundicon.png');
 		
 		//sound
