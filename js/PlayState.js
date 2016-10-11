@@ -278,9 +278,9 @@ var PlayState = {
 	        ///////// COLOR
 			Ingredients[item.frameName].known.color=true;
 	        if (!(currentIngredient.prettycolor === 'Colorless' || currentIngredient.prettycolor === 'Sparkly') && !dirty) {
-	            currentColor[0] = Math.round((currentIngredient.color[0]*2 + currentColor[0] * numCol) / (numCol + 2));
-	            currentColor[1] = Math.round((currentIngredient.color[1]*2 + currentColor[1] * numCol) / (numCol + 2));
-	            currentColor[2] = Math.round((currentIngredient.color[2]*2 + currentColor[2] * numCol) / (numCol + 2));
+	            currentColor[0] = Math.round((currentIngredient.color[0] + currentColor[0] * numCol) / (numCol + 1));
+	            currentColor[1] = Math.round((currentIngredient.color[1] + currentColor[1] * numCol) / (numCol + 1));
+	            currentColor[2] = Math.round((currentIngredient.color[2] + currentColor[2] * numCol) / (numCol + 1));
 	            numCol++;
 
 	            square.tint = PlayState.hexFromArray(currentColor);
