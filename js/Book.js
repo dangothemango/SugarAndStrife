@@ -36,10 +36,7 @@ var Book = {
 				spriteQ = game.add.sprite(0,0,'items',ingItr);
 				spriteQ.anchor.set(.5,0);
 			} else {
-				//Add '?' to book
-				spriteQ = game.add.sprite(0,0,'notFound');
-				spriteQ.scale.set(.8,.8);
-				spriteQ.anchor.set(.5,-.2);
+				continue;
 			}
 			Book.spriteGroup.add(spriteQ);
 			for (var attrib in Ingredients[ingItr].known){
