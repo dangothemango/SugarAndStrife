@@ -34,10 +34,14 @@ var Book = {
 				//Add sprite to book
 				console.log( Ingredients[ingItr].name);
 				spriteQ = game.add.sprite(0,0,'items',ingItr);
+				spriteQ.anchor.set(.5,.25);
 			} else {
 				//Add '?' to book
-				spriteQ = new Phaser.Text(game,0,0, '?', bookStyle);
+				spriteQ = game.add.sprite(0,0,'notFound');
+				spriteQ.scale.set(.6,.6);
+				spriteQ.anchor.set(.5,-.3);
 			}
+			Book.spriteGroup.add(spriteQ);
 			for (var attrib in Ingredients[ingItr].known){
 				if (!Ingredients[ingItr].known.hasOwnProperty(attrib))
 					{continue;}
@@ -76,6 +80,7 @@ var Book = {
 	},
 
 	loadPage: function(){
+		var bookWidth=game.world.width/8*7;
 		if (Book.curPage*2 >= bookPages.length){
 				Book.curPage-=1;
 				return;
@@ -84,7 +89,7 @@ var Book = {
 				return;
 			}
 		bookPages.forEach(Book.killAllText,this,false);
-		var bookGridOffset=game.world.width/8
+		Book.spriteGroup.forEach(Book.textKill,this,false);
 		for (var pageItr = 0; pageItr<2; pageItr++){
 			console.log(Book.curPage*2+pageItr);
 			if (Book.curPage*2+pageItr >= bookPages.length){
@@ -92,8 +97,12 @@ var Book = {
 			}
 			var pageContent=bookPages.getAt(Book.curPage*2+pageItr);
 			pageContent.forEach(Book.textRevive,this,false);
-			pageContent.x=bookGridOffset*4*pageItr+bookGridOffset;
-			pageContent.align(1,4,-1,game.world.height/4,Phaser.LEFT_CENTER);
+			pageContent.x=game.world.width/8*(1+4*pageItr);
+			pageContent.y=200;
+			pageContent.align(1,4,-1,(game.world.height-200)/4,Phaser.TOP_LEFT);
+			var spriteQ=Book.spriteGroup.getAt(Book.curPage*2+pageItr);
+			spriteQ.revive();
+			spriteQ.x=game.world.width/4*(1+2*pageItr);
 		}
 	},
 
@@ -130,6 +139,7 @@ var Book = {
 	close: function(){
 		Book.background.kill();
 		bookPages.forEach(Book.killAllText,this,false);
+		Book.spriteGroup.forEach(Book.textKill,this,false);
 	}
 
 }
