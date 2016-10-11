@@ -43,6 +43,7 @@
     var ingredientsInCauldron = []; // an array of all of the ingredients currently in the cauldron
     var flavorList = []; // an array of all of the current flavors
     var effects = []; // an array of all of the current effects
+    var sparkles=false;
     var currentColor = [0, 0, 0];
     var numCol = 0; // number of colored ingredients currently in the cauldron
     var totalIngred = 0;
@@ -183,7 +184,7 @@
     //PLAY STATE FUNCTIONS
     function submitCandy() {
         if (debug){
-            console.log(PlayState.checkWin);
+            console.log(PlayState.checkWin());
             PlayState.generateCandy();
         }
         if (PlayState.checkWin()){
