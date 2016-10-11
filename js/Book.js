@@ -10,6 +10,7 @@ var Book = {
 
 	open: function(){
 		//game.input.onDown.add(Book.handleInput,game);
+		Book.curPage=0;
 		if (Book.background == null){
 			Book.background = game.add.sprite(0,0, 'bookScreen');
 			Book.background.width=game.world.width;
@@ -105,7 +106,7 @@ var Book = {
 
 		while (Book.curPage*2<bookPages.length){
 			console.log(bookPages.getAt(Book.curPage*2).getAt(0).text);
-			if (bookPages.getAt(Book.curPage*2).getAt(0).text===searchee){
+			if (bookPages.getAt(Book.curPage*2).getAt(0).text==='\u2022 '+searchee){
 				foundIng=true;
 				break;
 			} else if (Book.curPage*2+1 < bookPages.length && bookPages.getAt(Book.curPage*2+1).getAt(0).text==='\u2022 '+searchee){
