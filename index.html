@@ -176,7 +176,14 @@
 
     //PLAY STATE FUNCTIONS
     function submitCandy() {
-        console.log(PlayState.checkWin());
+        if (PlayState.checkWin()){
+            PlayState.levelNum+=1;
+            if (PlayState.levelNum<WinConditions.length){
+            game.state.start('Play');
+            } else {
+                game.state.start('Win');
+            }
+        }
         //Book.open(0);
     }
 
