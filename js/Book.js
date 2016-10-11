@@ -50,7 +50,7 @@ var Book = {
 						console.log(typeof Ingredients[ingItr][attrib]);
 						ingBookKey = 'pretty'+ingBookKey;
 					}
-					var bookText = new Phaser.Text(game, 0, 0, '\u2022 ' + Ingredients[ingItr][ingBookKey], bookStyle);
+					var bookText = new Phaser.Text(game, 0, 0, '\u2022 ' + PlayState.toTitleCase(Ingredients[ingItr][ingBookKey]), bookStyle);
 				} else if (attrib==='effects' && Ingredients[ingItr][attrib].type==='none'){
 					var bookText = new Phaser.Text(game, 0, 0, '', bookStyle);
 				} else {
