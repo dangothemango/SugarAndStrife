@@ -330,6 +330,7 @@ var PlayState = {
 
 	        if (item.frameName == 'dirt') {
 	        	Ingredients[item.frameName].known.effects=true;
+	        	Ingredients[item.frameName].known.flavor=true;
 	            dirty = true;
 	            flavorList = ['dirt', 'dirt', 'dirt', 'dirt', 'dirt'];
 	            currentColor = currentIngredient.color;
