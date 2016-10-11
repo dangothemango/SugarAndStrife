@@ -3,8 +3,8 @@ var Ingredients = {
 	chocolate: {
 		known: {
 			name: true,
-			color: true,
-			flavor: true,
+			color: false,
+			flavor: false,
 			effects: false
 		},
 		name: 'Chocolate',
@@ -17,9 +17,9 @@ var Ingredients = {
 	
 	blood: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Sinner\'s Blood',
@@ -32,9 +32,9 @@ var Ingredients = {
 	
 	bone_marrow: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Bone Marrow',
@@ -46,9 +46,9 @@ var Ingredients = {
 	},	
 	bleach: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Bleach',
@@ -61,9 +61,9 @@ var Ingredients = {
 
 	caviar: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Cursed Caviar',
@@ -76,9 +76,9 @@ var Ingredients = {
 
 	cyanide: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Cyanide',
@@ -91,9 +91,9 @@ var Ingredients = {
 	
 	demon_flesh: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Demon Flesh',
@@ -106,9 +106,9 @@ var Ingredients = {
 	
 	eye_of_newt: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Eye of Newt',
@@ -121,9 +121,9 @@ var Ingredients = {
 		
 	fairy_wings: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Powdered Fairy Wings',
@@ -136,9 +136,9 @@ var Ingredients = {
 		
 	frog_legs: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Frog Legs',
@@ -151,9 +151,9 @@ var Ingredients = {
 		
 	nightshade: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Essence of Nightshade',
@@ -165,9 +165,9 @@ var Ingredients = {
 	},
 	ghost_pepper: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Ghost Pepper',
@@ -180,9 +180,9 @@ var Ingredients = {
 	
 	dirt: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Horrible Dirt',
@@ -195,9 +195,9 @@ var Ingredients = {
 	
 	insect_parts: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Insect Parts',
@@ -210,9 +210,9 @@ var Ingredients = {
 	
 	lemons: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Pozest Lemons',
@@ -225,9 +225,9 @@ var Ingredients = {
 	
 	leopard_spots: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Leopard Spots',
@@ -240,9 +240,9 @@ var Ingredients = {
 	
 	liquid_smoke: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Liquid Smoke',
@@ -255,9 +255,9 @@ var Ingredients = {
 	
 	lizard_eggs: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Lizard Eggs',
@@ -270,9 +270,9 @@ var Ingredients = {
 	
 	mandrake: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Mandrake',
@@ -285,9 +285,9 @@ var Ingredients = {
 	
 	quicksilver: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Quicksilver',
@@ -300,9 +300,9 @@ var Ingredients = {
 	
 	pufferfish: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Pufferfish',
@@ -315,9 +315,9 @@ var Ingredients = {
 	
 	slime: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Slime',
@@ -330,9 +330,9 @@ var Ingredients = {
 	
 	snake_venom: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Snake Venom',
@@ -345,9 +345,9 @@ var Ingredients = {
 	
 	squid_ink: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Squid Ink',
@@ -360,9 +360,9 @@ var Ingredients = {
 	
 	tentacles: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Tentacles',
@@ -375,9 +375,9 @@ var Ingredients = {
 	
 	toadstool: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Toadstool',
@@ -390,9 +390,9 @@ var Ingredients = {
 	
 	dark_matter: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
-			flavor: true,
+			flavor: false,
 			effects: false
 		},
 		name: 'Dark Matter',

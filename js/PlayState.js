@@ -2,7 +2,7 @@ var PlayState = {
 
 	preload: function(){
 		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
-		game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json');
+		game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 		game.load.image('cauldron', 'assets/images/cauldron alt.png');
 		game.load.image('bg', 'assets/images/background vector.png');
 		game.load.image('square', 'assets/images/square.png');
@@ -85,7 +85,7 @@ var PlayState = {
 
 
 	    if (dragged_item != null) {
-	        dragged_item.x = game.input.mousePointer.x - 70;
+	        dragged_ihatem.x = game.input.mousePointer.x - 70;
 	        dragged_item.y = game.input.mousePointer.y - 110;
 	    }
 
