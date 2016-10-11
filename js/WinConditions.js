@@ -6,7 +6,7 @@ var WinConditions = [
 		flavors:{
 			bitter:4
 		},
-		effects: 'poison',
+		effects: ['poison'],
 		color: 'brown'
 	},
 
@@ -15,7 +15,7 @@ var WinConditions = [
 		flavors:{
 			spicy:3
 		},
-		effects: 'explosive',
+		effects: ['explosive'],
 		color: 'red'		
 	},
 
@@ -24,7 +24,7 @@ var WinConditions = [
 		flavors:{
 			salty:5
 		},
-		effects: 'tentacles',
+		effects: ['tentacles'],
 		color: 'blue'
 	},
 
@@ -33,7 +33,7 @@ var WinConditions = [
 		flavors:{
 			sweet:3
 		},
-		effects: 'mind_control',
+		effects: ['mind_control'],
 		color: 'purple'
 	},
 
@@ -43,7 +43,7 @@ var WinConditions = [
 			savory:1,
 			salty:0
 		},
-		effects: 'slimification',
+		effects: ['slimification'],
 		color: 'yellow'
 	},
 
@@ -53,7 +53,7 @@ var WinConditions = [
 			sour:2,
 			spicy:2
 		},
-		effects: 'implosion',
+		effects: ['implosion'],
 		color: 'blue'
 	}
 
