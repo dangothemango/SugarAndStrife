@@ -25,10 +25,8 @@
     //MAIN VARIABLES
     var tmpItem;
     var style = { font: "65px Arial", fill:"ffffff", align: "center"};
-    var bookStyle = style;
-    bookStyle.wordWrap=true;
-    bookStyle.wordWrapWidth=1334/8*3;
-    bookStyle.align='left';
+    var bookStyle = { font: "65px Arial", fill:"ffffff", align: "center", wordWrap: true, align:'left',
+                        wordWrapWidth:1334/64*21};
 
     //PLAY STATE VARIABLES
     var group;
@@ -130,6 +128,7 @@
 
     function add_item(item) {
         //max 16 ingredients on each shelf
+        Ingredients[item].known.name=true;
         if (items_left.length < 16) {
             items_left.push(item);
         }

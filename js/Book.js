@@ -34,12 +34,12 @@ var Book = {
 				//Add sprite to book
 				console.log( Ingredients[ingItr].name);
 				spriteQ = game.add.sprite(0,0,'items',ingItr);
-				spriteQ.anchor.set(.5,.25);
+				spriteQ.anchor.set(.5,0);
 			} else {
 				//Add '?' to book
 				spriteQ = game.add.sprite(0,0,'notFound');
-				spriteQ.scale.set(.6,.6);
-				spriteQ.anchor.set(.5,-.3);
+				spriteQ.scale.set(.8,.8);
+				spriteQ.anchor.set(.5,-.2);
 			}
 			Book.spriteGroup.add(spriteQ);
 			for (var attrib in Ingredients[ingItr].known){

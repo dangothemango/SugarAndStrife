@@ -2,7 +2,7 @@
 var Ingredients = {
 	chocolate: {
 		known: {
-			name: true,
+			name: false,
 			color: false,
 			flavor: false,
 			effects: false
