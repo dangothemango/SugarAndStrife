@@ -74,7 +74,7 @@ var PlayState = {
 		group.inputEnableChildren = true;
 
 		//load from atlas file; sprite name|frameName
-		group.createMultiple(1, 'items', items_left, true);
+		group.createMultiple(1,'items', items_left, true);
 		//resize all sprites
 		group.forEach(function(sprite) {sprite.scale.set(0.5,0.5)});
 		//if touched, allow drag
@@ -93,6 +93,7 @@ var PlayState = {
 		var startButton = game.add.button(100, game.world.height - 100, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Up');
 		startButton.width = 100;
 		startButton.height = 50;
+
 	},
 
 	update: function() {
@@ -505,6 +506,12 @@ var PlayState = {
 		        }
 
 		        console.log("REACTION BETWEEN " + item.frameName + " AND " + reactant);
+		        var r1 = game.add.sprite(1068, 315, 'items', item.frameName);
+		        var r2 = game.add.sprite(1168, 315, 'items', reactant);
+		        r1.scale.set(0.4, 0.4);
+		        r2.scale.set(0.4, 0.4);
+
+		        game.time.events.add(Phaser.Timer.SECOND*1.5, function (image){ PlayState.delete_reaction_sprites(r1, r2)}, this);
 		    }
 
 	        ////////// DEBUG PRINT
@@ -526,6 +533,11 @@ var PlayState = {
 
 		item.destroy();
 		dragged_item = null;
+	},
+
+	delete_reaction_sprites: function (sprite1, sprite2) {
+	    sprite1.destroy();
+	    sprite2.destroy();
 	},
 
 	erase_all: function () {
