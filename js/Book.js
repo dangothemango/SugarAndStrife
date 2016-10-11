@@ -18,6 +18,7 @@ var Book = {
 			Book.background.events.onInputDown.add(Book.handleInput,game);
 		} else {
 			Book.background.revive();
+			Book.background.bringToTop();
 		}
 		if (bookPages != null){
 			bookPages.destroy(true,false);
