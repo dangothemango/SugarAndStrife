@@ -9,12 +9,25 @@ var PlayState = {
 		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
 		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
 		game.load.image('bookScreen','assets/images/book_open_resized.png');
-		//game.load.script('Ingredients', 'assets/ingredients.js');
+		
+		//sound
+		game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
+		game.load.audio('dm_soundeffect', 'assets/sounds/addDarkmatter.wav');
+		game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
+		game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
+		game.load.audio('solid_soundeffect', 'assets/sounds/addSolid.wav');
 	},
 
 	create: function () {
 
 	    PlayState.reset_all();
+
+	    PlayState.winState(1);
+	    PlayState.winState(2);
+	    PlayState.winState(3);
+	    PlayState.winState(4);
+	    PlayState.winState(5);
+ 	    PlayState.winState(6);
 
 	    PlayState.unlock_items(1);
 	    PlayState.unlock_items(2);
@@ -34,10 +47,16 @@ var PlayState = {
 		/////////////////////
 
 		game.add.sprite(0,0, 'bg');
-		//  This is just a visual debug grid, it's not needed for the actual Group.align to work
-		//game.add.sprite(cornerX, cornerY, game.create.grid('grid', itemwidth * shelfwidth, itemheight * shelfheight, itemwidth, itemheight, 'rgba(0, 250, 0, 1)'));
-        
-
+		bgm = game.add.audio('bgm');
+		bgm.play();
+		
+		//soundfx
+		dm_soundeffect = game.add.audio('dm_soundeffect');
+		liquid_soundeffect = game.add.audio('liquid_soundeffect');
+		powder_soundeffect = game.add.audio('powder_soundeffect');
+		solid_soundeffect = game.add.audio('solid_soundeffect');
+		
+		
 		square = game.add.sprite(1165, 498, 'square');
 		square.anchor.set(0.5);
 		square.width = 220;
@@ -93,7 +112,7 @@ var PlayState = {
 	        PlayState.dropHandler(dragged_item);
 	    }
 
-	    if (ingredientsInCauldron.length == 0) {
+	    if (totalIngred == 0) {
 	        square.tint = PlayState.hexFromArray([85, 76, 91]);
 	    }
 	    else {
@@ -116,6 +135,7 @@ var PlayState = {
 	    totalIngred = 0;
 	    winCondition = 0;
 	    shelf_index = 0;
+	    dirty = false;
 	},
 
     // let's be pretty generous with this hit detection
@@ -244,8 +264,8 @@ var PlayState = {
 
             ///////// FLAVOR
 
-            // if the item has a flavor
-	        if (currentIngredient.flavor != 'flavorless') {
+            // if the item has a flavor and there's no dirt in the cauldron
+	        if (currentIngredient.flavor != 'flavorless' && !dirty) {
                 // put it in the list
 	            flavorList.push(currentIngredient.flavor);
 
@@ -259,7 +279,7 @@ var PlayState = {
 
 	        ///////// COLOR
 
-	        if (!(currentIngredient.prettycolor == 'Colorless' || currentIngredient.prettycolor == 'Sparkly')) {
+	        if (!(currentIngredient.prettycolor == 'Colorless' || currentIngredient.prettycolor == 'Sparkly') && !dirty) {
 	            currentColor[0] = Math.round((currentIngredient.color[0] + currentColor[0] * numCol) / (numCol + 1));
 	            currentColor[1] = Math.round((currentIngredient.color[1] + currentColor[1] * numCol) / (numCol + 1));
 	            currentColor[2] = Math.round((currentIngredient.color[2] + currentColor[2] * numCol) / (numCol + 1));
@@ -289,20 +309,205 @@ var PlayState = {
 	        ////////// SPECIAL ITEMS
 
 	        if (item.frameName == 'bleach') {
+		    
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
 	        if (item.frameName == 'dark_matter') {
-	            ingredientsInCauldron = [];
-	            flavorList = [];
-	            effects = [];
-	            currentColor = [255, 255, 255];
-	            numCol = 0;
-	            totalIngred = 0;
+
+		        dm_soundeffect.play();
+		        PlayState.erase_all();
+	        }
+
+	        if (item.frameName == 'dirt') {
+
+	            dirty = true;
+	            flavorList = ['dirt', 'dirt', 'dirt', 'dirt', 'dirt'];
+	            currentColor = currentIngredient.color;
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
+
+		    //sound effects for specific items
+
+		    if (item.frameName == 'bone_marrow' || item.frameName == 'caviar' || item.frameName == 'chocolate' || 
+		        item.frameName == 'demon_flesh' ||  item.frameName == 'eye_of_newt' || item.frameName == 'frog_legs' 
+		        || item.frameName == 'ghost_pepper' || item.frameName == 'insect_parts' || item.frameName == 'lemons' 
+		        || item.frameName == 'leopard_spots' || item.frameName == 'lizard_eggs' || item.frameName == 'mandrake' 
+		        || item.frameName == 'pufferfish' || item.frameName == 'tentacles' || item.frameName == 'toadstool') {
+
+			    solid_soundeffect.play();
+		    }
+
+		    if (item.frameName == 'bleach' || item.frameName == 'blood' || item.frameName == 'cyanide' || 
+		        item.frameName == 'liquid_smoke' || item.frameName == 'slime' || item.frameName == 'snake_venom' 
+		        || item.frameName == 'squid_ink' || item.frameName == 'mercury') {
+			    liquid_soundeffect.play();
+		    }
+
+		    if (item.frameName == 'fairy_wings' || item.frameName == 'nightshade' || item.frameName == 'dirt') {
+			    powder_soundeffect.play();
+		    }
+		    
+	        ////////// REACTIONS
+
+		    var reactant; // the other ingredient in the reaction
+		    var has_reaction = false;
+		    var ingredient_index;
+
+
+		    if (item.frameName == 'cyanide') {
+
+		        if (ingredientsInCauldron.indexOf('nightshade') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('nightshade')]);
+		            has_reaction = true;
+
+		            // add mind control
+		            PlayState.add_mind_control();
+		        }
+
+		    }
+		    else if (item.frameName == 'demon_flesh') {
+
+		        if (ingredientsInCauldron.indexOf('fairy_wings') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('fairy_wings')]);
+		            has_reaction = true;
+
+		            // erase contents of cauldron
+		            PlayState.erase_all();
+		        }
+		        else if (ingredientsInCauldron.indexOf('lemons') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
+		        }
+
+		    }
+		    else if (item.frameName == 'fairy_wings') {
+
+		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('demon_flesh')]);
+		            has_reaction = true;
+
+		            // erase contents of cauldron
+		            PlayState.erase_all();
+		        }
+
+		    }
+		    else if (item.frameName == 'nightshade') {
+
+		        if (ingredientsInCauldron.indexOf('cyanide') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('cyanide')]);
+		            has_reaction = true;
+
+		            // add mind control
+		            PlayState.add_mind_control();
+		        }
+
+		    }
+		    else if (item.frameName == 'ghost_pepper') {
+
+		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
+		        }
+
+		    }
+		    else if (item.frameName == 'lemons') {
+
+		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('demon_flesh')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
+		        }
+		        else if (ingredientsInCauldron.indexOf('ghost_pepper') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('ghost_pepper')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
+		        }
+		        else if (ingredientsInCauldron.indexOf('liquid_smoke') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('liquid_smoke')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
+		        }
+		    }
+		    else if (item.frameName == 'liquid_smoke') {
+
+		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            has_reaction = true;
+
+		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
+		        }
+
+		    }
+		    else if (item.frameName == 'snake_venom') {
+
+		        if (ingredientsInCauldron.indexOf('squid_ink') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('squid_ink')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		            PlayState.remove_tentacles();
+		        }
+		        else if (ingredientsInCauldron.indexOf('tentacles') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('tentacles')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		            PlayState.remove_tentacles();
+		        }
+
+		    }
+		    else if (item.frameName == 'squid_ink') {
+
+		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('snake_venom')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		            PlayState.remove_tentacles();
+		        }
+
+		    }
+		    else if (item.frameName == 'tentacles') {
+
+		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
+		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('snake_venom')]);
+		            has_reaction = true;
+
+		            // remove tentacles effect
+		            PlayState.remove_tentacles();
+		        }
+
+		    }
+
+
+		    if (has_reaction) {
+		        // stop tracking both of the ingredients so we don't get the same effect again
+		        // note that the reaction might have erased everything already
+		        if (ingredientsInCauldron.length > 0) {
+                    ingredientsInCauldron.splice(ingredient_index, 1);
+                    ingredientsInCauldron.splice(ingredientsInCauldron.length - 1, 1);
+		        }
+
+		        console.log("REACTION BETWEEN " + currentIngredient.name + " AND " + reactant.name);
+		    }
+
+	        ////////// DEBUG PRINT
 
 	        console.log('-------------');
 	        console.log("mixture is now "+PlayState.colorStringFromArray(currentColor));
@@ -317,14 +522,47 @@ var PlayState = {
 	            console.log(' - '+effects[i]);
 	        }
 	        console.log('-----');
-
-			
-			//deal with mixing effects
-
 	    }
 
 		item.destroy();
 		dragged_item = null;
+	},
+
+	erase_all: function () {
+	    ingredientsInCauldron = [];
+	    flavorList = [];
+	    effects = [];
+	    currentColor = [255, 255, 255];
+	    numCol = 0;
+	    totalIngred = 0;
+	    dirty = false;
+	    square.tint = PlayState.hexFromArray(currentColor);
+	},
+
+	add_mind_control: function () {
+	    var mind_index = effects.indexOf('mind_control');
+
+	    if (mind_index == -1) {
+	        effects.push('mind_control');
+	    }
+	},
+
+	remove_imp_exp: function () {
+	    var imp_index = effects.indexOf('implosion');
+	    var exp_index = effects.indexOf('explosive');
+
+	    if (imp_index != -1 && exp_index != -1) {
+	        effects.splice(imp_index, 1);
+	        effects.splice(exp_index, 1);
+	    }
+	},
+
+	remove_tentacles: function () {
+	    var tent_index = effects.indexOf('tentacles');
+
+	    if (tent_index != -1) {
+	        effects.splice(tent_index, 1);
+	    }
 	},
 
 	rightpage: function () {
@@ -478,6 +716,27 @@ var PlayState = {
 	        default:
 	            return null;
 	    }
+	},
+
+	winState: function(level) {
+	// 	if (level == 1){
+	//         wincandy = brown, extremely bitter, poison
+	//     }
+	//     if (level == 2) {
+	//         wincandy = red, very spicy, explosive
+	//     }
+	//     if (level == 3) {
+	//         wincandy = blue, irresponsibly salty, tentacles
+	//     }
+	//     if (level == 4) {
+	//         wincandy = purple, very sweet, mind control
+	//     }
+	//     if (level == 5) {
+	//         wincandy = yellow, mildly savory, slime, not salty
+	//     }
+	//     if (level == 6) {
+	//        wincandy = blue, sour, spicy, implosion
+	//     }
 	},
 
 	checkWin: function(){

@@ -34,8 +34,7 @@
     var group;
     var cauldron;
     var text;
-    var attri = [0,0,0,' ',' ',0]; // keep track of levels of ingredients
-    var wincandy = [-4, -4, -4, 'bitter', 'poison', 4];
+    var wincandy = [];
     var ingredientsInCauldron = []; // an array of all of the ingredients currently in the cauldron
     var flavorList = []; // an array of all of the current flavors
     var effects = []; // an array of all of the current effects
@@ -47,7 +46,13 @@
     var ing;
     var bookPages;
     var shelf_index = 0;
-
+    var dirty = false; // does the cauldron have dirt in it
+    
+    var bgm;
+    var dm_soundeffect;
+    var liquid_soundeffect;
+    var powder_soundeffect;
+    var solid_soundeffect;
 
     var itemheight = 119.5; // height of an item slot in pixels
     var itemwidth = 207; // width of an item slot in pixels
