@@ -205,7 +205,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'sour',
 		effects: { type:'explosive', value: -1 },
-		prettyeffects: 'Explosive'
+		prettyeffects: 'Neutralizes Explosives'
 	},
 	
 	lemons: {

@@ -281,7 +281,7 @@ var PlayState = {
 
 
 	        ///////// COLOR
-
+			Ingredients[item.frameName].known.color=true;
 	        if (!(currentIngredient.prettycolor == 'Colorless' || currentIngredient.prettycolor == 'Sparkly') && !dirty) {
 	            currentColor[0] = Math.round((currentIngredient.color[0] + currentColor[0] * numCol) / (numCol + 1));
 	            currentColor[1] = Math.round((currentIngredient.color[1] + currentColor[1] * numCol) / (numCol + 1));
@@ -300,11 +300,14 @@ var PlayState = {
 	            if (effect_index == -1) {
 	                if (currentIngredient.effects.value == 1) {
 	                    effects.push(currentIngredient.effects.type);
+	                    Ingredients[item.frameName].known.effects=true;
 	                }
 	            }
 	            else {
 	                if (currentIngredient.effects.value == -1) {
-	                    effects.splice(effect_index, 1);
+	                    if (effects.splice(effect_index, 1) != null){
+	                    	Ingredients[item.frameName].known.effects=true;
+	                    }
 	                }
 	            }
 	        }
@@ -313,19 +316,20 @@ var PlayState = {
 
 	        if (item.frameName == 'bleach') {
 		    
+		    	Ingredients[item.frameName].known.effects=true;
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
 	            square.tint = PlayState.hexFromArray(currentColor);
 	        }
 
 	        if (item.frameName == 'dark_matter') {
-
+	        	Ingredients[item.frameName].known.effects=true;
 		        dm_soundeffect.play();
 		        PlayState.erase_all();
 	        }
 
 	        if (item.frameName == 'dirt') {
-
+	        	Ingredients[item.frameName].known.effects=true;
 	            dirty = true;
 	            flavorList = ['dirt', 'dirt', 'dirt', 'dirt', 'dirt'];
 	            currentColor = currentIngredient.color;
