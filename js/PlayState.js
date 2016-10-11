@@ -8,7 +8,7 @@ var PlayState = {
 		game.load.image('square', 'assets/images/square.png');
 		game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
 		game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
-		game.load.image('bookScreen','assets/images/book_open_resized.png');
+		game.load.image('bookScreen','assets/images/flat_book.png');
 		
 		//sound
 		game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
@@ -657,65 +657,7 @@ var PlayState = {
 	},
 
 	getIngredientFromName: function(name){
-
-	    switch (name) {
-            case 'chocolate':
-                return ing.chocolate;
-	        case 'blood':
-	            return ing.blood;
-	        case 'bone_marrow':
-	            return ing.bone_marrow;
-	        case 'bleach':
-	            return ing.bleach;
-	        case 'caviar':
-	            return ing.caviar;
-	        case 'cyanide':
-	            return ing.cyanide;
-	        case 'demon_flesh':
-	            return ing.demon_flesh;
-	        case 'eye_of_newt':
-	            return ing.eye_of_newt;
-	        case 'fairy_wings':
-	            return ing.fairy_wings;
-	        case 'frog_legs':
-	            return ing.frog_legs;
-	        case 'nightshade':
-	            return ing.nightshade;
-	        case 'ghost_pepper':
-	            return ing.ghost_pepper;
-	        case 'dirt':
-	            return ing.dirt;
-	        case 'insect_parts':
-	            return ing.insect_parts;
-	        case 'lemons':
-	            return ing.lemons;
-	        case 'leopard_spots':
-	            return ing.leopard_spots;
-	        case 'liquid_smoke':
-	            return ing.liquid_smoke;
-	        case 'lizard_eggs':
-	            return ing.lizard_eggs;
-	        case 'mandrake':
-	            return ing.mandrake;
-	        case 'quicksilver':
-	            return ing.quicksilver;
-	        case 'pufferfish':
-	            return ing.pufferfish;
-	        case 'slime':
-	            return ing.slime;
-	        case 'snake_venom':
-	            return ing.snake_venom;
-	        case 'squid_ink':
-	            return ing.squid_ink;
-	        case 'tentacles':
-	            return ing.tentacles;
-	        case 'toadstool':
-	            return ing.toadstool;
-	        case 'dark_matter':
-	            return ing.dark_matter;
-	        default:
-	            return null;
-	    }
+	    return ing[name];
 	},
 
 	winState: function(level) {
@@ -740,7 +682,7 @@ var PlayState = {
 	},
 
 	checkWin: function(){
-		for (var k=0; k < wincandy.length; k++) {
+		/*for (var k=0; k < wincandy.length; k++) {
 			if (attri[k] == wincandy[k]){
 				winCondition += 1;
 			}
@@ -759,6 +701,6 @@ var PlayState = {
 				+ '\n' + "is currently: " + attri
 			+  '\n' + "needs to be: " + wincandy;
 		    winCondition = 0;
-		}
+		}*/
 	}
 }
