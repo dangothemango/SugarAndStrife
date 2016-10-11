@@ -162,9 +162,13 @@ var PlayState = {
 
 	mouseOverBook: function () {
 	    var over = false;
-	    if (game.input.mousePointer.x > closedBook.x - (closedBook.width / 2)) {
+	    if (game.input.mousePointer.x > closedBook.x) {
 	        if (game.input.mousePointer.y > closedBook.y - (closedBook.height)) {
-	            return true;
+        		if (game.input.mousePointer.x < closedBook.x + (closedBook.width)) {
+       				if (game.input.mousePointer.y < closedBook.y + (closedBook.height)) {
+            			return true;
+            		}
+            	}
 	        }
 	    }
 	    return false;
