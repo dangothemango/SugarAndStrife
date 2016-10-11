@@ -12,6 +12,8 @@ var PlayState = {
         game.load.image('notFound','assets/images/notfoundicon.png');
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit.png',449,327,13);
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+
+        game.load.bitmapFont('corbel', 'assets/fonts/dimbo.png', 'assets/Corbel.woff');
         
         //sound
         game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
@@ -106,6 +108,14 @@ var PlayState = {
 		startButton.width = 100;
 		startButton.height = 50;
 
+
+        // TRACKING UI
+        //game.add.sprite(995,25, 'flavorlist');
+        flav1 = game.add.text(990, 26, '', uiStyle);
+        flav2 = game.add.text(990, 60, '', uiStyle);
+        flav3 = game.add.text(990, 94, '', uiStyle);
+        flav4 = game.add.text(990, 128, '', uiStyle);
+        flav5 = game.add.text(990, 162, '', uiStyle);
 	},
 
 	openBook: function(sprite, pointer){
@@ -137,6 +147,10 @@ var PlayState = {
 	    else {
 	        square.tint = PlayState.hexFromArray(currentColor);
 	    }
+
+
+
+	   
 	},
 	
 	render: function() {
@@ -156,6 +170,45 @@ var PlayState = {
 	    winCondition = 0;
 	    shelf_index = 0;
 	    dirty = false;
+	},
+
+	updateFlavorUI: function () {
+
+        if(flavorList.length>0) {
+	        flav5.text=flavorList[flavorList.length-1];
+	    }
+	    else {
+            flav5.text='';
+	    }
+
+        if(flavorList.length>1) {
+	        flav4.text=flavorList[flavorList.length-2];
+	    }
+
+	    else {
+            flav4.text='';
+	    }
+
+        if(flavorList.length>2) {
+	        flav3.text=flavorList[flavorList.length-3];
+	    }
+	    else {
+            flav3.text='';
+	    }
+
+        if(flavorList.length>3) {
+	        flav2.text=flavorList[flavorList.length-4];
+	    }
+	    else {
+            flav2.text='';
+	    }
+
+        if(flavorList.length>4) {
+	        flav1.text=flavorList[flavorList.length-5];
+	    }
+	    else {
+            flav1.text='';
+	    }
 	},
 
     // let's be pretty generous with this hit detection
@@ -563,6 +616,8 @@ var PlayState = {
 
 		        game.time.events.add(Phaser.Timer.SECOND*1.5, function (image){ PlayState.delete_reaction_sprites(r1, r2)}, this);
 		    }
+
+            PlayState.updateFlavorUI();
 
 	        ////////// DEBUG PRINT
 
