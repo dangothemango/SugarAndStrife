@@ -11,6 +11,7 @@ var PlayState = {
         game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
         game.load.image('notFound','assets/images/notfoundicon.png');
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit.png',449,327,13);
+        game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         
         //sound
         game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
@@ -29,9 +30,16 @@ var PlayState = {
 
 	    PlayState.reset_all();
 
-	    winState=WinConditions[this.levelNum];
-
-	    PlayState.unlock_items(this.levelNum);
+	    if (debug){
+	    	for (var i =0; i<=debugLevel; i++){
+	    		PlayState.unlock_items(i);
+	    	}
+	    	winState=WinConditions[debugLevel];
+	    } else{
+    	    winState=WinConditions[this.levelNum];
+    
+    	    PlayState.unlock_items(this.levelNum);
+    	}
 
 	    console.log("Play State");
 
@@ -707,6 +715,19 @@ var PlayState = {
 
 	getIngredientFromName: function(name){
 	    return ing[name];
+	},
+
+	generateCandy: function(){
+		/*
+
+	    flavorList = [];
+	    effects = [];
+	    currentColor = [255, 255, 255];
+	    numCol = 0;
+	    totalIngred = 0;
+	    dirty = false;
+	    square.tint = PlayState.hexFromArray(currentColor);*/
+	    FinalCandy.createSprite(effects,currentColor);
 	},
 
 	checkWin: function(){
