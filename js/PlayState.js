@@ -35,7 +35,7 @@ var PlayState = {
 	    PlayState.unlock_items(3);
 	    PlayState.unlock_items(4);
 	    PlayState.unlock_items(5);
-	    PlayState.unlock_items(6);
+	    //PlayState.unlock_items(6);
 
 	    console.log("Play State");
 
