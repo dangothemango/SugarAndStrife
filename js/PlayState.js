@@ -11,7 +11,7 @@ var PlayState = {
         game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
         game.load.image('notFound','assets/images/notfoundicon.png');
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit.png',449,327,13);
-        game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candy`sheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
         game.load.bitmapFont('corbel', 'assets/Corbel.woff');
         
