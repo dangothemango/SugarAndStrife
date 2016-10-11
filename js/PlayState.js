@@ -318,14 +318,7 @@ var PlayState = {
 	        if (item.frameName == 'dark_matter') {
 
 		        dm_soundeffect.play();
-		        ingredientsInCauldron = [];
-	            flavorList = [];
-	            effects = [];
-	            currentColor = [255, 255, 255];
-	            numCol = 0;
-	            totalIngred = 0;
-	            dirty = false;
-	            square.tint = PlayState.hexFromArray(currentColor);
+		        PlayState.erase_all();
 	        }
 
 	        if (item.frameName == 'dirt') {
@@ -370,7 +363,8 @@ var PlayState = {
 		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('nightshade')]);
 		            has_reaction = true;
 
-                    // add mind control
+		            // add mind control
+		            PlayState.add_mind_control();
 		        }
 
 		    }
@@ -380,13 +374,15 @@ var PlayState = {
 		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('fairy_wings')]);
 		            has_reaction = true;
 
-                    // erase contents of cauldron
+		            // erase contents of cauldron
+		            PlayState.erase_all();
 		        }
 		        else if (ingredientsInCauldron.indexOf('lemons') != -1) {
 		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
 		            has_reaction = true;
 
-                    // remove implosion and explosion effects
+		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
 		        }
 
 		    }
@@ -397,6 +393,7 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // erase contents of cauldron
+		            PlayState.erase_all();
 		        }
 
 		    }
@@ -407,6 +404,7 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // add mind control
+		            PlayState.add_mind_control();
 		        }
 
 		    }
@@ -417,6 +415,7 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
 		        }
 
 		    }
@@ -427,18 +426,21 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
 		        }
 		        else if (ingredientsInCauldron.indexOf('ghost_pepper') != -1) {
 		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('ghost_pepper')]);
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
 		        }
 		        else if (ingredientsInCauldron.indexOf('liquid_smoke') != -1) {
 		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('liquid_smoke')]);
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
 		        }
 		    }
 		    else if (item.frameName == 'liquid_smoke') {
@@ -448,6 +450,7 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
+		            PlayState.remove_imp_exp();
 		        }
 
 		    }
@@ -458,12 +461,14 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // remove tentacles effect
+		            PlayState.remove_tentacles();
 		        }
 		        else if (ingredientsInCauldron.indexOf('tentacles') != -1) {
 		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('tentacles')]);
 		            has_reaction = true;
 
 		            // remove tentacles effect
+		            PlayState.remove_tentacles();
 		        }
 
 		    }
@@ -474,6 +479,7 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // remove tentacles effect
+		            PlayState.remove_tentacles();
 		        }
 
 		    }
@@ -484,6 +490,7 @@ var PlayState = {
 		            has_reaction = true;
 
 		            // remove tentacles effect
+		            PlayState.remove_tentacles();
 		        }
 
 		    }
@@ -519,6 +526,43 @@ var PlayState = {
 
 		item.destroy();
 		dragged_item = null;
+	},
+
+	erase_all: function () {
+	    ingredientsInCauldron = [];
+	    flavorList = [];
+	    effects = [];
+	    currentColor = [255, 255, 255];
+	    numCol = 0;
+	    totalIngred = 0;
+	    dirty = false;
+	    square.tint = PlayState.hexFromArray(currentColor);
+	},
+
+	add_mind_control: function () {
+	    var mind_index = effects.indexOf('mind_control');
+
+	    if (mind_index == -1) {
+	        effects.push('mind_control');
+	    }
+	},
+
+	remove_imp_exp: function () {
+	    var imp_index = effects.indexOf('implosion');
+	    var exp_index = effects.indexOf('explosive');
+
+	    if (imp_index != -1 && exp_index != -1) {
+	        effects.splice(imp_index, 1);
+	        effects.splice(exp_index, 1);
+	    }
+	},
+
+	remove_tentacles: function () {
+	    var tent_index = effects.indexOf('tentacles');
+
+	    if (tent_index != -1) {
+	        effects.splice(tent_index, 1);
+	    }
 	},
 
 	rightpage: function () {
