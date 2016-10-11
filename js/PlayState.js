@@ -262,9 +262,9 @@ var PlayState = {
 	        ///////// COLOR
 			Ingredients[item.frameName].known.color=true;
 	        if (!(currentIngredient.prettycolor === 'Colorless' || currentIngredient.prettycolor === 'Sparkly') && !dirty) {
-	            currentColor[0] = Math.round((currentIngredient.color[0] + currentColor[0] * numCol) / (numCol + 1));
-	            currentColor[1] = Math.round((currentIngredient.color[1] + currentColor[1] * numCol) / (numCol + 1));
-	            currentColor[2] = Math.round((currentIngredient.color[2] + currentColor[2] * numCol) / (numCol + 1));
+	            currentColor[0] = Math.round((currentIngredient.color[0]*2 + currentColor[0] * numCol) / (numCol + 2));
+	            currentColor[1] = Math.round((currentIngredient.color[1]*2 + currentColor[1] * numCol) / (numCol + 2));
+	            currentColor[2] = Math.round((currentIngredient.color[2]*2 + currentColor[2] * numCol) / (numCol + 2));
 	            numCol++;
 
 	            square.tint = PlayState.hexFromArray(currentColor);
@@ -487,6 +487,8 @@ var PlayState = {
 		        // stop tracking both of the ingredients so we don't get the same effect again
 		        // note that the reaction might have erased everything already
 		        if (ingredientsInCauldron.length > 0) {
+		            ingredient_index = ingredientsInCauldron.indexOf(reactant);
+
                     ingredientsInCauldron.splice(ingredient_index, 1);
                     ingredientsInCauldron.splice(ingredientsInCauldron.length - 1, 1);
 		        }

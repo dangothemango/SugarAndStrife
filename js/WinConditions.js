@@ -1,5 +1,5 @@
 
-var winConditions = [
+var WinConditions = [
 	
 	//Level 1
 	{
