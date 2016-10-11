@@ -1,7 +1,23 @@
 var PlayState = {
 
 	preload: function(){
-		
+		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
+        game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+        game.load.image('cauldron', 'assets/images/cauldron alt.png');
+        game.load.image('bg', 'assets/images/background vector.png');
+        game.load.image('square', 'assets/images/square.png');
+        game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
+        game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
+        game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
+        game.load.image('notFound','assets/images/notfoundicon.png');
+        
+        //sound
+        game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
+        game.load.audio('dm_soundeffect', 'assets/sounds/addDarkmatter.wav');
+        game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
+        game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
+        game.load.audio('solid_soundeffect', 'assets/sounds/addSolid.wav');
+    
 	},
 
 	winState: null,
@@ -12,9 +28,9 @@ var PlayState = {
 
 	    PlayState.reset_all();
 
-	    winState=WinConditions[levelNum];
+	    winState=WinConditions[this.levelNum];
 
-	    PlayState.unlock_items(levelNum);
+	    PlayState.unlock_items(this.levelNum);
 
 	    console.log("Play State");
 
@@ -661,25 +677,45 @@ var PlayState = {
 	},
 
 	checkWin: function(){
-		/*for (var k=0; k < wincandy.length; k++) {
-			if (attri[k] === wincandy[k]){
-				winCondition += 1;
+		/*
+
+	    flavorList = [];
+	    effects = [];
+	    currentColor = [255, 255, 255];
+	    numCol = 0;
+	    totalIngred = 0;
+	    dirty = false;
+	    square.tint = PlayState.hexFromArray(currentColor);*/
+	    var winChecker
+	    for (winChecker in winState.flavors){
+	    	if (!winState.flavors.hasOwnProperty(winChecker)) {continue;}
+	    	if (countItems(flavorList,winChecker) !==winState.flavors[winChecker]){
+	    		return false;
+	    	}
+	    }
+	    winChecker=effects.slice();
+	    for (var iC =0; iC<winState.effects.length; iC++){
+	        if (winChecker.splice(winState.effects[iC], 1) == null){
+            	return false;
+            }
+	    }
+	    if (winChecker.length!==0){
+	    	return false;
+	    }
+	    winChecker=colorStringFromArray(currentColor);
+	    if (winChecker!==winState.color){
+	    	return false;
+	    }
+	    return true;
+	},
+
+	countItems: function(array,item){
+		iCount=0;
+		for (var iC =0; iC<array.length; i++){
+			if (array[iC] === item){
+				iCount++;
 			}
 		}
-
-		if (winCondition === 6) {
-			text.text = winCondition + ' YOU WINNN!!!!!!!!!!!'
-				+ '\n' + "is currently: " + attri
-			+  '\n' + "needs to be: " + wincandy;
-		}
-		else
-		{
-			//if submitting wrong candy
-
-			text.text = winCondition + ' NOT QUITE YET!'
-				+ '\n' + "is currently: " + attri
-			+  '\n' + "needs to be: " + wincandy;
-		    winCondition = 0;
-		}*/
+		return iCount;
 	}
 }
