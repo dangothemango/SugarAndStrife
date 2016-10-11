@@ -10,6 +10,7 @@ var PlayState = {
         game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
         game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
         game.load.image('notFound','assets/images/notfoundicon.png');
+        game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit.png',449,327,13);
         
         //sound
         game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
@@ -62,6 +63,13 @@ var PlayState = {
 		cauldron.anchor.set(0.5);
 		cauldron.width = 325;
 		cauldron.height = 325;
+
+		closedBook = game.add.sprite(1334/2+50,525, 'bookNoShit');
+		closedBook.scale.set(.5,.5);
+		closedBook.animations.frame=8;
+		closedBook.inputEnabled=true;
+		closedBook.events.onInputDown.add(PlayState.openBook,game);
+		closedBook.animations.add('idle',[9,10,11,12,0,1,2,3,4,5,6,7,8]);
 		
 		//group of sprites/items
 		group = game.add.group();
@@ -92,12 +100,22 @@ var PlayState = {
 
 	},
 
+	openBook: function(sprite, pointer){
+		Book.open(0);
+	},
+
 	update: function() {
 	    /*if pressed submit button | one time thing 
 		currently pressing 1 checks win conditions */
 	    var help = game.input.keyboard.addKey(Phaser.Keyboard.ONE)
 	    help.onDown.add(this.checkWin);
 	    //if (Book.isOpen && game.inpu)
+
+	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
+
+	    } else if (rand.weightedPick([false,false,false,false,false,true])){
+			closedBook.animations.play('idle',15,false);
+	    }
 
 
 	    if (dragged_item != null) {

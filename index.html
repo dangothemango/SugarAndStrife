@@ -24,6 +24,7 @@
     var game = new Phaser.Game(1334, 750, Phaser.AUTO, '', { preload: preload, create: create, update: update});
 
     //MAIN VARIABLES
+    var rand=new Phaser.RandomDataGenerator();
     var tmpItem;
     var style = { font: "65px Arial", fill:"ffffff", align: "center"};
     var bookStyle = { font: "65px Arial", fill:"ffffff", align: "center", wordWrap: true, align:'left',
@@ -32,6 +33,7 @@
     //PLAY STATE VARIABLES
     var group;
     var cauldron;
+    var closedBook;
     var text;
     var wincandy = [];
     var ingredientsInCauldron = []; // an array of all of the ingredients currently in the cauldron
