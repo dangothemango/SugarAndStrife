@@ -270,6 +270,7 @@ var PlayState = {
 	        if (currentIngredient.flavor != 'flavorless' && !dirty) {
                 // put it in the list
 	            flavorList.push(currentIngredient.flavor);
+	            Ingredients[item.frameName].known.flavor=true;
 
                 // if we have more than 5 flavors
 	            if (flavorList.length > 5) {
