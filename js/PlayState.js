@@ -75,7 +75,7 @@ var PlayState = {
 		group.inputEnableChildren = true;
 
 		//load from atlas file; sprite name|frameName
-		group.createMultiple(1, 'items', items_left, true);
+		group.createMultiple(1,'items', items_left, true);
 		//resize all sprites
 		group.forEach(function(sprite) {sprite.scale.set(0.5,0.5)});
 		//if touched, allow drag
@@ -94,6 +94,7 @@ var PlayState = {
 		var startButton = game.add.button(100, game.world.height - 100, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Up');
 		startButton.width = 100;
 		startButton.height = 50;
+
 	},
 
 	update: function() {
@@ -361,7 +362,7 @@ var PlayState = {
 		    if (item.frameName == 'cyanide') {
 
 		        if (ingredientsInCauldron.indexOf('nightshade') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('nightshade')]);
+		            reactant = 'nightshade';
 		            has_reaction = true;
 
 		            // add mind control
@@ -372,14 +373,14 @@ var PlayState = {
 		    else if (item.frameName == 'demon_flesh') {
 
 		        if (ingredientsInCauldron.indexOf('fairy_wings') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('fairy_wings')]);
+		            reactant = 'fairy_wings';
 		            has_reaction = true;
 
 		            // erase contents of cauldron
 		            PlayState.erase_all();
 		        }
 		        else if (ingredientsInCauldron.indexOf('lemons') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            reactant = 'lemons';
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
@@ -390,7 +391,7 @@ var PlayState = {
 		    else if (item.frameName == 'fairy_wings') {
 
 		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('demon_flesh')]);
+		            reactant = 'demon_flesh';
 		            has_reaction = true;
 
 		            // erase contents of cauldron
@@ -401,7 +402,7 @@ var PlayState = {
 		    else if (item.frameName == 'nightshade') {
 
 		        if (ingredientsInCauldron.indexOf('cyanide') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('cyanide')]);
+		            reactant = 'cyanide';
 		            has_reaction = true;
 
 		            // add mind control
@@ -412,7 +413,7 @@ var PlayState = {
 		    else if (item.frameName == 'ghost_pepper') {
 
 		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            reactant = 'lemons';
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
@@ -423,21 +424,21 @@ var PlayState = {
 		    else if (item.frameName == 'lemons') {
 
 		        if (ingredientsInCauldron.indexOf('demon_flesh') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('demon_flesh')]);
+		            reactant = 'demon_flesh';
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
 		            PlayState.remove_imp_exp();
 		        }
 		        else if (ingredientsInCauldron.indexOf('ghost_pepper') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('ghost_pepper')]);
+		            reactant = 'ghost_pepper';
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
 		            PlayState.remove_imp_exp();
 		        }
 		        else if (ingredientsInCauldron.indexOf('liquid_smoke') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('liquid_smoke')]);
+		            reactant = 'liquid_smoke';
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
@@ -447,7 +448,7 @@ var PlayState = {
 		    else if (item.frameName == 'liquid_smoke') {
 
 		        if (ingredientsInCauldron.indexOf('lemons') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('lemons')]);
+		            reactant = 'lemons';
 		            has_reaction = true;
 
 		            // remove implosion and explosion effects
@@ -458,14 +459,14 @@ var PlayState = {
 		    else if (item.frameName == 'snake_venom') {
 
 		        if (ingredientsInCauldron.indexOf('squid_ink') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('squid_ink')]);
+		            reactant = 'squid_ink';
 		            has_reaction = true;
 
 		            // remove tentacles effect
 		            PlayState.remove_tentacles();
 		        }
 		        else if (ingredientsInCauldron.indexOf('tentacles') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('tentacles')]);
+		            reactant ='tentacles';
 		            has_reaction = true;
 
 		            // remove tentacles effect
@@ -476,7 +477,7 @@ var PlayState = {
 		    else if (item.frameName == 'squid_ink') {
 
 		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('snake_venom')]);
+		            reactant = 'snake_venom';
 		            has_reaction = true;
 
 		            // remove tentacles effect
@@ -487,7 +488,7 @@ var PlayState = {
 		    else if (item.frameName == 'tentacles') {
 
 		        if (ingredientsInCauldron.indexOf('snake_venom') != -1) {
-		            reactant = PlayState.getIngredientFromName(ingredientsInCauldron[ingredientsInCauldron.indexOf('snake_venom')]);
+		            reactant = 'snake_venom';
 		            has_reaction = true;
 
 		            // remove tentacles effect
@@ -505,7 +506,13 @@ var PlayState = {
                     ingredientsInCauldron.splice(ingredientsInCauldron.length - 1, 1);
 		        }
 
-		        console.log("REACTION BETWEEN " + currentIngredient.name + " AND " + reactant.name);
+		        console.log("REACTION BETWEEN " + item.frameName + " AND " + reactant);
+		        var r1 = game.add.sprite(1068, 315, 'items', item.frameName);
+		        var r2 = game.add.sprite(1168, 315, 'items', reactant);
+		        r1.scale.set(0.4, 0.4);
+		        r2.scale.set(0.4, 0.4);
+
+		        game.time.events.add(Phaser.Timer.SECOND*1.5, function (image){ PlayState.delete_reaction_sprites(r1, r2)}, this);
 		    }
 
 	        ////////// DEBUG PRINT
@@ -527,6 +534,11 @@ var PlayState = {
 
 		item.destroy();
 		dragged_item = null;
+	},
+
+	delete_reaction_sprites: function (sprite1, sprite2) {
+	    sprite1.destroy();
+	    sprite2.destroy();
 	},
 
 	erase_all: function () {
