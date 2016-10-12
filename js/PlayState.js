@@ -12,6 +12,7 @@ var PlayState = {
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit desaturated.png',449,327,13);
         game.load.spritesheet('bubbles','assets/images/bubbles.png',892,319,6);
         game.load.spritesheet('sploosh','assets/images/sploosh.png',907,461,7);
+        game.load.spritesheet('smoke','assets/images/smoke.png',418,513,7);
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
         //sound
@@ -83,7 +84,11 @@ var PlayState = {
         splash.scale.set(.24,.24);
 		splash.animations.add('idle',[0,1,2,3,4,5,6]);
         splash.animations.frame=6;
-        //splash.animations.play('idle',15,false);
+
+        smoke = game.add.sprite(960, 100, 'smoke');
+        //smoke.scale.set(.24,.24);
+		smoke.animations.add('idle',[0,1,2,3,4,5,6]);
+        smoke.animations.frame=6;
 		
 		//group of sprites/items
 		group = game.add.group();
@@ -180,6 +185,8 @@ var PlayState = {
 	    winCondition = 0;
 	    shelf_index = 0;
 	    dirty = false;
+        flavors_string = "";
+        effects_string = "";
 	},
 
     toTitleCase: function (str) {
@@ -762,7 +769,7 @@ var PlayState = {
 	        console.log('-----');
 
 	        if(playsmoke) {
-
+                smoke.animations.play('idle',15,false);
 	        }
 	        else {
 	            splash.animations.play('idle',15,false);
@@ -789,6 +796,8 @@ var PlayState = {
 	    dirty = false;
 	    bubble_surface.tint = PlayState.hexFromArray(currentColor);
         splash.tint = bubble_surface.tint;
+        flavors_string = "";
+        effects_string = "";
 	},
 
 	add_mind_control: function () {
