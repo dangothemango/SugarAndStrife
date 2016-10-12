@@ -143,12 +143,18 @@ var CutsceneContent=[
 		},
 		close:{
 			path: 'Act-4/4_2.png',
-			frames: 0,
+			frames: 4,
 			text: [
-
+				'It didn\'t take long for people to start lining up outside my stores.',
+				'I swear I saw some drool falling out of their mouths.',
+				'But I\'m sure the world won\'t mind a few hundred thousand mindless zombies.',
+				'My innovative phones are a household name and I suppose paying you out properly would be only fair.'
 			],
 			tCoords: [
-
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150}
 			]
 		}
 	},
