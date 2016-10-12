@@ -204,9 +204,7 @@
     //PLAY STATE FUNCTIONS
     function submitCandy() {
         if (totalIngred===0) return;
-        if (PlayState.checkWin()){
-            PlayState.generateCandy();
-        }
+        PlayState.generateCandy();
         //Book.open(0);
     }
 
