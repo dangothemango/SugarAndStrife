@@ -15,9 +15,12 @@ var MenuState = {
 		var startButton = game.add.button(game.world.centerX-155,game.world.centerY + 85,'startButton',startLevel,this,'Up', 'Static', 'Down', 'Static');
 		
 		startButton.scale.set(0.6,0.6);
-        bgm = game.add.audio('bgm');
-		bgm.play();
-        bgm.loopFull();
+        if (!music_playing){
+            bgm = game.add.audio('bgm');
+		    bgm.play();
+            bgm.loopFull();
+            music_playing = true;
+        }
 	},
 
 	update: function () {
