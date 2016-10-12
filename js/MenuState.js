@@ -11,10 +11,9 @@ var MenuState = {
 
 		console.log("Menu State");
 		bg = game.add.sprite(0,0, 'menubg');
-		var startButton = game.add.button(game.world.centerX-145,game.world.centerY + 85,'startButton',startLevel,this,'Static','Static','Down','Up');
+		var startButton = game.add.button(game.world.centerX-155,game.world.centerY + 85,'startButton',startLevel,this,'Static','Static','Down','Up');
 		
 		startButton.scale.set(0.6,0.6);
-		startButton.set.anchor(0.5);
 	},
 
 	update: function () {

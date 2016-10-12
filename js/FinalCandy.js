@@ -31,6 +31,7 @@ var FinalCandy= {
 		}
         
 		game.add.tween(FinalCandy.sprite.scale).to({ x: 1, y: 1}, 1250, Phaser.Easing.Quadratic.In, true, 0);
+		game.add.tween(bubble_surface).to({ alpha: 0 }, 1250, Phaser.Easing.Quadratic.In, true, 0).onComplete.add(PlayState.erase_all,game);
 		game.add.tween(FinalCandy.sprite).to({y:-250}, 2500, Phaser.Easing.Quadratic.In, true, 2750).onComplete.add(FinalCandy.animFinish,game);
 	},
 
