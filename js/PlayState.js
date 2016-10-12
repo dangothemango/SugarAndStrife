@@ -774,7 +774,7 @@ var PlayState = {
 	        console.log('-----');
 
 	        if(playsmoke) {
-                smoke.animations.play('idle',15,false);
+                smoke.animations.play('idle',12,false);=
 	        }
 	        else {
 	            splash.animations.play('idle',15,false);
