@@ -1,0 +1,7 @@
+3_1_1: Title Card
+3_1_2: I may be the CEO of Pear Products, but I知 not here to sell you on anything. That痴 just not what I知 about. But I do need your help. 
+
+3_1_3: I知 here to hire you to become somewhat of a...business associate. 
+3_1_4: You値l do what you do best and cook up something that値l...persuade the minds of consumers on buying the new and improved pear phone. Sales are down and we just won稚 settle for failure. 
+
+3_1_5: This shouldn't be too hard for someone who has managed to gain the attention of Pear Products.
