@@ -367,6 +367,10 @@ var PlayState = {
     // TODO: unhide properties for the book?
 	dropHandler: function(item, pointer) {
 
+		if (FinalCandy.sprite !=null){
+			FinalCandy.sprite.destroy();
+		}
+
 		if (PlayState.mouseOverBook()){
 			Book.open();
 			Book.findIngredient(Ingredients[item.frameName].name);
