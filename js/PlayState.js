@@ -17,7 +17,7 @@ var PlayState = {
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
         //sound
-        game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
+        game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.mp3');
         game.load.audio('dm_soundeffect', 'assets/sounds/addDarkmatter.wav');
         game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
         game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
@@ -117,7 +117,7 @@ var PlayState = {
 		}
 
 
-		var startButton = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Up');
+		var startButton = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Static');
 		startButton.width = 125;
 		startButton.height = 50;
 

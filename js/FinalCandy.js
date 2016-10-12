@@ -5,8 +5,11 @@ var FinalCandy= {
 
 	effectOrder: ['tentacles','explosive','implosion','mind_control','poison','slimification'],
 
+	correct: false,
+
 	createSprite: function(effects, currentColor, sparkly){
 		if (FinalCandy.sprite!=null)FinalCandy.sprite.destroy();
+		FinalCandy.correct=PlayState.checkWin();
         if (!dirty){
 		    FinalCandy.sprite=game.add.sprite(1165,515,'candy','base');
 		    FinalCandy.sprite.tint=PlayState.hexFromArray(currentColor);
@@ -38,7 +41,7 @@ var FinalCandy= {
 	animFinish:function(target,tween){
 		FinalCandy.sprite.destroy();
 		console.log('finish');
-		if (PlayState.checkWin()){
+		if (FinalCandy.correct){
 			PlayState.closingScene();
 		}
 	}
