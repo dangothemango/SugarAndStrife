@@ -11,6 +11,7 @@ var PlayState = {
         game.load.image('notFound','assets/images/notfoundicon.png');
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit desaturated.png',449,327,13);
         game.load.spritesheet('bubbles','assets/images/bubbles.png',892,319,6);
+        game.load.spritesheet('sploosh','assets/images/sploosh.png',907,461,7);
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
         //sound
@@ -77,6 +78,12 @@ var PlayState = {
         bubble_surface.scale.set(.19,.19);
 		bubble_surface.animations.add('idle',[0,1,2,3,4,5]);
         bubble_surface.animations.play('idle',15,true);
+
+        splash = game.add.sprite(1055, 400, 'sploosh');
+        splash.scale.set(.24,.24);
+		splash.animations.add('idle',[0,1,2,3,4,5,6]);
+        splash.animations.frame=6;
+        //splash.animations.play('idle',15,false);
 		
 		//group of sprites/items
 		group = game.add.group();
@@ -145,6 +152,7 @@ var PlayState = {
 	    else {
             bubble_surface.visible = true;
 	        bubble_surface.tint = PlayState.hexFromArray(currentColor);
+            splash.tint = bubble_surface.tint;
 	    }
 	   
         attributes.text = "";
@@ -378,6 +386,8 @@ var PlayState = {
 
 		//removes from group if mouse is over cauldron
 	    if (PlayState.mouseOverCauldron()) {
+
+            var playsmoke = false;
 	        totalIngred += 1;
 			//keep track of attributes
 			// adjust main candy accordingly
@@ -466,6 +476,7 @@ var PlayState = {
 	            numCol++;
 
 	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
+                splash.tint = bubble_surface.tint;
 	        } else if (currentIngredient.prettycolor === 'Sparkly'){
             	console.log('SPARJL');
             	sparkles=true;
@@ -494,17 +505,20 @@ var PlayState = {
 	        ////////// SPECIAL ITEMS
 
 	        if (item.frameName === 'bleach') {
-		    
-		    	Ingredients[item.frameName].known.effects=true;
-	            currentColor = [255, 255, 255];
-	            numCol = 0;
-	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
+	            if (!dirty){
+		    	        Ingredients[item.frameName].known.effects=true;
+	                currentColor = [255, 255, 255];
+	                numCol = 0;
+	                bubble_surface.tint = PlayState.hexFromArray(currentColor);
+	                splash.tint = bubble_surface.tint;
+	            }
 	        }
 
 	        if (item.frameName === 'dark_matter') {
 	        	Ingredients[item.frameName].known.effects=true;
 		        dm_soundeffect.play();
 		        PlayState.erase_all();
+                playsmoke = true;
 	        }
 
 	        if (item.frameName === 'dirt') {
@@ -514,6 +528,7 @@ var PlayState = {
 	            flavorList = ['dirt', 'dirt', 'dirt', 'dirt', 'dirt'];
 	            currentColor = currentIngredient.color;
 	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
+                splash.tint = bubble_surface.tint;
 	        }
 
 		    //sound effects for specific items
@@ -684,6 +699,7 @@ var PlayState = {
 
 
 		    if (has_reaction) {
+                playsmoke = true;
 		        // stop tracking both of the ingredients so we don't get the same effect again
 		        // note that the reaction might have erased everything already
 		        if (ingredientsInCauldron.length > 0) {
@@ -745,6 +761,12 @@ var PlayState = {
 	        }
 	        console.log('-----');
 
+	        if(playsmoke) {
+
+	        }
+	        else {
+	            splash.animations.play('idle',15,false);
+	        }
 	    }
 
 		item.destroy();
@@ -766,6 +788,7 @@ var PlayState = {
 	    totalIngred = 0;
 	    dirty = false;
 	    bubble_surface.tint = PlayState.hexFromArray(currentColor);
+        splash.tint = bubble_surface.tint;
 	},
 
 	add_mind_control: function () {
