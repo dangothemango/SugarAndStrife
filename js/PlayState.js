@@ -131,8 +131,8 @@ var PlayState = {
 
 
 	    if (dragged_item != null) {
-	        dragged_item.x = game.input.mousePointer.x - 70;
-	        dragged_item.y = game.input.mousePointer.y - 110;
+	        dragged_item.x = game.input.activePointer.x - 70;
+	        dragged_item.y = game.input.activePointer.y - 110;
 	    }
 
 	    if (game.input.activePointer.isUp && dragged_item != null) {
@@ -212,8 +212,8 @@ var PlayState = {
     // let's be pretty generous with this hit detection
 	mouseOverCauldron: function () {
 	    var over = false;
-	    if (game.input.mousePointer.x > cauldron.x - (cauldron.width / 2)) {
-	        if (game.input.mousePointer.y > cauldron.y - (cauldron.height)) {
+	    if (game.input.activePointer.x > cauldron.x - (cauldron.width / 2)) {
+	        if (game.input.activePointer.y > cauldron.y - (cauldron.height)) {
 	            return true;
 	        }
 	    }
@@ -222,10 +222,10 @@ var PlayState = {
 
 	mouseOverBook: function () {
 	    var over = false;
-	    if (game.input.mousePointer.x > closedBook.x) {
-	        if (game.input.mousePointer.y > closedBook.y - (closedBook.height)) {
-        		if (game.input.mousePointer.x < closedBook.x + (closedBook.width)) {
-       				if (game.input.mousePointer.y < closedBook.y + (closedBook.height)) {
+	    if (game.input.activePointer.x > closedBook.x) {
+	        if (game.input.activePointer.y > closedBook.y - (closedBook.height)) {
+        		if (game.input.activePointer.x < closedBook.x + (closedBook.width)) {
+       				if (game.input.activePointer.y < closedBook.y + (closedBook.height)) {
             			return true;
             		}
             	}
