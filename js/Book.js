@@ -32,36 +32,36 @@ var Book = {
         tmpGoalGroup.add(goaltext0);
 
         if (PlayState.levelNum === 0){
-            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Brown", bookStyle);
-            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Extremely Bitter", bookStyle);
-            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Poisonous Only", bookStyle);
+            var goaltext1 = new Phaser.Text(game, 0, 0, "   \u2022 Brown", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "   \u2022 Extremely Bitter", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "   \u2022 Poisonous Only", bookStyle);
 
             tmpGoalGroup.add(goaltext1);
             tmpGoalGroup.add(goaltext2);
             tmpGoalGroup.add(goaltext3);
         }
         else if (PlayState.levelNum === 1){
-            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Red", bookStyle);
-            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Very Spicy", bookStyle);
-            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Explosive Only", bookStyle);
+            var goaltext1 = new Phaser.Text(game, 0, 0, "   \u2022 Red", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "   \u2022 Very Spicy", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "   \u2022 Explosive Only", bookStyle);
 
             tmpGoalGroup.add(goaltext1);
             tmpGoalGroup.add(goaltext2);
             tmpGoalGroup.add(goaltext3);
         }
         else if (PlayState.levelNum === 2){
-            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Blue", bookStyle);
-            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Irresponsibly Salty", bookStyle);
-            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Tentacles Only", bookStyle);
+            var goaltext1 = new Phaser.Text(game, 0, 0, "   \u2022 Blue", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "   \u2022 Irresponsibly Salty", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "   \u2022 Tentacles Only", bookStyle);
 
             tmpGoalGroup.add(goaltext1);
             tmpGoalGroup.add(goaltext2);
             tmpGoalGroup.add(goaltext3);
         }
         else if (PlayState.levelNum === 3){
-            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Purple", bookStyle);
-            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Very Sweet", bookStyle);
-            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Mind Control Only", bookStyle);
+            var goaltext1 = new Phaser.Text(game, 0, 0, "   \u2022 Purple", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "   \u2022 Very Sweet", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "   \u2022 Mind Control Only", bookStyle);
 
             tmpGoalGroup.add(goaltext1);
             tmpGoalGroup.add(goaltext2);
@@ -79,10 +79,10 @@ var Book = {
             tmpGoalGroup.add(goaltext4);
         }
         else if (PlayState.levelNum === 5){
-            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Blue", bookStyle);
-            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Reasonably Sour", bookStyle);
-            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Reasonably Spicy", bookStyle);
-            var goaltext4 = new Phaser.Text(game, 0, 0, "      \u2022 Implosion Only", bookStyle);
+            var goaltext1 = new Phaser.Text(game, 0, 0, "   \u2022 Blue", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "   \u2022 Reasonably Sour", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "   \u2022 Reasonably Spicy", bookStyle);
+            var goaltext4 = new Phaser.Text(game, 0, 0, "   \u2022 Implosion Only", bookStyle);
 
             tmpGoalGroup.add(goaltext1);
             tmpGoalGroup.add(goaltext2);
@@ -124,12 +124,12 @@ var Book = {
                         var bookText = new Phaser.Text(game, 0, 0, PlayState.toTitleCase(Ingredients[ingItr][ingBookKey]), bookTitle);
 					}
                     else {
-					    var bookText = new Phaser.Text(game, 0, 0, '      \u2022 ' + PlayState.toTitleCase(Ingredients[ingItr][ingBookKey]), bookStyle);
+					    var bookText = new Phaser.Text(game, 0, 0, '   \u2022 ' + PlayState.toTitleCase(Ingredients[ingItr][ingBookKey]), bookStyle);
                     }
 				} else if (attrib==='effects' && Ingredients[ingItr][attrib].type==='none'){
 					var bookText = new Phaser.Text(game, 0, 0, '', bookStyle);
 				} else {
-				    var bookText = new Phaser.Text(game, 0, 0, '      \u2022 ???????', bookStyle);
+				    var bookText = new Phaser.Text(game, 0, 0, '   \u2022 ???????', bookStyle);
 				}
 				tmpIngGroup.add(bookText);
 			}
