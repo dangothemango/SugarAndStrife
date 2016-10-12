@@ -167,7 +167,7 @@ var Book = {
 			pageContent.forEach(Book.textRevive,this,false);
 			pageContent.x=game.world.width/8*(1+4*pageItr) - 40;
 			pageContent.y=260;
-			pageContent.align(1,4,-1,70,Phaser.TOP_LEFT);
+			pageContent.align(1,5,0,70,Phaser.TOP_LEFT);
 			var spriteQ=Book.spriteGroup.getAt(Book.curPage*2+pageItr);
 			spriteQ.revive();
 			spriteQ.x=game.world.width/4*(1+2*pageItr);
