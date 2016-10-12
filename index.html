@@ -45,13 +45,13 @@
     var closedBook;
     var text;
     var wincandy = [];
-    var ingredientsInCauldron = []; // an array of all of the ingredients currently in the cauldron
+    var ingredientsInCauldron = []; // an array of all of the ingredients currently in the cauldron (does not include ingredients that have reacted)
     var flavorList = []; // an array of all of the current flavors
     var effects = []; // an array of all of the current effects
     var sparkles=false;
     var currentColor = [0, 0, 0];
     var numCol = 0; // number of colored ingredients currently in the cauldron
-    var totalIngred = 0;
+    var totalIngred = 0; // total number of ingredients currently in cauldron
     var crabCount;
     var winCondition = 0;
     var ing;
@@ -95,6 +95,7 @@
 
     var dragged_item = null;
     var music_playing = false;
+    var pickup_soundeffect;
 
     //CUTSCENE VARIABLE
 
@@ -108,59 +109,38 @@
 
 
     function preload() {
-
     }
 
     function create() {
     }
 
     function update() {
-
     }
 
     //COMMON FUNCTIONS
-    /*
-    function _drag(item) {
-        //pos = item.position;
-        //enables drag on item held
-        tmpItem = game.add.sprite(item.x, item.y, item.key, item.frame);
-        tmpItem.events.onInputDown.add(_drag, Phaser.StateManager.current);
-        tmpItem.scale.set(0.5,0.5);
-        tmpItem.inputEnabled=true;
 
-        //fix_ordering(item, tmpItem);
-
-        item.x -= 30;
-        item.y -= 30;
-        item.input.enableDrag();
-
-        item.scale.set(0.7, 0.7); // make the dragged item a little bigger
-
-        //if dropped check if dropped in cauldron
-        item.events.onDragStop.add(PlayState.dropHandler, this);
-    }*/
-
+    // skip to the next level
     function nextLevel(){
         if (Book.background!=null){
             Book.background.destroy();
         }
         PlayState.levelNum+=1;
         if (PlayState.levelNum>=WinConditions.length){
+            // if this is the last level, we won the game
             game.state.start('Win');
         } else {
+            // otherwise, start up the next level
             startLevel();
         }
     }
     
     function _drag(item) {
-        //pos = item.position;
-        //enables drag on item held
+        // add a copy of the sprite and start dragging it
         tmpItem = game.add.sprite(item.x, item.y, item.key, item.frame);
         tmpItem.scale.set(0.7, 0.7);
         tmpItem.inputEnabled = true;
 
         dragged_item = tmpItem;
-        //tmpItem.input.enableDrag();
     }
 
     function add_item(item) {
@@ -174,10 +154,12 @@
         }
     }
 
+    // swap sprite orders
     function fix_ordering(spriteA, spriteB) {
         game.world.swap(spriteA, spriteB);
     }
 
+    // are these 2 sprites ovelapping
     function checkOverlap(spriteA, spriteB) {
         var boundsA = spriteA.getBounds();
         var boundsB = spriteB.getBounds();
@@ -192,9 +174,6 @@
         game.state.start('Cut');
     }
 
-    //CUTSCENE FUNCTIONS
-
-
     //PLAY STATE FUNCTIONS
     function submitCandy() {
         if (totalIngred===0) return;
@@ -202,7 +181,6 @@
         //Book.open(0);
     }
 
-    //WIN STATE FUNCTIONS
 
 </script>
 </body>
