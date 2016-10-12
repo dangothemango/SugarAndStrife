@@ -21,8 +21,6 @@ var PlayState = {
         game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
         game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
         game.load.audio('solid_soundeffect', 'assets/sounds/addSolid.wav');
-    	
-
 	},
 
 	winState: null,
@@ -539,6 +537,7 @@ var PlayState = {
 	            currentColor = currentIngredient.color;
 	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
                 splash.tint = bubble_surface.tint;
+                playsmoke = true;
 	        }
 
 		    //sound effects for specific items
