@@ -116,8 +116,7 @@ var PlayState = {
 		    right_button.visible = false;
 		}
 
-
-		var startButton = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Static');
+		var startButton = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Up', 'Static', 'Down', 'Up');
 		startButton.width = 125;
 		startButton.height = 50;
 

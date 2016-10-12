@@ -202,12 +202,20 @@ var CutsceneContent=[
 	{
 		open:{
 			path: 'Act-6/6_1.png',
-			frames: 0,
+			frames: 5,
 			text:[
-			
+				'',
+				'I represent a group that would prefer to go nameless and I don’t want to beat around the bush.',
+				'What we need are some candies that’ll make someone implode, much like the world is imploding on itself.',
+				'But that’s beside the fact. I imagine you can do the job, no questions asked.',
+				'That’s why I’m here, otherwise I’d find someone else to do business with. So you’ve got my order, the sooner it’s finished the better. We’re on a strict timeframe.'
 			],
 			tCoords: [
-
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150}
 			]
 		},
 		close:{
