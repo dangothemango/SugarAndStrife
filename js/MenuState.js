@@ -10,7 +10,7 @@ var MenuState = {
 
 		console.log("Menu State");
 
-		var startButton = game.add.button(game.world.centerX-247,game.world.centerY-79,'startButton',startGame,this,'Static','Static','Down','Up');
+		var startButton = game.add.button(game.world.centerX-247,game.world.centerY-79,'startButton',startLevel,this,'Static','Static','Down','Up');
 
 	},
 

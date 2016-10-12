@@ -25,7 +25,7 @@
     
     var game = new Phaser.Game(1334, 750, Phaser.AUTO, '', { preload: preload, create: create, update: update});
 
-    var debug=true;
+    var debug=false;
     var debugLevel=5;
 
     //MAIN VARIABLES
@@ -147,6 +147,11 @@
         //if dropped check if dropped in cauldron
         item.events.onDragStop.add(PlayState.dropHandler, this);
     }*/
+
+    function nextLevel(){
+        PlayState.levelNum+=1;
+        startLevel();
+    }
     
     function _drag(item) {
         //pos = item.position;
@@ -182,8 +187,9 @@
     }
     
     //MENU STATE FUNCTIONS
-    function startGame() {
-        Cutscene.sceneData=CutsceneContent[0].open;
+    function startLevel() {
+        Cutscene.sceneData=CutsceneContent[PlayState.levelNum].open;
+        Cutscene.opening=true;
         game.state.start('Cut');
     }
 
@@ -193,17 +199,8 @@
     //PLAY STATE FUNCTIONS
     function submitCandy() {
         if (totalIngred===0) return;
-        if (debug){
-            console.log(PlayState.checkWin());
-            PlayState.generateCandy();
-        }
         if (PlayState.checkWin()){
-            PlayState.levelNum+=1;
-            if (PlayState.levelNum<WinConditions.length){
-                game.state.start('Play');
-            } else {
-                game.state.start('Win');
-            }
+            PlayState.generateCandy();
         }
         //Book.open(0);
     }
