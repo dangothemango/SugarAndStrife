@@ -10,12 +10,9 @@ var PlayState = {
         game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
         game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
         game.load.image('notFound','assets/images/notfoundicon.png');
-        game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit.png',449,327,13);
+        game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit desaturated.png',449,327,13);
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
-        game.load.bitmapFont('corbel', 'assets/corbel.png', 'assets/corbel.fnt');
-        game.load.bitmapFont('sleekfont', 'assets/sleek.png', 'assets/sleek.fnt');
-        
         //sound
         game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
         game.load.audio('dm_soundeffect', 'assets/sounds/addDarkmatter.wav');
@@ -339,7 +336,7 @@ var PlayState = {
 
 		if (PlayState.mouseOverBook()){
 			Book.open();
-			Book.findIngredient(PlayState.getIngredientFromName(item.frameName).name);
+			Book.findIngredient(Ingredients[item.frameName].name);
 		}
 
 		//removes from group if mouse is over cauldron
@@ -357,6 +354,8 @@ var PlayState = {
 
 
             ///////// FLAVOR
+
+            Ingredients[item.frameName].known.flavor=true;
 
             // if the item has a flavor and there's no dirt in the cauldron
 	        if (currentIngredient.flavor != 'flavorless' && !dirty) {

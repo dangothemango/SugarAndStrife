@@ -113,10 +113,10 @@ var Book = {
 
 		while (Book.curPage*2<bookPages.length){
 			console.log(bookPages.getAt(Book.curPage*2).getAt(0).text);
-			if (bookPages.getAt(Book.curPage*2).getAt(0).text==='\u2022 '+searchee){
+			if (bookPages.getAt(Book.curPage*2).getAt(0).text===searchee){
 				foundIng=true;
 				break;
-			} else if (Book.curPage*2+1 < bookPages.length && bookPages.getAt(Book.curPage*2+1).getAt(0).text==='\u2022 '+searchee){
+			} else if (Book.curPage*2+1 < bookPages.length && bookPages.getAt(Book.curPage*2+1).getAt(0).text===searchee){
 				foundIng=true;
 				break;
 			}
