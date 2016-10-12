@@ -8,6 +8,7 @@ var FinalCandy= {
 	correct: false,
 
 	createSprite: function(effects, currentColor, sparkly){
+		//check candy attributes and add sprites accordingly
 		if (FinalCandy.sprite!=null)FinalCandy.sprite.destroy();
 		FinalCandy.correct=PlayState.checkWin();
         if (!dirty){
@@ -33,12 +34,14 @@ var FinalCandy= {
 			FinalCandy.sprite.children[sC].anchor.set(.5,1);
 		}
         
+        //scale up the candy and send it off
 		game.add.tween(FinalCandy.sprite.scale).to({ x: 1, y: 1}, 1250, Phaser.Easing.Quadratic.In, true, 0);
 		game.add.tween(bubble_surface).to({ alpha: 0 }, 1250, Phaser.Easing.Quadratic.In, true, 0).onComplete.add(PlayState.erase_all,game);
 		game.add.tween(FinalCandy.sprite).to({y:-250}, 2500, Phaser.Easing.Quadratic.In, true, 2750).onComplete.add(FinalCandy.animFinish,game);
 	},
 
 	animFinish:function(target,tween){
+		//callback for after sprite goes off screen
 		FinalCandy.sprite.destroy();
 		console.log('finish');
 		if (FinalCandy.correct){

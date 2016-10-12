@@ -10,6 +10,7 @@ var Book = {
 
 	open: function(){
 		//game.input.onDown.add(Book.handleInput,game);
+		//generate pages and set current state vars
 		Book.curPage=0;
 		Book.background = game.add.sprite(0,0, 'bookScreen');
 		Book.background.width=game.world.width;
@@ -31,6 +32,7 @@ var Book = {
         var goaltext0 = new Phaser.Text(game, 0, 0, "OBJECTIVES:", bookTitle);
         tmpGoalGroup.add(goaltext0);
 
+        //Objectives for the book, we should pull this from winconditions.js in the future
         if (PlayState.levelNum === 0){
             var goaltext1 = new Phaser.Text(game, 0, 0, "   \u2022 Brown", bookStyle);
             var goaltext2 = new Phaser.Text(game, 0, 0, "   \u2022 Extremely Bitter", bookStyle);
@@ -100,6 +102,7 @@ var Book = {
         tmpGoalGroup2.add(goaltext00);
         bookPages.add(tmpGoalGroup2);
 
+     	//find all ingredients that are unlocked and add them to the book  
 		for (var ingItr in Ingredients){
 			if (!Ingredients.hasOwnProperty(ingItr)){ continue; }
 			var tmpIngGroup=game.add.group();

@@ -31,10 +31,12 @@ var PlayState = {
 
 	create: function () {
 
+		//cheat code key for development
 		nextLevelKey = game.input.keyboard.addKey(Phaser.Keyboard.N);
 
 	    PlayState.reset_all();
 
+	    //skip to level using debug, doenst effect cutscenes
 	    if (debug){
 	    	for (var i =0; i<=debugLevel; i++){
 	    		PlayState.unlock_items(i);
@@ -48,10 +50,9 @@ var PlayState = {
 
 	    console.log("Play State");
 
-		//debug text
-		text = game.add.text(100, 500, 'Nothing in the cauldron', { font: "15px Arial", fill: "#ff0044", align: "center" });
+	    //our game had crabs, i fixed it
+		//crabCount = 0;
 
-		crabCount = 0;
 		ing = Ingredients;
 
 		/////////////////////
@@ -78,6 +79,7 @@ var PlayState = {
 		closedBook.events.onInputDown.add(PlayState.openBook,game);
 		closedBook.animations.add('idle',[9,10,11,12,0,1,2,3,4,5,6,7,8]);
 
+		//surface of the liquid in the cauldron
         bubble_surface = game.add.sprite(1078, 460, 'bubbles');
         bubble_surface.scale.set(.19,.19);
 		bubble_surface.animations.add('idle',[0,1,2,3,4,5]);
@@ -88,6 +90,7 @@ var PlayState = {
 		splash.animations.add('idle',[0,1,2,3,4,5,6]);
         splash.animations.frame=6;
 
+        //smoke for reactions between ingredients
         smoke = game.add.sprite(960, 100, 'smoke');
         //smoke.scale.set(.24,.24);
 		smoke.animations.add('idle',[0,1,2,3,4,5,6]);
@@ -108,6 +111,7 @@ var PlayState = {
 		//align on shelves or something
 		group.align(shelfwidth, shelfheight, itemwidth, itemheight, Phaser.CENTER);
 
+		//paging buttons
 		right_button = game.add.button(990, 200, 'right_arrow', PlayState.rightpage, this, 'Down', 'Static', 'Down', 'Down');
 		left_button = game.add.button(25, 200, 'left_arrow', PlayState.leftpage, this, 'Down', 'Static', 'Down', 'Down');
 		left_button.visible = false;
@@ -115,6 +119,7 @@ var PlayState = {
 		    right_button.visible = false;
 		}
 
+		//done button
 		var startButton = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Up', 'Static', 'Down', 'Up');
 		startButton.width = 125;
 		startButton.height = 50;
@@ -139,26 +144,30 @@ var PlayState = {
 
 	update: function() {
 
+		//cheat code
 		if (nextLevelKey.isDown){
 			nextLevel();
 		}
 
+		//animte book when its closed
 	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
-
-	    } else if (rand.frac()>.997){
+		} else if (rand.frac()>.997){
 			closedBook.animations.play('idle',15,false);
 	    }
 
 
+	    //attch items to pointer
 	    if (dragged_item != null) {
 	        dragged_item.x = game.input.activePointer.x - 70;
 	        dragged_item.y = game.input.activePointer.y - 110;
 	    }
 
+	    //dropItems
 	    if (game.input.activePointer.isUp && dragged_item != null) {
 	        PlayState.dropHandler(dragged_item);
 	    }
 
+	    //handle cauldron contents coloring
 	    if (totalIngred === 0) {
             bubble_surface.visible = false;
 	    }
@@ -170,6 +179,7 @@ var PlayState = {
 	   
         attributes.text = "";
 
+        //current candy information
         if (totalIngred > 0) {
             attributes.text += PlayState.colorStringFromArray(currentColor) + '\n';
         }
@@ -178,6 +188,7 @@ var PlayState = {
 	}, 
 
 	reset_all: function () {
+		//reset the candy and information and ingredients on the shelf
 	    ingredientsInCauldron = [];
 	    flavorList = [];
 	    effects = [];
@@ -197,7 +208,6 @@ var PlayState = {
     },
 
 	updateFlavorUI: function () {
-
         if(flavorList.length>0) {
 	        flav5.text=PlayState.toTitleCase(flavorList[flavorList.length-1]);
 	    }
@@ -236,6 +246,7 @@ var PlayState = {
 	},
 
     // let's be pretty generous with this hit detection
+    // basically collision detection
 	mouseOverCauldron: function () {
 	    var over = false;
 	    if (game.input.activePointer.x > cauldron.x - (cauldron.width / 2)) {
@@ -260,6 +271,8 @@ var PlayState = {
 	    return false;
 	},
 
+
+	//functions to convert colors to other formats
 	componentToHex: function(c) {
         var hex = c.toString(16);
         return hex.length === 1 ? "0" + hex : hex;
@@ -311,28 +324,6 @@ var PlayState = {
 	    return [h,s,v];
 	},
 
-	amountFromNum: function (num) {
-	    switch(num) {
-            case 1:
-                return "Mildly";
-                break;
-            case 2:
-                return "Reasonably";
-                break;
-            case 3:
-                return "Very";
-                break;
-            case 4:
-                return "Extremely";
-                break;
-            case 5:
-                return "Irresponsibly";
-                break;
-            default:
-                return "";
-	    }
-	},
-
 	colorStringFromArray: function (arr) {
 	    var hsv = PlayState.hsvFromArray(arr);
 	    var hue = hsv[0];
@@ -382,7 +373,29 @@ var PlayState = {
 	    return col;
 	},
 
-    // TODO: unhide properties for the book?
+	//semantic conversion
+	amountFromNum: function (num) {
+	    switch(num) {
+            case 1:
+                return "Mildly";
+                break;
+            case 2:
+                return "Reasonably";
+                break;
+            case 3:
+                return "Very";
+                break;
+            case 4:
+                return "Extremely";
+                break;
+            case 5:
+                return "Irresponsibly";
+                break;
+            default:
+                return "";
+	    }
+	},
+
 	dropHandler: function(item, pointer) {
 
 		if (FinalCandy.sprite !=null){
@@ -789,6 +802,7 @@ var PlayState = {
 	},
 
 	erase_all: function () {
+		//like reset all but
 		bubble_surface.alpha=1;
 		bubble_surface.visible = false;
 	    ingredientsInCauldron = [];
@@ -813,6 +827,7 @@ var PlayState = {
 	    }
 	},
 
+	//remove implosion and explosion effects
 	remove_imp_exp: function () {
 	    var imp_index = effects.indexOf('implosion');
 	    var exp_index = effects.indexOf('explosive');
