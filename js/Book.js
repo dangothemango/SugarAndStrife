@@ -92,6 +92,14 @@ var Book = {
 
         bookPages.add(tmpGoalGroup);
 
+        var blanksprite2 = game.add.sprite(0,0, 'blank');
+        var tmpGoalGroup2=game.add.group();
+        Book.spriteGroup.add(blanksprite2);
+
+        var goaltext00 = new Phaser.Text(game, 0, 0, " ", bookTitle);
+        tmpGoalGroup2.add(goaltext00);
+        bookPages.add(tmpGoalGroup2);
+
 		for (var ingItr in Ingredients){
 			if (!Ingredients.hasOwnProperty(ingItr)){ continue; }
 			var tmpIngGroup=game.add.group();
