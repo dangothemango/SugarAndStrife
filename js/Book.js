@@ -28,6 +28,75 @@ var Book = {
 		}
 		Book.spriteGroup = game.add.group();
 		bookPages = game.add.group();
+
+        var blanksprite = game.add.sprite(0,0, 'blank');
+        var tmpGoalGroup=game.add.group();
+        Book.spriteGroup.add(blanksprite);
+
+        var goaltext0 = new Phaser.Text(game, 0, 0, "OBJECTIVES:", bookTitle);
+        tmpGoalGroup.add(goaltext0);
+
+        if (PlayState.levelNum === 0){
+            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Brown", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Extremely Bitter", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Poisonous Only", bookStyle);
+
+            tmpGoalGroup.add(goaltext1);
+            tmpGoalGroup.add(goaltext2);
+            tmpGoalGroup.add(goaltext3);
+        }
+        else if (PlayState.levelNum === 1){
+            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Red", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Very Spicy", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Explosive Only", bookStyle);
+
+            tmpGoalGroup.add(goaltext1);
+            tmpGoalGroup.add(goaltext2);
+            tmpGoalGroup.add(goaltext3);
+        }
+        else if (PlayState.levelNum === 2){
+            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Blue", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Irresponsibly Salty", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Tentacles Only", bookStyle);
+
+            tmpGoalGroup.add(goaltext1);
+            tmpGoalGroup.add(goaltext2);
+            tmpGoalGroup.add(goaltext3);
+        }
+        else if (PlayState.levelNum === 3){
+            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Purple", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Very Sweet", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Mind Control Only", bookStyle);
+
+            tmpGoalGroup.add(goaltext1);
+            tmpGoalGroup.add(goaltext2);
+            tmpGoalGroup.add(goaltext3);
+        }
+        else if (PlayState.levelNum === 4){
+            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Yellow", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Mildly Savory", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Not Salty", bookStyle);
+            var goaltext4 = new Phaser.Text(game, 0, 0, "      \u2022 Slimification Only", bookStyle);
+
+            tmpGoalGroup.add(goaltext1);
+            tmpGoalGroup.add(goaltext2);
+            tmpGoalGroup.add(goaltext3);
+            tmpGoalGroup.add(goaltext4);
+        }
+        else if (PlayState.levelNum === 5){
+            var goaltext1 = new Phaser.Text(game, 0, 0, "      \u2022 Blue", bookStyle);
+            var goaltext2 = new Phaser.Text(game, 0, 0, "      \u2022 Reasonably Sour", bookStyle);
+            var goaltext3 = new Phaser.Text(game, 0, 0, "      \u2022 Reasonably Spicy", bookStyle);
+            var goaltext4 = new Phaser.Text(game, 0, 0, "      \u2022 Implosion Only", bookStyle);
+
+            tmpGoalGroup.add(goaltext1);
+            tmpGoalGroup.add(goaltext2);
+            tmpGoalGroup.add(goaltext3);
+            tmpGoalGroup.add(goaltext4);
+        }
+
+        bookPages.add(tmpGoalGroup);
+
 		for (var ingItr in Ingredients){
 			if (!Ingredients.hasOwnProperty(ingItr)){ continue; }
 			var tmpIngGroup=game.add.group();
@@ -100,7 +169,7 @@ var Book = {
 			pageContent.forEach(Book.textRevive,this,false);
 			pageContent.x=game.world.width/8*(1+4*pageItr) - 40;
 			pageContent.y=260;
-			pageContent.align(1,4,-1,(game.world.height-260)/4,Phaser.TOP_LEFT);
+			pageContent.align(1,4,-1,70,Phaser.TOP_LEFT);
 			var spriteQ=Book.spriteGroup.getAt(Book.curPage*2+pageItr);
 			spriteQ.revive();
 			spriteQ.x=game.world.width/4*(1+2*pageItr);
