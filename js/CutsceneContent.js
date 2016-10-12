@@ -48,7 +48,7 @@ var CutsceneContent=[
 			frames: 7,
 			text:[
 				'',
-				'Hi, um...so I don’t really. Um, let me start over.',
+				'Hi, um...so I don\'t really. Um, let me start over.',
 				'Okay. My friend said you could make people...go away?',
 				'Well, not go away, I mean die. Yes, die. That\'s...that\'s what I want. I want my boss to die!',
 				'He\'s got this explosive temper and I just...I can\'t take it anymore!',
@@ -69,7 +69,7 @@ var CutsceneContent=[
 			path: 'Act-2/2_2.png',
 			frames: 5,
 			text: [
-				'Thank God he’s gone. I don’t know how you managed it, but he’s gone. Finally!',
+				'Thank God he\'s gone. I don\'t know how you managed it, but he\'s gone. Finally!',
 				'He was an asshole and now he can\'t bully me anymore.',
 				'Doesn\'t hurt I also got his job, not that that\'s what I wanted.',
 				'I swear. It just, happened. But thank you and, and to show my appreciation...',
@@ -94,7 +94,7 @@ var CutsceneContent=[
 				'',
 				'',
 				'My girlfriend broke up with me and she took the dog. She called me \'immature\' and a \'jerk\'. Well I\'ll show her! I want you to teach her a lesson for dumping me.',
-				'She\'ll see that I\'m the best she’s going to get. She\'s not even that pretty! Here\'s the money upfront. I don\'t care what you do, just hurt her somehow.'
+				'She\'ll see that I\'m the best she\'s going to get. She\'s not even that pretty! Here\'s the money upfront. I don\'t care what you do, just hurt her somehow.'
 			],
 			tCoords: [
 				{x: 130,y: 150},
@@ -107,10 +107,10 @@ var CutsceneContent=[
 			path: 'Act-3/3_2.png',
 			frames: 4,
 			text: [
-				'Apparently she sprouted tentacles before she died and no one knows why. Most people are whispering that the government had something to do with it.',
-				'I didn\'t want this to happen. I...I just need a moment.',
+				'Apparently she sprouted tentacles before she died and no one knows why. ',
+				'Most people are whispering that the government...had something to do with it.',
 				'I need to rethink what I\'m doing with my life.',
-				'I didn’t want her to die…'
+				'I didn\'t want her to die...'
 			],
 			tCoords: [
 				{x: 130,y: 150},
