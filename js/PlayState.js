@@ -1,7 +1,7 @@
 var PlayState = {
 
 	preload: function(){
-		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
+		game.load.atlasJSONHash('submitButton', 'assets/images/buttons/done_buttons.png','assets/images/buttons/done_buttons.json');
         game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         game.load.image('cauldron', 'assets/images/cauldron alt.png');
         game.load.image('bg', 'assets/images/background vector.png');
@@ -117,8 +117,8 @@ var PlayState = {
 		}
 
 
-		var startButton = game.add.button(100, game.world.height - 100, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Up');
-		startButton.width = 100;
+		var startButton = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Static', 'Static', 'Down', 'Up');
+		startButton.width = 125;
 		startButton.height = 50;
 
 
@@ -147,7 +147,7 @@ var PlayState = {
 
 	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
 
-	    } else if (rand.weightedPick([false,false,false,false,false,false,false,false,false,true])){
+	    } else if (rand.frac()>.997){
 			closedBook.animations.play('idle',15,false);
 	    }
 
@@ -791,6 +791,8 @@ var PlayState = {
 	},
 
 	erase_all: function () {
+		bubble_surface.alpha=1;
+		bubble_surface.visible = false;
 	    ingredientsInCauldron = [];
 	    flavorList = [];
 	    effects = [];

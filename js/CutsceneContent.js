@@ -169,9 +169,11 @@ var CutsceneContent=[
 				'Rumor has it you\'re the person to see to make weird things happen to people.',
 				'Apparently you made some poor woman sprout tentacles and that\'s along the lines of what I\'m looking for.',
 				'I want to convert my cult into slime monsters. I\'m not sure just how to go about it, but that\'s your job.',
-				'They don\'t know that this is going to happen, but I\'m their God, so they won\'t mind. It\'s not like I\'m asking them to wear spaghetti strainers on their heads.'
+				'They don\'t know that this is going to happen, but I\'m their God, so they won\'t mind.',
+				'It\'s not like I\'m asking them to wear spaghetti strainers on their heads...'
 			],
 			tCoords: [
+				{x: 130,y: 150},
 				{x: 130,y: 150},
 				{x: 130,y: 150},
 				{x: 130,y: 150},
