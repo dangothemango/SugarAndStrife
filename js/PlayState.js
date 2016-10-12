@@ -32,6 +32,8 @@ var PlayState = {
 
 	create: function () {
 
+		nextLevelKey = game.input.keyboard.addKey(Phaser.Keyboard.N);
+
 	    PlayState.reset_all();
 
 	    if (debug){
@@ -129,6 +131,8 @@ var PlayState = {
         flav5 = game.add.text(990, 162, '', uiStyle);
 
         attributes = game.add.text(1143, 135, '', chalkStyle);
+
+        Book.open();
 	},
 
 	openBook: function(sprite, pointer){
@@ -136,6 +140,10 @@ var PlayState = {
 	},
 
 	update: function() {
+
+		if (nextLevelKey.isDown){
+			nextLevel();
+		}
 
 	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
 
@@ -169,12 +177,7 @@ var PlayState = {
         }
         attributes.text += flavors_string;
         attributes.text += effects_string;
-	},
-	
-	render: function() {
-		game.debug.text('Available Ingredients: ' + group.total, 74, 600);
-		game.debug.text('Drop in cauldron to remove item from the Group', 10, 24);
-	},
+	}, 
 
 	reset_all: function () {
 	    ingredientsInCauldron = [];
