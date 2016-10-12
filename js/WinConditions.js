@@ -7,7 +7,7 @@ var WinConditions = [
 			bitter:4
 		},
 		effects: ['poison'],
-		color: 'brown'
+		color: 'Brown'
 	},
 
 	//Level 2
@@ -16,7 +16,7 @@ var WinConditions = [
 			spicy:3
 		},
 		effects: ['explosive'],
-		color: 'red'		
+		color: 'Red'		
 	},
 
 	//Level 3
@@ -25,7 +25,7 @@ var WinConditions = [
 			salty:5
 		},
 		effects: ['tentacles'],
-		color: 'blue'
+		color: 'Blue'
 	},
 
 	//Level 4
@@ -34,7 +34,7 @@ var WinConditions = [
 			sweet:3
 		},
 		effects: ['mind_control'],
-		color: 'purple'
+		color: 'Purple'
 	},
 
 	//Level 5
@@ -44,7 +44,7 @@ var WinConditions = [
 			salty:0
 		},
 		effects: ['slimification'],
-		color: 'yellow'
+		color: 'Yellow'
 	},
 
 	//Level 6
@@ -54,7 +54,7 @@ var WinConditions = [
 			spicy:2
 		},
 		effects: ['implosion'],
-		color: 'blue'
+		color: 'Blue'
 	}
 
 ]
