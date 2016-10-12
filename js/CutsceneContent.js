@@ -205,10 +205,10 @@ var CutsceneContent=[
 			frames: 5,
 			text:[
 				'',
-				'I represent a group that would prefer to go nameless and I don’t want to beat around the bush.',
-				'What we need are some candies that’ll make someone implode, much like the world is imploding on itself.',
-				'But that’s beside the fact. I imagine you can do the job, no questions asked.',
-				'That’s why I’m here, otherwise I’d find someone else to do business with. So you’ve got my order, the sooner it’s finished the better. We’re on a strict timeframe.'
+				'I represent a group that would prefer to go nameless and I don\'t want to beat around the bush.',
+				'What we need are some candies that\'ll make someone implode, much like the world is imploding on itself.',
+				'But that\'s beside the fact. I imagine you can do the job, no questions asked.',
+				'That\'s why I\'m here, otherwise I\'d find someone else to do business with. So you\'ve got my order, the sooner it\'s finished the better. We\'re on a strict timeframe.'
 			],
 			tCoords: [
 				{x: 130,y: 150},
@@ -220,12 +220,22 @@ var CutsceneContent=[
 		},
 		close:{
 			path: 'Act-6/6_2.png',
-			frames: 0,
+			frames: 6,
 			text: [
-
+				'Well, you did it.',
+				'You managed to make a candy that made the heads of every world leader implode.',
+				'I can\'t say I could have ever imagined something like it possible.',
+				'And I\'m sure you might not have expected that either.',
+				'Regardless, you are a hero of our cause and you\'ll be remembered...',
+				'...for as long as anyone remembers anything in a world run by anarchy.'
 			],
 			tCoords: [
-
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150}
 			]
 		}
 	}
