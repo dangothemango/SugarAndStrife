@@ -831,6 +831,12 @@ var PlayState = {
 	    return true;
 	},
 
+	closingScene: function(){
+		Cutscene.sceneData=CutsceneContent[PlayState.levelNum].close;
+		Cutscene.opening=false;
+		game.state.start('Cut');
+	},
+
 	countItems: function(array,item){
 		iCount=0;
 		for (var iC =0; iC<array.length; iC++){

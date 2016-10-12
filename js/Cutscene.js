@@ -11,6 +11,8 @@ var Cutscene = {
 
 	sceneData: null,
 
+	opening: true,
+
 	preload: function(){
 		game.load.spritesheet('scene','assets/images/Cutscenes/'+Cutscene.sceneData.path,1600,900,Cutscene.sceneData.frames);
 	},
@@ -38,8 +40,10 @@ var Cutscene = {
 		if (Cutscene.curFrame<Cutscene.sceneData.frames){
 			Cutscene.curText=game.add.text(Cutscene.sceneData.tCoords[Cutscene.curFrame].x,Cutscene.sceneData.tCoords[Cutscene.curFrame].y,Cutscene.sceneData.text[Cutscene.curFrame],CSStyle);
 			Cutscene.scene.animations.frame=Cutscene.curFrame;
-		} else {
+		} else if (Cutscene.opening){
 			game.state.start("Play");
+		} else {
+			nextLevel();
 		}
 	}
 
