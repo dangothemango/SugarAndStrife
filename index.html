@@ -106,22 +106,7 @@
 
 
     function preload() {
-        game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
-        game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
-        game.load.image('cauldron', 'assets/images/cauldron alt.png');
-        game.load.image('bg', 'assets/images/background vector.png');
-        game.load.image('square', 'assets/images/square.png');
-        game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
-        game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
-        game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
-        game.load.image('notFound','assets/images/notfoundicon.png');
-        
-        //sound
-        game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
-        game.load.audio('dm_soundeffect', 'assets/sounds/addDarkmatter.wav');
-        game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
-        game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
-        game.load.audio('solid_soundeffect', 'assets/sounds/addSolid.wav');
+
     }
 
     function create() {
@@ -154,6 +139,9 @@
     }*/
 
     function nextLevel(){
+        if (Book.background!=null){
+            Book.background.destroy();
+        }
         PlayState.levelNum+=1;
         startLevel();
     }
