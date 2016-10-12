@@ -8,6 +8,7 @@ var PlayState = {
         game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
         game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
         game.load.image('notFound','assets/images/notfoundicon.png');
+        game.load.image('blank','assets/images/empty.png');
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit desaturated.png',449,327,13);
         game.load.spritesheet('bubbles','assets/images/bubbles.png',892,319,6);
         game.load.spritesheet('sploosh','assets/images/sploosh.png',907,461,7);
