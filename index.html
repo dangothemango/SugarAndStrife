@@ -31,7 +31,8 @@
     var rand=new Phaser.RandomDataGenerator();
     var tmpItem;
     var style = { font: "65px Arial", fill:"ffffff", align: "center"};
-    var bookStyle = { font: "65px Arial", fill:"ffffff", wordWrap: true, align:'left', wordWrapWidth:1334/64*21};
+    var bookTitle = { font: "32px Verdana", fontWeight: 'bold', fill:"#4D3F3E", wordWrap: true, align:'left', wordWrapWidth:1334/64*21};
+    var bookStyle = { font: "32px Verdana", fill:"#4D3F3E", wordWrap: true, align:'left', wordWrapWidth:1334/64*21};
     var uiStyle = { font: "22px corbel", fontWeight: 'bold', fill:"#4D3F3E", boundsAlignH: "left", boundsAlignV: "middle", wordWrap: false };
 
     //PLAY STATE VARIABLES
@@ -96,6 +97,7 @@
 
 
     game.state.start('Menu');
+
 
     function preload() {
         game.load.atlasJSONHash('submitButton', 'assets/images/buttons/blank_buttons.png','assets/images/buttons/blank_buttons.json');
@@ -197,7 +199,7 @@
         if (PlayState.checkWin()){
             PlayState.levelNum+=1;
             if (PlayState.levelNum<WinConditions.length){
-            game.state.start('Play');
+                game.state.start('Play');
             } else {
                 game.state.start('Win');
             }

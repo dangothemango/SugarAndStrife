@@ -50,11 +50,16 @@ var Book = {
 						console.log(typeof Ingredients[ingItr][attrib]);
 						ingBookKey = 'pretty'+ingBookKey;
 					}
-					var bookText = new Phaser.Text(game, 0, 0, '\u2022 ' + PlayState.toTitleCase(Ingredients[ingItr][ingBookKey]), bookStyle);
+					if (ingBookKey == 'name'){
+                        var bookText = new Phaser.Text(game, 0, 0, PlayState.toTitleCase(Ingredients[ingItr][ingBookKey]), bookTitle);
+					}
+                    else {
+					    var bookText = new Phaser.Text(game, 0, 0, '      \u2022 ' + PlayState.toTitleCase(Ingredients[ingItr][ingBookKey]), bookStyle);
+                    }
 				} else if (attrib==='effects' && Ingredients[ingItr][attrib].type==='none'){
 					var bookText = new Phaser.Text(game, 0, 0, '', bookStyle);
 				} else {
-				    var bookText = new Phaser.Text(game, 0, 0, '\u2022 ???????', bookStyle);
+				    var bookText = new Phaser.Text(game, 0, 0, '      \u2022 ???????', bookStyle);
 				}
 				tmpIngGroup.add(bookText);
 			}
@@ -93,9 +98,9 @@ var Book = {
 			}
 			var pageContent=bookPages.getAt(Book.curPage*2+pageItr);
 			pageContent.forEach(Book.textRevive,this,false);
-			pageContent.x=game.world.width/8*(1+4*pageItr);
-			pageContent.y=200;
-			pageContent.align(1,4,-1,(game.world.height-200)/4,Phaser.TOP_LEFT);
+			pageContent.x=game.world.width/8*(1+4*pageItr) - 40;
+			pageContent.y=260;
+			pageContent.align(1,4,-1,(game.world.height-260)/4,Phaser.TOP_LEFT);
 			var spriteQ=Book.spriteGroup.getAt(Book.curPage*2+pageItr);
 			spriteQ.revive();
 			spriteQ.x=game.world.width/4*(1+2*pageItr);
