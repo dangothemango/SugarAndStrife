@@ -11,16 +11,11 @@ var Book = {
 	open: function(){
 		//game.input.onDown.add(Book.handleInput,game);
 		Book.curPage=0;
-		if (Book.background == null){
-			Book.background = game.add.sprite(0,0, 'bookScreen');
-			Book.background.width=game.world.width;
-			Book.background.height=game.world.height;
-			Book.background.inputEnabled=true;
-			Book.background.events.onInputDown.add(Book.handleInput,game);
-		} else {
-			Book.background.revive();
-			Book.background.bringToTop();
-		}
+		Book.background = game.add.sprite(0,0, 'bookScreen');
+		Book.background.width=game.world.width;
+		Book.background.height=game.world.height;
+		Book.background.inputEnabled=true;
+		Book.background.events.onInputDown.add(Book.handleInput,game);
 		if (bookPages != null){
 			bookPages.destroy(true,false);
 		} if (Book.spriteGroup != null) {
@@ -155,7 +150,7 @@ var Book = {
 	},
 
 	close: function(){
-		Book.background.kill();
+		Book.background.destroy();
 		bookPages.forEach(Book.killAllText,this,false);
 		Book.spriteGroup.forEach(Book.textKill,this,false);
 	}

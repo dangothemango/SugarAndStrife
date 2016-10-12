@@ -7,12 +7,12 @@ var PlayState = {
         game.load.image('bg', 'assets/images/background vector.png');
         game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
         game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
-        game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
         game.load.image('notFound','assets/images/notfoundicon.png');
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit desaturated.png',449,327,13);
         game.load.spritesheet('bubbles','assets/images/bubbles.png',892,319,6);
         game.load.spritesheet('sploosh','assets/images/sploosh.png',907,461,7);
         game.load.spritesheet('smoke','assets/images/smoke.png',418,513,7);
+        game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
         //sound
@@ -21,7 +21,8 @@ var PlayState = {
         game.load.audio('liquid_soundeffect', 'assets/sounds/addLiquid.wav');
         game.load.audio('powder_soundeffect', 'assets/sounds/addPowder.wav');
         game.load.audio('solid_soundeffect', 'assets/sounds/addSolid.wav');
-    
+    	
+
 	},
 
 	winState: null,
@@ -137,7 +138,7 @@ var PlayState = {
 
 	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
 
-	    } else if (rand.weightedPick([false,false,false,false,false,true])){
+	    } else if (rand.weightedPick([false,false,false,false,false,false,false,false,false,true])){
 			closedBook.animations.play('idle',15,false);
 	    }
 
