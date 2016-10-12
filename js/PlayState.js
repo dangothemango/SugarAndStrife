@@ -32,6 +32,8 @@ var PlayState = {
 
 	create: function () {
 
+		nextLevelKey = game.input.keyboard.addKey(Phaser.Keyboard.N);
+
 	    PlayState.reset_all();
 
 	    if (debug){
@@ -138,6 +140,10 @@ var PlayState = {
 	},
 
 	update: function() {
+
+		if (nextLevelKey.isDown){
+			nextLevel();
+		}
 
 	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
 
