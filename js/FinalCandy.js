@@ -23,8 +23,8 @@ var FinalCandy= {
 		for (var sC = 0; sC<FinalCandy.sprite.children.length; sC++){
 			FinalCandy.sprite.children[sC].anchor.set(.5,1);
 		}
-
-		game.add.tween(FinalCandy.sprite.scale).to({ x: 1, y: 1}, 1250, Phaser.Easing.Quadratic.In, true, 1000);
+        
+		game.add.tween(FinalCandy.sprite.scale).to({ x: 1, y: 1}, 1250, Phaser.Easing.Quadratic.In, true, 0);
 		game.add.tween(FinalCandy.sprite).to({y:-250}, 2500, Phaser.Easing.Quadratic.In, true, 2750).onComplete.add(FinalCandy.animFinish,game);
 	},
 
