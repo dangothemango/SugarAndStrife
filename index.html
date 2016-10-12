@@ -87,7 +87,6 @@
     var dragged_item = null;
 
     //CUTSCENE VARIABLE
-    var cutsceneText="";
 
     game.state.add('Menu', MenuState);
     game.state.add('Play', PlayState);
@@ -180,7 +179,6 @@
     
     //MENU STATE FUNCTIONS
     function startGame() {
-        cutsceneText="Horrible Dirt";
         game.state.start('Cut');
     }
 
