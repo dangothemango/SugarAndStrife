@@ -13,7 +13,8 @@ var PlayState = {
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit.png',449,327,13);
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
-        game.load.bitmapFont('corbel', 'assets/fonts/dimbo.png', 'assets/Corbel.woff');
+        game.load.bitmapFont('corbel', 'assets/corbel.png', 'assets/corbel.fnt');
+        game.load.bitmapFont('sleekfont', 'assets/sleek.png', 'assets/sleek.fnt');
         
         //sound
         game.load.audio('bgm', 'assets/sounds/backgroundMusicSkewedPaths.ogg');
@@ -147,16 +148,12 @@ var PlayState = {
 	    else {
 	        square.tint = PlayState.hexFromArray(currentColor);
 	    }
-
-
-
 	   
 	},
 	
 	render: function() {
 		game.debug.text('Available Ingredients: ' + group.total, 74, 600);
 		game.debug.text('Drop in cauldron to remove item from the Group', 10, 24);
-    
 	},
 
 	reset_all: function () {
@@ -172,17 +169,21 @@ var PlayState = {
 	    dirty = false;
 	},
 
+    toTitleCase: function (str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    },
+
 	updateFlavorUI: function () {
 
         if(flavorList.length>0) {
-	        flav5.text=flavorList[flavorList.length-1];
+	        flav5.text=PlayState.toTitleCase(flavorList[flavorList.length-1]);
 	    }
 	    else {
             flav5.text='';
 	    }
 
         if(flavorList.length>1) {
-	        flav4.text=flavorList[flavorList.length-2];
+	        flav4.text=PlayState.toTitleCase(flavorList[flavorList.length-2]);
 	    }
 
 	    else {
@@ -190,21 +191,21 @@ var PlayState = {
 	    }
 
         if(flavorList.length>2) {
-	        flav3.text=flavorList[flavorList.length-3];
+	        flav3.text=PlayState.toTitleCase(flavorList[flavorList.length-3]);
 	    }
 	    else {
             flav3.text='';
 	    }
 
         if(flavorList.length>3) {
-	        flav2.text=flavorList[flavorList.length-4];
+	        flav2.text=PlayState.toTitleCase(flavorList[flavorList.length-4]);
 	    }
 	    else {
             flav2.text='';
 	    }
 
         if(flavorList.length>4) {
-	        flav1.text=flavorList[flavorList.length-5];
+	        flav1.text=PlayState.toTitleCase(flavorList[flavorList.length-5]);
 	    }
 	    else {
             flav1.text='';
