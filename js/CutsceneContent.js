@@ -162,23 +162,36 @@ var CutsceneContent=[
 	//Scene 
 	{
 		open:{
-			path: 'Act-5/5_1.pngf',
-			frames: 0,
+			path: 'Act-5/5_1.png',
+			frames: 5,
 			text:[
-			
+				'',
+				'Rumor has it you\'re the person to see to make weird things happen to people.',
+				'Apparently you made some poor woman sprout tentacles and that\'s along the lines of what I\'m looking for.',
+				'I want to convert my cult into slime monsters. I\'m not sure just how to go about it, but that\'s your job.',
+				'They don\'t know that this is going to happen, but I\'m their God, so they won\'t mind. It\'s not like I\'m asking them to wear spaghetti strainers on their heads.'
 			],
 			tCoords: [
-
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150}
 			]
 		},
 		close:{
 			path: 'Act-5/5_2.png',
-			frames: 0,
+			frames: 3,
 			text: [
-
+				'My dreams of leading a slime monster cult has come true and I can\'t be happier!',
+				'Now we have to plan out how to overtake the outside world and the nonbelievers.',
+				'But we\'ll spare you since you\'re the one who allowed us to rise to a new level of being.'
 			],
 			tCoords: [
-
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150}
 			]
 		}
 	},
