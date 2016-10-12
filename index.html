@@ -11,6 +11,7 @@
     <script type="text/javascript" src=js/Book.js></script>
     <script type="text/javascript" src=js/WinConditions.js></script>
     <script type="text/javascript" src=js/FinalCandy.js></script>
+    <script type="text/javascript" src=js/CutsceneContent.js></script>
 
     <style type="text/css">
         body {
@@ -34,6 +35,7 @@
     var bookTitle = { font: "32px Verdana", fontWeight: 'bold', fill:"#4D3F3E", wordWrap: true, align:'left', wordWrapWidth:1334/64*21};
     var bookStyle = { font: "32px Verdana", fill:"#4D3F3E", wordWrap: true, align:'left', wordWrapWidth:1334/64*21};
     var uiStyle = { font: "22px corbel", fontWeight: 'bold', fill:"#4D3F3E", boundsAlignH: "left", boundsAlignV: "middle", wordWrap: false };
+    var CSStyle = { font: "24px corbel", fontWeight: 'bold', fill:"#1F1F1F", boundsAlignH: "left", boundsAlignV: "middle", wordWrap: true, wordWrapWidth: 200 };
 
     //PLAY STATE VARIABLES
     var group;
@@ -181,6 +183,7 @@
     
     //MENU STATE FUNCTIONS
     function startGame() {
+        Cutscene.sceneData=CutsceneContent[0].open;
         game.state.start('Cut');
     }
 
