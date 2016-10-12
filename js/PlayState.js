@@ -5,12 +5,12 @@ var PlayState = {
         game.load.atlas('items', 'assets/images/items.png', 'assets/images/items.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
         game.load.image('cauldron', 'assets/images/cauldron alt.png');
         game.load.image('bg', 'assets/images/background vector.png');
-        game.load.image('square', 'assets/images/square.png');
         game.load.atlasJSONHash('right_arrow', 'assets/images/rightarrow.png', 'assets/images/rightarrow.json');
         game.load.atlasJSONHash('left_arrow', 'assets/images/leftarrow.png', 'assets/images/leftarrow.json');
         game.load.image('bookScreen','assets/images/flat_book_desaturated.png');
         game.load.image('notFound','assets/images/notfoundicon.png');
         game.load.spritesheet('bookNoShit','assets/images/closedBook_noBlueShit desaturated.png',449,327,13);
+        game.load.spritesheet('bubbles','assets/images/bubbles.png',892,319,6);
         game.load.atlas('candy','assets/images/candy/candysheet.png','assets/images/candy/candysheet.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 
         //sound
@@ -60,12 +60,6 @@ var PlayState = {
 		liquid_soundeffect = game.add.audio('liquid_soundeffect');
 		powder_soundeffect = game.add.audio('powder_soundeffect');
 		solid_soundeffect = game.add.audio('solid_soundeffect');
-		
-		
-		square = game.add.sprite(1165, 498, 'square');
-		square.anchor.set(0.5);
-		square.width = 220;
-		square.height = 50;
 
 		cauldron = game.add.sprite(1165,560, 'cauldron');
 		cauldron.anchor.set(0.5);
@@ -78,6 +72,11 @@ var PlayState = {
 		closedBook.inputEnabled=true;
 		closedBook.events.onInputDown.add(PlayState.openBook,game);
 		closedBook.animations.add('idle',[9,10,11,12,0,1,2,3,4,5,6,7,8]);
+
+        bubble_surface = game.add.sprite(1078, 460, 'bubbles');
+        bubble_surface.scale.set(.19,.19);
+		bubble_surface.animations.add('idle',[0,1,2,3,4,5]);
+        bubble_surface.animations.play('idle',15,true);
 		
 		//group of sprites/items
 		group = game.add.group();
@@ -141,10 +140,11 @@ var PlayState = {
 	    }
 
 	    if (totalIngred === 0) {
-	        square.tint = PlayState.hexFromArray([85, 76, 91]);
+            bubble_surface.visible = false;
 	    }
 	    else {
-	        square.tint = PlayState.hexFromArray(currentColor);
+            bubble_surface.visible = true;
+	        bubble_surface.tint = PlayState.hexFromArray(currentColor);
 	    }
 	   
         attributes.text = "";
@@ -461,7 +461,7 @@ var PlayState = {
 	            currentColor[2] = Math.round((currentIngredient.color[2] + currentColor[2] * numCol) / (numCol + 1));
 	            numCol++;
 
-	            square.tint = PlayState.hexFromArray(currentColor);
+	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
 	        } else if (currentIngredient.prettycolor === 'Sparkly'){
             	console.log('SPARJL');
             	sparkles=true;
@@ -494,7 +494,7 @@ var PlayState = {
 		    	Ingredients[item.frameName].known.effects=true;
 	            currentColor = [255, 255, 255];
 	            numCol = 0;
-	            square.tint = PlayState.hexFromArray(currentColor);
+	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
 	        }
 
 	        if (item.frameName === 'dark_matter') {
@@ -509,7 +509,7 @@ var PlayState = {
 	            dirty = true;
 	            flavorList = ['dirt', 'dirt', 'dirt', 'dirt', 'dirt'];
 	            currentColor = currentIngredient.color;
-	            square.tint = PlayState.hexFromArray(currentColor);
+	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
 	        }
 
 		    //sound effects for specific items
@@ -761,7 +761,7 @@ var PlayState = {
 	    numCol = 0;
 	    totalIngred = 0;
 	    dirty = false;
-	    square.tint = PlayState.hexFromArray(currentColor);
+	    bubble_surface.tint = PlayState.hexFromArray(currentColor);
 	},
 
 	add_mind_control: function () {
