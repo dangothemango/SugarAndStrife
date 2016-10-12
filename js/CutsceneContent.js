@@ -125,12 +125,20 @@ var CutsceneContent=[
 	{
 		open:{
 			path: 'Act-4/4_1.png',
-			frames: 0,
+			frames: 5,
 			text:[
-			
+				'',
+				'I may be the CEO of Pear Products, but I\'m not here to sell you on anything. That\'s just not what I\'m about.',
+				'But I do need your help. I\'m here to hire you to become somewhat of a...business associate.',
+				'You\'ll do what you do best and cook up something that\'ll...persuade the minds of consumers on buying the new and improved pear phone.',
+				'Sales are down and we just won\'t settle for failure. This shouldn\'t be too hard for someone who has managed to gain the attention of Pear Products.'
 			],
 			tCoords: [
-
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150},
+				{x: 130,y: 150}
 			]
 		},
 		close:{
