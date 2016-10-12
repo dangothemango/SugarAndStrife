@@ -145,7 +145,11 @@
             Book.background.destroy();
         }
         PlayState.levelNum+=1;
-        startLevel();
+        if (PlayState.levelNum>=WinConditions.length){
+            game.state.start('Win');
+        } else {
+            startLevel();
+        }
     }
     
     function _drag(item) {

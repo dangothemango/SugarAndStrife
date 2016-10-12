@@ -9,6 +9,8 @@ var WinState = {
 
 		console.log("Win State");
 
+		game.state.start('Menu');
+
 	},
 
 	update: function() {
