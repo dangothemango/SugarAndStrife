@@ -114,6 +114,8 @@ var PlayState = {
         flav3 = game.add.text(990, 94, '', uiStyle);
         flav4 = game.add.text(990, 128, '', uiStyle);
         flav5 = game.add.text(990, 162, '', uiStyle);
+
+        attributes = game.add.text(1143, 135, '', chalkStyle);
 	},
 
 	openBook: function(sprite, pointer){
@@ -121,7 +123,6 @@ var PlayState = {
 	},
 
 	update: function() {
-	    //if (Book.isOpen && game.inpu)
 
 	    if (closedBook.animations.currentAnim != null && closedBook.animations.currentAnim.isPlaying){
 
@@ -146,6 +147,13 @@ var PlayState = {
 	        square.tint = PlayState.hexFromArray(currentColor);
 	    }
 	   
+        attributes.text = "";
+
+        if (totalIngred > 0) {
+            attributes.text += PlayState.colorStringFromArray(currentColor) + '\n';
+        }
+        attributes.text += flavors_string;
+        attributes.text += effects_string;
 	},
 	
 	render: function() {
@@ -285,6 +293,28 @@ var PlayState = {
 	    return [h,s,v];
 	},
 
+	amountFromNum: function (num) {
+	    switch(num) {
+            case 1:
+                return "Mildly";
+                break;
+            case 2:
+                return "Reasonably";
+                break;
+            case 3:
+                return "Very";
+                break;
+            case 4:
+                return "Extremely";
+                break;
+            case 5:
+                return "Irresponsibly";
+                break;
+            default:
+                return "";
+	    }
+	},
+
 	colorStringFromArray: function (arr) {
 	    var hsv = PlayState.hsvFromArray(arr);
 	    var hue = hsv[0];
@@ -294,38 +324,41 @@ var PlayState = {
 	    var col;
 
 	    if (hue < 13){
-	        col = 'red';
+	        col = 'Red';
 	    }
 	    else if (hue < 52) {
-	        col = 'orange';
+	        col = 'Orange';
 	    }
 	    else if (hue < 66) {
-	        col = 'yellow';
+	        col = 'Yellow';
 	    }
 	    else if (hue < 159) {
-	        col = 'green';
+	        col = 'Green';
 	    }
 	    else if (hue < 255) {
-	        col = 'blue';
+	        col = 'Blue';
 	    }
 	    else if (hue < 307) {
-	        col = 'purple';
+	        col = 'Purple';
 	    }
 	    else {
-	        col = 'red';
+	        col = 'Red';
 	    }
 
 	    if (val < 60){
-	        if (col === 'orange' || col === 'yellow'){
-	            col = 'brown';
+	        if (col === 'Orange' || col === 'Yellow'){
+	            col = 'Brown';
 	        }
 	    }
 
+	    if (sat < 15){
+            col = 'Gray';
+	    }
 	    if (val < 10){
-	        col = 'black';
+	        col = 'Black';
 	    }
 	    if (val > 95 && sat < 5) {
-	        col = 'white';
+	        col = 'White';
 	    }
 
 	    return col;
@@ -370,6 +403,54 @@ var PlayState = {
 	            }
 	        }
 
+            var num_spicy = 0;
+            var num_savory = 0;
+            var num_sweet = 0;
+            var num_salty = 0;
+            var num_sour = 0;
+            var num_bitter = 0;
+
+            for (var i = 0; i < flavorList.length; i++){
+                if (flavorList[i] === "spicy") {
+                    num_spicy++;
+                }
+                if (flavorList[i] === "savory") {
+                    num_savory++;
+                }
+                if (flavorList[i] === "sweet") {
+                    num_sweet++;
+                }
+                if (flavorList[i] === "salty") {
+                    num_salty++;
+                }
+                if (flavorList[i] === "sour") {
+                    num_sour++;
+                }
+                if (flavorList[i] === "bitter") {
+                    num_bitter++;
+                }
+            }
+
+            flavors_string = "";
+
+            if (num_spicy > 0){
+                flavors_string += PlayState.amountFromNum(num_spicy) + " Spicy\n";
+            }
+            if (num_savory > 0){
+                flavors_string += PlayState.amountFromNum(num_savory) + " Savory\n";
+            }
+            if (num_sweet > 0){
+                flavors_string += PlayState.amountFromNum(num_sweet) + " Sweet\n";
+            }
+            if (num_salty > 0){
+                flavors_string += PlayState.amountFromNum(num_salty) + " Salty\n";
+            }
+            if (num_sour > 0){
+                flavors_string += PlayState.amountFromNum(num_sour) + " Sour\n";
+            }
+            if (num_bitter > 0){
+                flavors_string += PlayState.amountFromNum(num_bitter) + " Bitter\n";
+            }
 
 
 	        ///////// COLOR
@@ -619,6 +700,31 @@ var PlayState = {
 
             PlayState.updateFlavorUI();
 
+            effects_string = "";
+            for (var i = 0; i < effects.length; i++){
+                if (effects[i] === "dirt"){
+                    effects_string += "Dirt\n";
+                }
+                if (effects[i] === "tentacles"){
+                    effects_string += "Tentacle Forming\n";
+                }
+                if (effects[i] === "poison"){
+                    effects_string += "Poisonous\n";
+                }
+                if (effects[i] === "explosive"){
+                    effects_string += "Explosive\n";
+                }
+                if (effects[i] === "mind_control"){
+                    effects_string += "Mind Control\n";
+                }
+                if (effects[i] === "implosion"){
+                    effects_string += "Implosion\n";
+                }
+                if (effects[i] === "slimification"){
+                    effects_string += "Slimification\n";
+                }
+            }
+
 	        ////////// DEBUG PRINT
 
 	        console.log('-------------');
@@ -634,6 +740,7 @@ var PlayState = {
 	            console.log(' - '+effects[i]);
 	        }
 	        console.log('-----');
+
 	    }
 
 		item.destroy();

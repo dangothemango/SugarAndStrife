@@ -186,7 +186,7 @@ var Ingredients = {
 			effects: false
 		},
 		name: 'Horrible Dirt',
-		color: [128,98,87],
+		color: [86,78,60],
 		prettycolor: 'Brown',
 		flavor: 'flavorless',
 		effects: { type:'dirt', value: 1 },
