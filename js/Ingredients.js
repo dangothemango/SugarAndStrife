@@ -111,7 +111,7 @@ var Ingredients = {
 			flavor: false,
 			effects: false
 		},
-		name: 'Eye of Newt',
+		name: 'Eye Of Newt',
 		color: [0,0,0],
 		prettycolor: 'Colorless',
 		flavor: 'bitter',
@@ -156,7 +156,7 @@ var Ingredients = {
 			flavor: false,
 			effects: false
 		},
-		name: 'Essence of Nightshade',
+		name: 'Essence Of Nightshade',
 		color: [132, 39, 245],
 		prettycolor: 'Purple',
 		flavor: 'flavorless',
