@@ -797,6 +797,11 @@ var PlayState = {
         splash.tint = bubble_surface.tint;
         flavors_string = "";
         effects_string = "";
+        flav1.text = "";
+        flav2.text = "";
+        flav3.text = "";
+        flav4.text = "";
+        flav5.text = "";
 	},
 
 	add_mind_control: function () {
