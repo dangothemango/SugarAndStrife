@@ -12,6 +12,7 @@ var Ingredients = {
 		prettycolor: 'Brown',
 		flavor: 'sweet',
 		effects: { type:'none' },
+		type: 'solid',
 		prettyeffects: 'None'
 	},
 	
@@ -27,6 +28,7 @@ var Ingredients = {
 		prettycolor: 'Red',
 		flavor: 'salty',
 		effects: { type:'none' },
+		type: 'liquid',
 		prettyeffects: 'None'
 	},
 	
@@ -42,6 +44,7 @@ var Ingredients = {
 		prettycolor: 'Yellow',
 		flavor: 'flavorless',
 		effects: { type:'tentacles', value: -1 },
+		type: 'solid',
 		prettyeffects: 'Neutralizes Tentacle Forming'
 	},	
 	bleach: {
@@ -56,6 +59,7 @@ var Ingredients = {
 		prettycolor: 'Removes all Color',
 		flavor: 'bitter',
 		effects: { type:'poison', value: 1 },
+		type: 'liquid',
 		prettyeffects: 'Poisonous'
 	},
 
@@ -71,6 +75,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'salty',
 		effects: { type:'poison', value: -1 },
+		type: 'solid',
 		prettyeffects: 'Neutralizes Poison'
 	},
 
@@ -86,6 +91,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'sweet',
 		effects: { type:'poison', value: 1 },
+		type: 'liquid',
 		prettyeffects: 'Poisonous'
 	},
 	
@@ -101,6 +107,7 @@ var Ingredients = {
 		prettycolor: 'Green',
 		flavor: 'savory',
 		effects: { type:'explosive', value: 1 },
+		type: 'solid',
 		prettyeffects: 'Explosive',
 	},
 	
@@ -116,6 +123,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'bitter',
 		effects: { type:'mind_control', value: -1 },
+		type: 'solid',
 		prettyeffects: 'Neutralizes Mind Control'
 	},
 		
@@ -131,6 +139,7 @@ var Ingredients = {
 		prettycolor: 'Sparkly',
 		flavor: 'sweet',
 		effects: { type:'implosion', value: -1 },
+		type: 'powder',
 		prettyeffects: 'Neutralizes Implosion'
 	},
 		
@@ -146,6 +155,7 @@ var Ingredients = {
 		prettycolor: 'Green',
 		flavor: 'savory',
 		effects: { type:'none' },
+		type: 'solid',
 		prettyeffects: 'None'
 	},
 		
@@ -161,6 +171,7 @@ var Ingredients = {
 		prettycolor: 'Purple',
 		flavor: 'flavorless',
 		effects: { type:'poison', value: 1 },
+		type: 'powder',
 		prettyeffects: 'Poisonous'
 	},
 	ghost_pepper: {
@@ -175,6 +186,7 @@ var Ingredients = {
 		prettycolor: 'Red',
 		flavor: 'spicy',
 		effects: { type:'explosive', value: 1 },
+		type: 'solid',
 		prettyeffects: 'Explosive'
 	},
 	
@@ -190,6 +202,7 @@ var Ingredients = {
 		prettycolor: 'Brown',
 		flavor: 'flavorless',
 		effects: { type:'dirt', value: 1 },
+		type: 'powder',
 		prettyeffects: 'Overwhelms Everything'
 	},
 	
@@ -205,6 +218,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'sour',
 		effects: { type:'explosive', value: -1 },
+		type: 'solid',
 		prettyeffects: 'Neutralizes Explosives'
 	},
 	
@@ -220,6 +234,7 @@ var Ingredients = {
 		prettycolor: 'Yellow',
 		flavor: 'sour',
 		effects: { type:'implosion', value: 1 },
+		type: 'solid',
 		prettyeffects: 'Implosion'
 	},
 	
@@ -235,6 +250,7 @@ var Ingredients = {
 		prettycolor: 'Black',
 		flavor: 'spicy',
 		effects: { type:'none' },
+		type: 'solid',
 		prettyeffects: 'None'
 	},
 	
@@ -250,6 +266,7 @@ var Ingredients = {
 		prettycolor: 'Blue',
 		flavor: 'flavorless',
 		effects: { type:'explosive', value: 1 },
+		type: 'liquid',
 		prettyeffects: 'Explosive'
 	},	
 	
@@ -265,6 +282,7 @@ var Ingredients = {
 		prettycolor: 'White',
 		flavor: 'flavorless',
 		effects: { type:'slimification', value: -1 },
+		type: 'solid',
 		prettyeffects: 'Neutralizes Slimification'
 	},
 	
@@ -280,6 +298,7 @@ var Ingredients = {
 		prettycolor: 'Blue',
 		flavor: 'bitter',
 		effects: { type:'mind_control', value: 1 },
+		type: 'solid',
 		prettyeffects: 'Mind Control'
 	},
 	
@@ -295,6 +314,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'spicy',
 		effects: { type:'poison', value: 1 },
+		type: 'liquid',
 		prettyeffects: 'Poisonous'
 	},
 	
@@ -310,6 +330,7 @@ var Ingredients = {
 		prettycolor: 'Yellow',
 		flavor: 'flavorless',
 		effects: { type:'poison', value: 1 },
+		type: 'solid',
 		prettyeffects: 'Poisonous'
 	},
 	
@@ -325,6 +346,7 @@ var Ingredients = {
 		prettycolor: 'Green',
 		flavor: 'salty',
 		effects: { type:'slimification', value: 1 },
+		type: 'liquid',
 		prettyeffects: 'Slimification'
 	},
 	
@@ -340,6 +362,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'sweet',
 		effects: { type:'poison', value: 1 },
+		type: 'liquid',
 		prettyeffects: 'Poisonous'
 	},
 	
@@ -355,6 +378,7 @@ var Ingredients = {
 		prettycolor: 'Black',
 		flavor: 'flavorless',
 		effects: { type:'tentacles', value: 1 },
+		type: 'liquid',
 		prettyeffects: 'Tentacle Forming'
 	},
 	
@@ -370,6 +394,7 @@ var Ingredients = {
 		prettycolor: 'Purple',
 		flavor: 'savory',
 		effects: { type:'tentacles', value: 1 },
+		type: 'solid',
 		prettyeffects: 'Tentacle Forming'
 	},
 	
@@ -385,6 +410,7 @@ var Ingredients = {
 		prettycolor: 'Colorless',
 		flavor: 'savory',
 		effects: { type:'mind_control', value: 1 },
+		type: 'solid',
 		prettyeffects: 'Mind Control'
 	},
 	
@@ -400,6 +426,7 @@ var Ingredients = {
 		prettycolor: 'Black',
 		flavor: 'I can\'t feel my tongue',
 		effects: { type:'clear' },
+		type: 'solid',
 		prettyeffects: 'Destroys Everything'
 	},
 }

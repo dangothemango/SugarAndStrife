@@ -27,6 +27,8 @@ var PlayState = {
 
 	levelNum: 0 ,
 
+	won: false,
+
 	create: function () {
 
 		//cheat code key for development
@@ -39,11 +41,11 @@ var PlayState = {
 	    	for (var i =0; i<=debugLevel; i++){
 	    		PlayState.unlock_items(i);
 	    	}
-	    	winState=WinConditions[debugLevel];
+	    	PlayState.winState=WinConditions[debugLevel];
 	    } else{
-    	    winState=WinConditions[this.levelNum];
+    	    PlayState.winState=WinConditions[this.levelNum];
     
-    	    PlayState.unlock_items(this.levelNum);
+    	    if (!PlayState.won) PlayState.unlock_items(this.levelNum);
     	}
 
 	    console.log("Play State");
@@ -118,9 +120,9 @@ var PlayState = {
 		}
 
 		//done button
-		var startButton = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Up', 'Static', 'Down', 'Up');
-		startButton.width = 125;
-		startButton.height = 50;
+		var submit = game.add.button(1103,game.world.height - 150, 'submitButton', submitCandy, this, 'Up', 'Static', 'Down', 'Up');
+		submit.width = 125;
+		submit.height = 50;
 
 
         // TRACKING UI
@@ -336,7 +338,7 @@ var PlayState = {
 	    else if (hue < 52) {
 	        col = 'Orange';
 	    }
-	    else if (hue < 66) {
+	    else if (hue <= 66) {
 	        col = 'Yellow';
 	    }
 	    else if (hue < 159) {
@@ -373,24 +375,26 @@ var PlayState = {
 
 	//semantic conversion
 	amountFromNum: function (num) {
-	    switch(num) {
-            case 1:
-                return "Mildly";
-                break;
-            case 2:
-                return "Reasonably";
-                break;
-            case 3:
-                return "Very";
-                break;
-            case 4:
-                return "Extremely";
-                break;
-            case 5:
-                return "Irresponsibly";
-                break;
-            default:
-                return "";
+		if (num==null)return '';
+		return flavorText[num];
+	},
+
+	prettyEffectFromEffect: function(effect){
+		switch (effect){
+	        case "dirt":
+	            return "Dirt";
+	        case "tentacles":
+	            return "Tentacle Forming";
+	        case "poison":
+	            return "Poisonous";
+	        case "explosive":
+	            return "Explosive";
+	        case "mind_control":
+	            return "Mind Control";
+	        case "implosion":
+	            return "Implosion";
+	        case "slimification":
+	            return "Slimification";
 	    }
 	},
 
@@ -499,7 +503,6 @@ var PlayState = {
 	            bubble_surface.tint = PlayState.hexFromArray(currentColor);
                 splash.tint = bubble_surface.tint;
 	        } else if (currentIngredient.prettycolor === 'Sparkly'){
-            	console.log('SPARJL');
             	sparkles=true;
             }
 
@@ -555,24 +558,38 @@ var PlayState = {
 
 		    //sound effects for specific items
 
-		    if (item.frameName === 'bone_marrow' || item.frameName === 'caviar' || item.frameName === 'chocolate' || 
-		        item.frameName === 'demon_flesh' ||  item.frameName === 'eye_of_newt' || item.frameName === 'frog_legs' 
-		        || item.frameName === 'ghost_pepper' || item.frameName === 'insect_parts' || item.frameName === 'lemons' 
-		        || item.frameName === 'leopard_spots' || item.frameName === 'lizard_eggs' || item.frameName === 'mandrake' 
-		        || item.frameName === 'pufferfish' || item.frameName === 'tentacles' || item.frameName === 'toadstool') {
+		    switch (Ingredients[item.frameName].type){
+		    	case 'solid':
+			    	solid_soundeffect.play();
+			    	break;
+			    case 'liquid':
+			    	liquid_soundeffect.play();
+			    	break;
+			    case 'powder':
+			    	powder_soundeffect.play();
+			    	break;
 
-			    solid_soundeffect.play();
+
 		    }
 
-		    if (item.frameName === 'bleach' || item.frameName === 'blood' || item.frameName === 'cyanide' || 
-		        item.frameName === 'liquid_smoke' || item.frameName === 'slime' || item.frameName === 'snake_venom' 
-		        || item.frameName === 'squid_ink' || item.frameName === 'mercury') {
-			    liquid_soundeffect.play();
-		    }
+		    // if (item.frameName === 'bone_marrow' || item.frameName === 'caviar' || item.frameName === 'chocolate' || 
+		    //     item.frameName === 'demon_flesh' ||  item.frameName === 'eye_of_newt' || item.frameName === 'frog_legs' 
+		    //     || item.frameName === 'ghost_pepper' || item.frameName === 'insect_parts' || item.frameName === 'lemons' 
+		    //     || item.frameName === 'leopard_spots' || item.frameName === 'lizard_eggs' || item.frameName === 'mandrake' 
+		    //     || item.frameName === 'pufferfish' || item.frameName === 'tentacles' || item.frameName === 'toadstool') {
 
-		    if (item.frameName === 'fairy_wings' || item.frameName === 'nightshade' || item.frameName === 'dirt') {
-			    powder_soundeffect.play();
-		    }
+			   //  solid_soundeffect.play();
+		    // }
+
+		    // if (item.frameName === 'bleach' || item.frameName === 'blood' || item.frameName === 'cyanide' || 
+		    //     item.frameName === 'liquid_smoke' || item.frameName === 'slime' || item.frameName === 'snake_venom' 
+		    //     || item.frameName === 'squid_ink' || item.frameName === 'mercury') {
+			   //  liquid_soundeffect.play();
+		    // }
+
+		    // if (item.frameName === 'fairy_wings' || item.frameName === 'nightshade' || item.frameName === 'dirt') {
+			   //  powder_soundeffect.play();
+		    // }
 		    
 	        ////////// REACTIONS
 
@@ -580,7 +597,7 @@ var PlayState = {
 		    var has_reaction = false;
 		    var ingredient_index;
 
-
+		    //I really cant think of a simple better way to do this
 		    if (item.frameName === 'cyanide') {
 
 		        if (ingredientsInCauldron.indexOf('nightshade') != -1) {
@@ -744,44 +761,8 @@ var PlayState = {
 
             effects_string = "";
             for (var i = 0; i < effects.length; i++){
-                if (effects[i] === "dirt"){
-                    effects_string += "Dirt\n";
-                }
-                if (effects[i] === "tentacles"){
-                    effects_string += "Tentacle Forming\n";
-                }
-                if (effects[i] === "poison"){
-                    effects_string += "Poisonous\n";
-                }
-                if (effects[i] === "explosive"){
-                    effects_string += "Explosive\n";
-                }
-                if (effects[i] === "mind_control"){
-                    effects_string += "Mind Control\n";
-                }
-                if (effects[i] === "implosion"){
-                    effects_string += "Implosion\n";
-                }
-                if (effects[i] === "slimification"){
-                    effects_string += "Slimification\n";
-                }
+                effects_string += PlayState.prettyEffectFromEffect(effects[i])+"\n";
             }
-
-	        ////////// DEBUG PRINT
-
-	        console.log('-------------');
-	        console.log("mixture is now "+PlayState.colorStringFromArray(currentColor));
-	        console.log('-----');
-	        console.log('FLAVORS:');
-	        for (var i = 0; i < flavorList.length; i++) {
-	            console.log(' - ' + flavorList[i]);
-	        }
-	        console.log('-----');
-	        console.log('EFFECTS:');
-	        for (var i = 0; i < effects.length; i++) {
-	            console.log(' - '+effects[i]);
-	        }
-	        console.log('-----');
 
 	        if(playsmoke) {
                 smoke.animations.play('idle',12,false);
@@ -964,17 +945,17 @@ var PlayState = {
 	    dirty = false;
 	    square.tint = PlayState.hexFromArray(currentColor);*/
 	    var winChecker
-	    console.log(winState);
-	    for (winChecker in winState.flavors){
-	    	if (!winState.flavors.hasOwnProperty(winChecker)) {continue;}
-	    	if (PlayState.countItems(flavorList,winChecker) !==winState.flavors[winChecker]){
+	    console.log(PlayState.winState);
+	    for (winChecker in PlayState.winState.flavors){
+	    	if (!PlayState.winState.flavors.hasOwnProperty(winChecker)) {continue;}
+	    	if (PlayState.countItems(flavorList,winChecker) !==PlayState.winState.flavors[winChecker]){
 	    		console.log(winChecker);
 	    		return false;
 	    	}
 	    }
 	    winChecker=effects.slice();
-	    for (var iC =0; iC<winState.effects.length; iC++){
-	    	var winEffectIndex=winChecker.indexOf(winState.effects[iC]);
+	    for (var iC =0; iC<PlayState.winState.effects.length; iC++){
+	    	var winEffectIndex=winChecker.indexOf(PlayState.winState.effects[iC]);
 	        if (winEffectIndex !== -1){
 	        	winChecker.splice(winEffectIndex, 1);
             } else {
@@ -986,7 +967,7 @@ var PlayState = {
 	    	return false;
 	    }
 	    winChecker=PlayState.colorStringFromArray(currentColor);
-	    if (winChecker!==winState.color){
+	    if (winChecker!==PlayState.winState.color){
 	    	console.log(winChecker);
 	    	return false;
 	    }

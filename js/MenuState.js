@@ -14,6 +14,10 @@ var MenuState = {
 		bg = game.add.sprite(0,0, 'menubg');
 		var startButton = game.add.button(game.world.centerX-155,game.world.centerY + 85,'startButton',startLevel,this,'Up', 'Static', 'Down', 'Static');
 		
+		if (PlayState.won){
+			game.add.text(game.world.centerX-220,game.world.centerY + 185,'Sandbox Mode Unlocked',sandboxTitle);
+		}
+
 		startButton.scale.set(0.6,0.6);
         if (!music_playing){
             bgm = game.add.audio('bgm');

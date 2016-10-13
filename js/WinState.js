@@ -9,6 +9,10 @@ var WinState = {
 
 		console.log("Win State");
 
+		PlayState.levelNum=0;
+
+		PlayState.won=true;
+
 		game.state.start('Menu');
 
 	},
