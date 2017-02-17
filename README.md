@@ -19,4 +19,4 @@ And if you get really lost, theres a solutions file in the root directory of the
 - [Sam Suite](https://github.com/samsuite)
 - [Vahan Ionnisian](https://github.com/Phhase)
 - [Mary Lincoln](https://github.com/Vynive)
-- [Claire Lu](https://github.com/luc3rpi)
+- [Carol Lu](https://github.com/luc3rpi)
